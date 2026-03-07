@@ -1,0 +1,2707 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /home/asiclab/Desktop/Lab2/alu.v
+Parsing SystemVerilog input from `/home/asiclab/Desktop/Lab2/alu.v' to AST representation.
+Storing AST representation for module `$abstract\constant_value'.
+Storing AST representation for module `$abstract\register_STD'.
+Storing AST representation for module `$abstract\ui_extract_bit_expr_FU'.
+Storing AST representation for module `$abstract\lut_expr_FU'.
+Storing AST representation for module `$abstract\UIdata_converter_FU'.
+Storing AST representation for module `$abstract\multi_read_cond_FU'.
+Storing AST representation for module `$abstract\bit_and_expr_FU'.
+Storing AST representation for module `$abstract\ui_bit_and_expr_FU'.
+Storing AST representation for module `$abstract\ui_bit_ior_expr_FU'.
+Storing AST representation for module `$abstract\ui_bit_xor_expr_FU'.
+Storing AST representation for module `$abstract\ui_cond_expr_FU'.
+Storing AST representation for module `$abstract\ui_lshift_expr_FU'.
+Storing AST representation for module `$abstract\ui_minus_expr_FU'.
+Storing AST representation for module `$abstract\ui_mult_expr_FU'.
+Storing AST representation for module `$abstract\ui_plus_expr_FU'.
+Storing AST representation for module `$abstract\ui_rshift_expr_FU'.
+Storing AST representation for module `$abstract\MUX_GATE'.
+Storing AST representation for module `$abstract\datapath_alu'.
+Storing AST representation for module `$abstract\controller_alu'.
+Storing AST representation for module `$abstract\flipflop_AR'.
+Storing AST representation for module `$abstract\_alu'.
+Storing AST representation for module `$abstract\ui_view_convert_expr_FU'.
+Storing AST representation for module `$abstract\alu'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+4. Executing AST frontend in derive mode using pre-parsed AST for module `\alu'.
+Generating RTLIL representation for module `\alu'.
+
+4.1. Analyzing design hierarchy..
+Top module:  \alu
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_view_convert_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU'.
+
+4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\_alu'.
+Generating RTLIL representation for module `\_alu'.
+
+4.4. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+
+4.5. Executing AST frontend in derive mode using pre-parsed AST for module `\flipflop_AR'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR'.
+
+4.6. Executing AST frontend in derive mode using pre-parsed AST for module `\datapath_alu'.
+Generating RTLIL representation for module `\datapath_alu'.
+
+4.7. Executing AST frontend in derive mode using pre-parsed AST for module `\controller_alu'.
+Generating RTLIL representation for module `\controller_alu'.
+
+4.8. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Used module:         $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR
+Used module:         \datapath_alu
+Used module:         \controller_alu
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.9. Executing AST frontend in derive mode using pre-parsed AST for module `\register_STD'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+
+4.10. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Generating RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+
+4.11. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Generating RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 2
+Found cached RTLIL representation for module `$paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 1
+Found cached RTLIL representation for module `$paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+
+4.12. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 3
+
+4.13. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 3
+Generating RTLIL representation for module `$paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 3
+Found cached RTLIL representation for module `$paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 3
+Found cached RTLIL representation for module `$paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 8
+Parameter \BITSIZE_in2 = 3
+Found cached RTLIL representation for module `$paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.14. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Found cached RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Found cached RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Found cached RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Found cached RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 32
+Parameter \BITSIZE_out1 = 32
+Found cached RTLIL representation for module `$paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 1
+Parameter \BITSIZE_out1 = 32
+
+4.15. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_in3 = 1
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU'.
+Parameter \BITSIZE_in1 = 24
+Parameter \BITSIZE_out1 = 1
+
+4.16. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 24
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 23
+Parameter \BITSIZE_out1 = 1
+
+4.17. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 23
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 22
+Parameter \BITSIZE_out1 = 1
+
+4.18. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 22
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 21
+Parameter \BITSIZE_out1 = 1
+
+4.19. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 21
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 20
+Parameter \BITSIZE_out1 = 1
+
+4.20. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 20
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 19
+Parameter \BITSIZE_out1 = 1
+
+4.21. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 19
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 18
+Parameter \BITSIZE_out1 = 1
+
+4.22. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 18
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 17
+Parameter \BITSIZE_out1 = 1
+
+4.23. Executing AST frontend in derive mode using pre-parsed AST for module `\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 17
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \PORTSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+
+4.24. Executing AST frontend in derive mode using pre-parsed AST for module `\multi_read_cond_FU'.
+Parameter \BITSIZE_in1 = 1
+Parameter \PORTSIZE_in1 = 1
+Parameter \BITSIZE_out1 = 1
+Generating RTLIL representation for module `$paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 32
+Parameter \PRECISION = 32
+
+4.25. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_rshift_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 32
+Parameter \PRECISION = 32
+Generating RTLIL representation for module `$paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU'.
+Parameter \BITSIZE_in1 = 6
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 6
+
+4.26. Executing AST frontend in derive mode using pre-parsed AST for module `\bit_and_expr_FU'.
+Parameter \BITSIZE_in1 = 6
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 6
+Generating RTLIL representation for module `$paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 6
+
+4.27. Executing AST frontend in derive mode using pre-parsed AST for module `\UIdata_converter_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 6
+Generating RTLIL representation for module `$paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 32
+Parameter \PRECISION = 32
+
+4.28. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_lshift_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 32
+Parameter \PRECISION = 32
+Generating RTLIL representation for module `$paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU'.
+Parameter \BITSIZE_in1 = 6
+Parameter \BITSIZE_in2 = 6
+Parameter \BITSIZE_out1 = 6
+Found cached RTLIL representation for module `$paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_out1 = 6
+Found cached RTLIL representation for module `$paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.29. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_bit_xor_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.30. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_bit_ior_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.31. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_bit_and_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Parameter \PIPE_PARAMETER = 0
+
+4.32. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_mult_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Parameter \PIPE_PARAMETER = 0
+Generating RTLIL representation for module `$paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.33. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_minus_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.34. Executing AST frontend in derive mode using pre-parsed AST for module `\ui_plus_expr_FU'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU'.
+Parameter \BITSIZE_out1 = 21
+Parameter \value = 21'100000000000000000000
+
+4.35. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 21
+Parameter \value = 21'100000000000000000000
+Generating RTLIL representation for module `$paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value'.
+Parameter \BITSIZE_out1 = 20
+Parameter \value = 20'10000000000000000000
+
+4.36. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 20
+Parameter \value = 20'10000000000000000000
+Generating RTLIL representation for module `$paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value'.
+Parameter \BITSIZE_out1 = 19
+Parameter \value = 19'1000000000000000000
+
+4.37. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 19
+Parameter \value = 19'1000000000000000000
+Generating RTLIL representation for module `$paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value'.
+Parameter \BITSIZE_out1 = 18
+Parameter \value = 18'100000000000000000
+
+4.38. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 18
+Parameter \value = 18'100000000000000000
+Generating RTLIL representation for module `$paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value'.
+Parameter \BITSIZE_out1 = 17
+Parameter \value = 17'10000000000000000
+
+4.39. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 17
+Parameter \value = 17'10000000000000000
+Generating RTLIL representation for module `$paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'100
+
+4.40. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'100
+Generating RTLIL representation for module `$paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value'.
+Parameter \BITSIZE_out1 = 2
+Parameter \value = 2'10
+
+4.41. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 2
+Parameter \value = 2'10
+Generating RTLIL representation for module `$paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value'.
+Parameter \BITSIZE_out1 = 1
+Parameter \value = 1'1
+
+4.42. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 1
+Parameter \value = 1'1
+Generating RTLIL representation for module `$paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'111
+
+4.43. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'111
+Generating RTLIL representation for module `$paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'110
+
+4.44. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'110
+Generating RTLIL representation for module `$paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value'.
+Parameter \BITSIZE_out1 = 2
+Parameter \value = 2'11
+
+4.45. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 2
+Parameter \value = 2'11
+Generating RTLIL representation for module `$paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'101
+
+4.46. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 3
+Parameter \value = 3'101
+Generating RTLIL representation for module `$paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value'.
+Parameter \BITSIZE_out1 = 24
+Parameter \value = 24'100000000000000000000000
+
+4.47. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 24
+Parameter \value = 24'100000000000000000000000
+Generating RTLIL representation for module `$paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value'.
+Parameter \BITSIZE_out1 = 23
+Parameter \value = 23'10000000000000000000000
+
+4.48. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 23
+Parameter \value = 23'10000000000000000000000
+Generating RTLIL representation for module `$paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value'.
+Parameter \BITSIZE_out1 = 22
+Parameter \value = 22'1000000000000000000000
+
+4.49. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 22
+Parameter \value = 22'1000000000000000000000
+Generating RTLIL representation for module `$paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value'.
+Parameter \BITSIZE_out1 = 6
+Parameter \value = 6'011111
+
+4.50. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 6
+Parameter \value = 6'011111
+Generating RTLIL representation for module `$paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value'.
+Parameter \BITSIZE_out1 = 1
+Parameter \value = 1'0
+
+4.51. Executing AST frontend in derive mode using pre-parsed AST for module `\constant_value'.
+Parameter \BITSIZE_out1 = 1
+Parameter \value = 1'0
+Generating RTLIL representation for module `$paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+
+4.52. Executing AST frontend in derive mode using pre-parsed AST for module `\MUX_GATE'.
+Parameter \BITSIZE_in1 = 32
+Parameter \BITSIZE_in2 = 32
+Parameter \BITSIZE_out1 = 32
+Generating RTLIL representation for module `$paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE'.
+
+4.53. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Used module:         $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR
+Used module:         \datapath_alu
+Used module:             $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD
+Used module:             $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU
+Used module:             $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU
+Used module:             $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU
+Used module:             $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU
+Used module:             $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU
+Used module:             $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU
+Used module:             $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU
+Used module:             $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU
+Used module:             $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU
+Used module:             $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU
+Used module:             $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU
+Used module:             $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU
+Used module:             $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU
+Used module:             $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU
+Used module:             $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU
+Used module:             $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU
+Used module:             $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU
+Used module:             $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU
+Used module:             $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value
+Used module:             $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value
+Used module:             $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value
+Used module:             $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value
+Used module:             $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value
+Used module:             $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value
+Used module:             $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1
+Used module:             $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value
+Used module:             $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value
+Used module:             $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value
+Used module:             $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value
+Used module:             $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value
+Used module:             $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value
+Used module:             $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value
+Used module:             $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE
+Used module:         \controller_alu
+
+4.54. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Used module:         $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR
+Used module:         \datapath_alu
+Used module:             $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD
+Used module:             $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU
+Used module:             $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU
+Used module:             $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU
+Used module:             $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU
+Used module:             $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU
+Used module:             $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU
+Used module:             $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU
+Used module:             $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU
+Used module:             $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU
+Used module:             $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU
+Used module:             $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU
+Used module:             $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU
+Used module:             $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU
+Used module:             $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU
+Used module:             $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU
+Used module:             $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU
+Used module:             $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU
+Used module:             $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU
+Used module:             $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value
+Used module:             $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value
+Used module:             $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value
+Used module:             $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value
+Used module:             $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value
+Used module:             $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value
+Used module:             $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1
+Used module:             $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value
+Used module:             $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value
+Used module:             $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value
+Used module:             $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value
+Used module:             $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value
+Used module:             $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value
+Used module:             $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value
+Used module:             $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE
+Used module:         \controller_alu
+Removing unused module `$abstract\alu'.
+Removing unused module `$abstract\ui_view_convert_expr_FU'.
+Removing unused module `$abstract\_alu'.
+Removing unused module `$abstract\flipflop_AR'.
+Removing unused module `$abstract\controller_alu'.
+Removing unused module `$abstract\datapath_alu'.
+Removing unused module `$abstract\MUX_GATE'.
+Removing unused module `$abstract\ui_rshift_expr_FU'.
+Removing unused module `$abstract\ui_plus_expr_FU'.
+Removing unused module `$abstract\ui_mult_expr_FU'.
+Removing unused module `$abstract\ui_minus_expr_FU'.
+Removing unused module `$abstract\ui_lshift_expr_FU'.
+Removing unused module `$abstract\ui_cond_expr_FU'.
+Removing unused module `$abstract\ui_bit_xor_expr_FU'.
+Removing unused module `$abstract\ui_bit_ior_expr_FU'.
+Removing unused module `$abstract\ui_bit_and_expr_FU'.
+Removing unused module `$abstract\bit_and_expr_FU'.
+Removing unused module `$abstract\multi_read_cond_FU'.
+Removing unused module `$abstract\UIdata_converter_FU'.
+Removing unused module `$abstract\lut_expr_FU'.
+Removing unused module `$abstract\ui_extract_bit_expr_FU'.
+Removing unused module `$abstract\register_STD'.
+Removing unused module `$abstract\constant_value'.
+Removed 23 unused modules.
+Renaming module alu to alu.
+
+5. Generating Graphviz representation of design.
+Writing dot description to `/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/hierarchy.dot'.
+Dumping module alu to page 1.
+
+6. Executing TRIBUF pass.
+
+7. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Used module:         $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR
+Used module:         \datapath_alu
+Used module:             $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD
+Used module:             $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU
+Used module:             $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU
+Used module:             $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU
+Used module:             $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU
+Used module:             $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU
+Used module:             $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU
+Used module:             $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU
+Used module:             $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU
+Used module:             $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU
+Used module:             $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU
+Used module:             $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU
+Used module:             $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU
+Used module:             $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU
+Used module:             $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU
+Used module:             $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU
+Used module:             $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU
+Used module:             $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU
+Used module:             $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU
+Used module:             $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value
+Used module:             $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value
+Used module:             $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value
+Used module:             $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value
+Used module:             $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value
+Used module:             $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value
+Used module:             $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1
+Used module:             $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value
+Used module:             $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value
+Used module:             $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value
+Used module:             $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value
+Used module:             $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value
+Used module:             $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value
+Used module:             $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value
+Used module:             $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE
+Used module:         \controller_alu
+
+7.2. Analyzing design hierarchy..
+Top module:  \alu
+Used module:     $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU
+Used module:     \_alu
+Used module:         $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR
+Used module:         \datapath_alu
+Used module:             $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD
+Used module:             $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU
+Used module:             $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU
+Used module:             $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU
+Used module:             $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU
+Used module:             $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU
+Used module:             $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU
+Used module:             $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU
+Used module:             $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU
+Used module:             $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU
+Used module:             $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU
+Used module:             $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU
+Used module:             $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU
+Used module:             $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU
+Used module:             $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU
+Used module:             $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU
+Used module:             $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU
+Used module:             $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU
+Used module:             $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU
+Used module:             $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU
+Used module:             $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value
+Used module:             $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value
+Used module:             $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value
+Used module:             $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value
+Used module:             $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value
+Used module:             $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value
+Used module:             $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1
+Used module:             $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value
+Used module:             $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value
+Used module:             $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value
+Used module:             $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value
+Used module:             $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value
+Used module:             $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value
+Used module:             $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value
+Used module:             $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value
+Used module:             $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0
+Used module:             $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE
+Used module:         \controller_alu
+Removed 0 unused modules.
+
+8. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+9. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$176 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$174 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$172 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$170 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$168 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$166 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$164 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$162 in module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$159 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$157 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$155 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$153 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$151 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$149 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$147 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$145 in module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$142 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$140 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$138 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$136 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$134 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$132 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$130 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$128 in module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$125 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$123 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$121 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$119 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$117 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$115 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$113 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$111 in module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$108 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$106 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$104 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$102 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$100 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$98 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$96 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$94 in module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$91 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$89 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$87 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$85 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$83 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$81 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$79 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$77 in module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$74 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$72 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$70 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$68 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$66 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$64 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$62 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$60 in module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$57 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$55 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$53 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$51 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$49 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$47 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$45 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$43 in module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$33 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$31 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$29 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$27 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$25 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$23 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$21 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:141$19 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Marked 3 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9 in module controller_alu.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:1043$7 in module controller_alu.
+Marked 1 switch rules as full_case in process $proc$/home/asiclab/Desktop/Lab2/alu.v:1112$4 in module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.
+Removed a total of 0 dead cases.
+
+10. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 80 assignments to connections.
+
+11. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:79$13'.
+  Set init value: \reg_out1 = 0
+Found init rule in `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1038$11'.
+  Set init value: \_present_state = 3'001
+Found init rule in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1110$6'.
+  Set init value: \reg_out1 = 1'0
+
+12. Executing PROC_ARST pass (detect async resets in processes).
+
+13. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~77 debug messages>
+
+14. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$176'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$174'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$172'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$170'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$168'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$166'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$164'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$162'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$159'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$157'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$155'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$153'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$151'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$149'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$147'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$145'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$142'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$140'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$138'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$136'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$134'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$132'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$130'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$128'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$125'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$123'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$121'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$119'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$117'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$115'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$113'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$111'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$108'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$106'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$104'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$102'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$100'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$98'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$96'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$94'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$91'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$89'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$87'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$85'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$83'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$81'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$79'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$77'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$74'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$72'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$70'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$68'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$66'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$64'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$62'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$60'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$57'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$55'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$53'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$51'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$49'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$47'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$45'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$43'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$33'.
+     1/1: $1\cleaned_in0[7:7]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$31'.
+     1/1: $1\cleaned_in0[6:6]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$29'.
+     1/1: $1\cleaned_in0[5:5]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$27'.
+     1/1: $1\cleaned_in0[4:4]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$25'.
+     1/1: $1\cleaned_in0[3:3]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$23'.
+     1/1: $1\cleaned_in0[2:2]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$21'.
+     1/1: $1\cleaned_in0[1:1]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$19'.
+     1/1: $1\cleaned_in0[0:0]
+Creating decoders for process `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:79$13'.
+Creating decoders for process `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:81$12'.
+Creating decoders for process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1038$11'.
+Creating decoders for process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+     1/10: $3\wrenable_reg_0[0:0]
+     2/10: $3\done_port[0:0]
+     3/10: $3\_next_state[2:0]
+     4/10: $2\_next_state[2:0]
+     5/10: $2\wrenable_reg_0[0:0]
+     6/10: $2\done_port[0:0]
+     7/10: $1\_next_state[2:0]
+     8/10: $1\wrenable_reg_0[0:0]
+     9/10: $1\done_port[0:0]
+    10/10: $1\selector_MUX_7_gimple_return_FU_50_i0_0_0_0[0:0]
+Creating decoders for process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1043$7'.
+     1/1: $0\_present_state[2:0]
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1110$6'.
+Creating decoders for process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1112$4'.
+     1/1: $0\reg_out1[0:0]
+
+15. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$176'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$174'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$172'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$170'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$168'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$166'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$164'.
+No latch inferred for signal `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$162'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$159'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$157'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$155'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$153'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$151'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$149'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$147'.
+No latch inferred for signal `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$145'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$142'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$140'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$138'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$136'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$134'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$132'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$130'.
+No latch inferred for signal `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$128'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$125'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$123'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$121'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$119'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$117'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$115'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$113'.
+No latch inferred for signal `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$111'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$108'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$106'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$104'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$102'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$100'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$98'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$96'.
+No latch inferred for signal `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$94'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$91'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$89'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$87'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$85'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$83'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$81'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$79'.
+No latch inferred for signal `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$77'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$74'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$72'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$70'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$68'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$66'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$64'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$62'.
+No latch inferred for signal `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$60'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$57'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$55'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$53'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$51'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$49'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$47'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$45'.
+No latch inferred for signal `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$43'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [7]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$33'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [6]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$31'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [5]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$29'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [4]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$27'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [3]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$25'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [2]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$23'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [1]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$21'.
+No latch inferred for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.\cleaned_in0 [0]' from process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$19'.
+No latch inferred for signal `\controller_alu.\done_port' from process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+No latch inferred for signal `\controller_alu.\selector_MUX_7_gimple_return_FU_50_i0_0_0_0' from process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+No latch inferred for signal `\controller_alu.\wrenable_reg_0' from process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+No latch inferred for signal `\controller_alu.\_next_state' from process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+
+16. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.\reg_out1' using process `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:81$12'.
+  created $dff cell `$procdff$487' with positive edge clock.
+Creating register for signal `\controller_alu.\_present_state' using process `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1043$7'.
+  created $dff cell `$procdff$488' with positive edge clock.
+Creating register for signal `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.\reg_out1' using process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1112$4'.
+  created $dff cell `$procdff$489' with positive edge clock.
+
+17. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+18. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$176'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$176'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$174'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$174'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$172'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$172'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$170'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$170'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$168'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$168'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$166'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$166'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$164'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$164'.
+Found and cleaned up 1 empty switch in `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$162'.
+Removing empty process `$paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$162'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$159'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$159'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$157'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$157'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$155'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$155'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$153'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$153'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$151'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$151'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$149'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$149'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$147'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$147'.
+Found and cleaned up 1 empty switch in `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$145'.
+Removing empty process `$paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$145'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$142'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$142'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$140'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$140'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$138'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$138'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$136'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$136'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$134'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$134'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$132'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$132'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$130'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$130'.
+Found and cleaned up 1 empty switch in `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$128'.
+Removing empty process `$paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$128'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$125'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$125'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$123'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$123'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$121'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$121'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$119'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$119'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$117'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$117'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$115'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$115'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$113'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$113'.
+Found and cleaned up 1 empty switch in `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$111'.
+Removing empty process `$paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$111'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$108'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$108'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$106'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$106'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$104'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$104'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$102'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$102'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$100'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$100'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$98'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$98'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$96'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$96'.
+Found and cleaned up 1 empty switch in `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$94'.
+Removing empty process `$paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$94'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$91'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$91'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$89'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$89'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$87'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$87'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$85'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$85'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$83'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$83'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$81'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$81'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$79'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$79'.
+Found and cleaned up 1 empty switch in `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$77'.
+Removing empty process `$paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$77'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$74'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$74'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$72'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$72'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$70'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$70'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$68'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$68'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$66'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$66'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$64'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$64'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$62'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$62'.
+Found and cleaned up 1 empty switch in `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$60'.
+Removing empty process `$paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$60'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$57'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$57'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$55'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$55'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$53'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$53'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$51'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$51'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$49'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$49'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$47'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$47'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$45'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$45'.
+Found and cleaned up 1 empty switch in `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$43'.
+Removing empty process `$paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$43'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$33'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$33'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$31'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$31'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$29'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$29'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$27'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$27'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$25'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$25'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$23'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$23'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$21'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$21'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$19'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.$proc$/home/asiclab/Desktop/Lab2/alu.v:141$19'.
+Removing empty process `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:79$13'.
+Removing empty process `$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.$proc$/home/asiclab/Desktop/Lab2/alu.v:81$12'.
+Removing empty process `controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1038$11'.
+Found and cleaned up 3 empty switches in `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+Removing empty process `controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1047$9'.
+Found and cleaned up 1 empty switch in `\controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1043$7'.
+Removing empty process `controller_alu.$proc$/home/asiclab/Desktop/Lab2/alu.v:1043$7'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1110$6'.
+Found and cleaned up 1 empty switch in `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1112$4'.
+Removing empty process `$paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.$proc$/home/asiclab/Desktop/Lab2/alu.v:1112$4'.
+Cleaned up 77 empty switches.
+
+19. Executing CHECK pass (checking for obvious problems).
+Checking module alu...
+Checking module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU...
+Checking module $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU...
+Checking module $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU...
+Checking module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU...
+Checking module $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU...
+Checking module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU...
+Checking module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU...
+Checking module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU...
+Checking module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU...
+Checking module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU...
+Checking module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU...
+Checking module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU...
+Checking module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU...
+Checking module $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU...
+Checking module $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU...
+Checking module $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU...
+Checking module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU...
+Checking module $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU...
+Checking module $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU...
+Checking module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD...
+Checking module controller_alu...
+Checking module datapath_alu...
+Checking module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR...
+Checking module _alu...
+Checking module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE...
+Checking module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0...
+Checking module $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value...
+Checking module $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value...
+Checking module $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value...
+Checking module $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value...
+Checking module $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value...
+Checking module $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value...
+Checking module $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value...
+Checking module $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value...
+Checking module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1...
+Checking module $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value...
+Checking module $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value...
+Checking module $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value...
+Checking module $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value...
+Checking module $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value...
+Checking module $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value...
+Checking module $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU...
+Checking module $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU...
+Checking module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU...
+Found and reported 0 problems.
+
+20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+Optimizing module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU.
+Optimizing module $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU.
+Optimizing module $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU.
+Optimizing module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU.
+Optimizing module $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU.
+Optimizing module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+<suppressed ~8 debug messages>
+Optimizing module $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU.
+<suppressed ~1 debug messages>
+Optimizing module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.
+Optimizing module controller_alu.
+<suppressed ~3 debug messages>
+Optimizing module datapath_alu.
+Optimizing module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.
+<suppressed ~2 debug messages>
+Optimizing module _alu.
+Optimizing module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE.
+Optimizing module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0.
+Optimizing module $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value.
+Optimizing module $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value.
+Optimizing module $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value.
+Optimizing module $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value.
+Optimizing module $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value.
+Optimizing module $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value.
+Optimizing module $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value.
+Optimizing module $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value.
+Optimizing module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1.
+Optimizing module $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value.
+Optimizing module $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value.
+Optimizing module $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value.
+Optimizing module $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value.
+Optimizing module $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value.
+Optimizing module $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value.
+Optimizing module $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU.
+Optimizing module $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU.
+Optimizing module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU.
+
+21. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_lshift_expr_FU.
+Deleting now unused module $paramod$0f88959377e25c319bd0e69bd88a5b155d28cc8b\UIdata_converter_FU.
+Deleting now unused module $paramod$a2d28b2bc96a1381e786adf44c7e45ba841a9c3a\bit_and_expr_FU.
+Deleting now unused module $paramod$506f5b9e30ef8dca3ade9685a93ae0e8a6dd3044\ui_rshift_expr_FU.
+Deleting now unused module $paramod$6ba60ada9799e5f05296fc7c97930549c6c869e8\multi_read_cond_FU.
+Deleting now unused module $paramod$a38e5bc0c9e8da9d0e66e91c0bdae9ea3031f19d\lut_expr_FU.
+Deleting now unused module $paramod$5169d7085197420e09a8a2d94f70018750017762\lut_expr_FU.
+Deleting now unused module $paramod$5175a4b1c774c75c6e28b7ae2060a29168b7f937\lut_expr_FU.
+Deleting now unused module $paramod$6cf6bd13a78f273dd0c26362dab50c7bbb5a4dbe\lut_expr_FU.
+Deleting now unused module $paramod$8230866fcac71435a2134180b9af5d4ea826ce2f\lut_expr_FU.
+Deleting now unused module $paramod$f815607e22420ff2e3285128f842e5f0c30e7a78\lut_expr_FU.
+Deleting now unused module $paramod$278dcd13b66244e02fa5d1817297e944fda3163b\lut_expr_FU.
+Deleting now unused module $paramod$541e058560228f0d12165dd5696e175b42a2cb66\lut_expr_FU.
+Deleting now unused module $paramod$69984d3fbfb8530153ea8ebb84f9eac480f3c216\ui_cond_expr_FU.
+Deleting now unused module $paramod$0362f195110a48064634ec05d0fc8641aaeb1e14\ui_cond_expr_FU.
+Deleting now unused module $paramod$986fa09d479e36575057cab144687d26dc93bab5\ui_extract_bit_expr_FU.
+Deleting now unused module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\lut_expr_FU.
+Deleting now unused module $paramod$d13ea8a468192c2e93837fb6232294f1e0fd7936\ui_extract_bit_expr_FU.
+Deleting now unused module $paramod$0ca05f2f9158a8893e1a8317ef72e0d285921c8c\ui_extract_bit_expr_FU.
+Deleting now unused module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\register_STD.
+Deleting now unused module controller_alu.
+Deleting now unused module datapath_alu.
+Deleting now unused module $paramod$fc3fa4d18590dca89fecb28708dcece7161e0e58\flipflop_AR.
+Deleting now unused module _alu.
+Deleting now unused module $paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e\ui_view_convert_expr_FU.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_xor_expr_FU.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\MUX_GATE.
+Deleting now unused module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'0.
+Deleting now unused module $paramod$0b35439807f3e8bca8eac0c7cc15a4823f9c5ffd\constant_value.
+Deleting now unused module $paramod$ab6cb601b101100db7a4e3efd4ac7d24c85f9361\constant_value.
+Deleting now unused module $paramod$a2d03027fd6899c1f314af90d460f2e33f5e88aa\constant_value.
+Deleting now unused module $paramod$303e402d6d6dbc9ff88cd8a9a2e41f5fbd463dec\constant_value.
+Deleting now unused module $paramod$200ec4a854461caeb2edc6095273b5b851bbfbdb\constant_value.
+Deleting now unused module $paramod$6e37fe2f223807473d4ae6b034d13e94d074c07c\constant_value.
+Deleting now unused module $paramod$31377c15e065a4408eb9d0409cb4778b9f7b4bc1\constant_value.
+Deleting now unused module $paramod$377dfa95f9152ea67c5616f95e3d8049e52c4e1c\constant_value.
+Deleting now unused module $paramod\constant_value\BITSIZE_out1=s32'00000000000000000000000000000001\value=1'1.
+Deleting now unused module $paramod$338d1c85e5382ec569bc3792466a7593effd3a9d\constant_value.
+Deleting now unused module $paramod$8a01078a8f379acae9563ec7f228672db0a8c759\constant_value.
+Deleting now unused module $paramod$8cda346f80a8e9a67c569abb828dd1f6b9578b1d\constant_value.
+Deleting now unused module $paramod$92b1e3e05f017353e98d5d78f2748b34fd595039\constant_value.
+Deleting now unused module $paramod$452228df1e885ac524856f8104333e0ea25bdd2c\constant_value.
+Deleting now unused module $paramod$86dc6241e5dce5728fd7e989b1b37f0dab159f53\constant_value.
+Deleting now unused module $paramod$40190dbe062b948326e4b33caa9c6e670a3431dd\constant_value.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_plus_expr_FU.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_minus_expr_FU.
+Deleting now unused module $paramod$d2229631ece225c992962869f69af4e0a4a1dc57\ui_mult_expr_FU.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_and_expr_FU.
+Deleting now unused module $paramod$5e567bc1f24086dd8eefb1ece4d88a0c5bb6306e\ui_bit_ior_expr_FU.
+<suppressed ~89 debug messages>
+
+22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+<suppressed ~67 debug messages>
+
+23. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 11 unused cells and 512 unused wires.
+<suppressed ~12 debug messages>
+
+24. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+25. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+26. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$434.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$436.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$444.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$423.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$460.
+    dead port 2/2 on $mux $flatten\_alu_i0.\Controller_i.$procmux$425.
+Removed 6 multiplexer ports.
+<suppressed ~49 debug messages>
+
+27. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+28. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+<suppressed ~105 debug messages>
+Removed a total of 35 cells.
+
+29. Executing OPT_DFF pass (perform DFF optimizations).
+
+30. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~5 debug messages>
+
+31. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+32. Rerunning OPT passes. (Maybe there is more to do…)
+
+33. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+34. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+35. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+36. Executing OPT_DFF pass (perform DFF optimizations).
+
+37. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+38. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+39. Executing FSM pass (extract and optimize FSM).
+
+39.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking alu._alu_i0.Controller_i._present_state as FSM state register:
+    Register has an initialization value.
+
+39.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+39.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+39.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+39.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+39.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+39.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+39.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+40. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+41. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+42. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+43. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+44. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+45. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $flatten\_alu_i0.\done_delayed_REG.$procdff$489 ($dff) from module alu (D = $flatten\_alu_i0.\Controller_i.$2\done_port[0:0], Q = \_alu_i0.done_delayed_REG.reg_out1, rval = 1'0).
+Adding SRST signal on $flatten\_alu_i0.\Controller_i.$procdff$488 ($dff) from module alu (D = $flatten\_alu_i0.\Controller_i.$3\_next_state[2:0], Q = \_alu_i0.Controller_i._present_state, rval = 3'001).
+
+46. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 5 unused cells and 7 unused wires.
+<suppressed ~10 debug messages>
+
+47. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+48. Rerunning OPT passes. (Maybe there is more to do…)
+
+49. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+50. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+51. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+52. Executing OPT_DFF pass (perform DFF optimizations).
+
+53. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+54. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+55. Executing WREDUCE pass (reducing word size of cells).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33809.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$161 ($shr).
+Removed top 16 bits (of 17) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33809.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$161 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33812.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$144 ($shr).
+Removed top 17 bits (of 18) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33812.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$144 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33815.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$127 ($shr).
+Removed top 18 bits (of 19) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33815.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$127 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33818.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$110 ($shr).
+Removed top 19 bits (of 20) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33818.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$110 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33821.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$93 ($shr).
+Removed top 20 bits (of 21) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33821.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$93 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33824.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$76 ($shr).
+Removed top 21 bits (of 22) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33824.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$76 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33827.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$59 ($shr).
+Removed top 22 bits (of 23) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33827.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$59 ($shr).
+Removed top 3 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33830.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$42 ($shr).
+Removed top 23 bits (of 24) from port Y of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33830.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$42 ($shr).
+Removed top 4 bits (of 8) from port B of cell alu.$flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33877.$shr$/home/asiclab/Desktop/Lab2/alu.v:150$18 ($shr).
+Removed top 2 bits (of 3) from port B of cell alu.$flatten\_alu_i0.\Controller_i.$procmux$426_CMP0 ($eq).
+
+56. Executing PEEPOPT pass (run peephole optimizers).
+
+57. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+58. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module alu:
+  creating $macc model for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33729.$add$/home/asiclab/Desktop/Lab2/alu.v:429$188 ($add).
+  creating $macc model for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33741.$sub$/home/asiclab/Desktop/Lab2/alu.v:355$187 ($sub).
+  creating $macc model for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33745.$mul$/home/asiclab/Desktop/Lab2/alu.v:407$186 ($mul).
+  creating $alu model for $macc $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33741.$sub$/home/asiclab/Desktop/Lab2/alu.v:355$187.
+  creating $alu model for $macc $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33729.$add$/home/asiclab/Desktop/Lab2/alu.v:429$188.
+  creating $macc cell for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33745.$mul$/home/asiclab/Desktop/Lab2/alu.v:407$186: $auto$alumacc.cc:365:replace_macc$585
+  creating $alu cell for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33729.$add$/home/asiclab/Desktop/Lab2/alu.v:429$188: $auto$alumacc.cc:485:replace_alu$586
+  creating $alu cell for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33741.$sub$/home/asiclab/Desktop/Lab2/alu.v:355$187: $auto$alumacc.cc:485:replace_alu$589
+  created 2 $alu and 1 $macc cells.
+
+59. Executing SHARE pass (SAT-based resource sharing).
+Found 2 cells in module alu that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33775.$shr$/home/asiclab/Desktop/Lab2/alu.v:467$179 ($shr):
+    Found 1 activation_patterns using ctrl signal \_alu_i0.Datapath_i.fu_alu_33673_33830.out1.
+    No candidates found.
+  Analyzing resource sharing options for $flatten\_alu_i0.\Datapath_i.\fu_alu_33673_33763.$shl$/home/asiclab/Desktop/Lab2/alu.v:333$182 ($shl):
+    Found 1 activation_patterns using ctrl signal { \_alu_i0.Datapath_i.fu_alu_33673_33830.out1 \_alu_i0.Datapath_i.fu_alu_33673_33827.out1 }.
+    No candidates found.
+
+60. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+61. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+62. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+63. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+64. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+65. Executing OPT_DFF pass (perform DFF optimizations).
+
+66. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+67. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+68. Executing MEMORY pass.
+
+68.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+68.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+68.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+68.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+68.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+68.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+68.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+68.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+68.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+68.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+69. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+70. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+<suppressed ~53 debug messages>
+
+71. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+72. Executing OPT_DFF pass (perform DFF optimizations).
+
+73. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+74. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+75. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+76. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+77. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+78. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+    Consolidated identical input bits for $mux cell $flatten\_alu_i0.\Controller_i.$procmux$432:
+      Old ports: A=3'100, B=3'010, Y=$flatten\_alu_i0.\Controller_i.$3\_next_state[2:0]
+      New ports: A=2'10, B=2'01, Y=$flatten\_alu_i0.\Controller_i.$3\_next_state[2:0] [2:1]
+      New connections: $flatten\_alu_i0.\Controller_i.$3\_next_state[2:0] [0] = 1'0
+  Optimizing cells in module \alu.
+Performed a total of 1 changes.
+
+79. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+80. Executing OPT_SHARE pass.
+
+81. Executing OPT_DFF pass (perform DFF optimizations).
+
+82. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+83. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+84. Rerunning OPT passes. (Maybe there is more to do…)
+
+85. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~3 debug messages>
+
+86. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+87. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+88. Executing OPT_SHARE pass.
+
+89. Executing OPT_DFF pass (perform DFF optimizations).
+
+90. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+91. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+92. Executing TECHMAP pass (map to technology primitives).
+
+92.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+92.2. Continuing TECHMAP pass.
+Using extmapper maccmap for cells of type $macc.
+  add \a * \b (32x32 bits, unsigned)
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $reduce_and.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$constmap:4621fcf06a436d1e2a4080e2ed9866a7d07a6e07$paramod$335cfd09f1afa8139c4aafcbbe5f361887b79c5e\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shl.
+Using template $paramod$constmap:4621fcf06a436d1e2a4080e2ed9866a7d07a6e07$paramod$feecc7a0dbd012970970f2858f15e786e251f677\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:ea8d443ae438c04578d81594a5f510a2cbb0e4f9$paramod$9ce66d606c1fb70bdf1b5b7b527b90c4852934ad\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:8f11e447ca3d157b3272150f085fd905441aa7da$paramod$d444b34909b2706ca454438d01010eecaab7fba8\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:26308893078ae9d5c14e44df5e7c6c991521f59e$paramod$cc6b69cba6c97c0a83aaf123c8bc3f90ed0049b0\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:ef3c8882f1733d890e4bb1a8bebee02aa256dad8$paramod$9628c507fdb905070027ed59347ad327ecb5536e\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:9b242e10f919da9532e49f134ab1ea94d9c1315e$paramod$6c8db7e96c1c78d61774c9086d7d3fa16c640e2a\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:0d5afd1e96e081058131eddbeb33c9b1d9c291a6$paramod$a4a727277fd7aa88cc75a82699be9f4190164f9f\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:51a04f7afde2e59fcc431c2b13312da4ae5e06a5$paramod$fd4ffb268de3af73f2369382b6da2b03f2a843d8\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:0032028b59bb07d2db049b2add47c6179fca9ef4$paramod$06234cf2a60a82e8ed0cd4e5503c11265469a366\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using template $paramod$constmap:a9e45d226c7e598a925e7f3f5426da103d164156$paramod$abcaba6f3e11f24b07ea8e1df211f254387ea8ad\_90_shift_ops_shr_shl_sshl_sshr for cells of type $shr.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+No more expansions possible.
+<suppressed ~5153 debug messages>
+
+93. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+<suppressed ~3087 debug messages>
+
+94. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+<suppressed ~357 debug messages>
+Removed a total of 119 cells.
+
+95. Executing OPT_DFF pass (perform DFF optimizations).
+
+96. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 165 unused cells and 499 unused wires.
+<suppressed ~170 debug messages>
+
+97. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+98. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+99. Executing OPT_DFF pass (perform DFF optimizations).
+
+100. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+101. Executing ABC pass (technology mapping using ABC).
+
+101.1. Extracting gate netlist of module `\alu' to `<abc-temp-dir>/input.blif'..
+Extracted 4126 gates and 4236 wires to a netlist network with 109 inputs and 68 outputs.
+
+101.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+101.1.2. Re-integrating ABC results.
+ABC RESULTS:               NOT cells:       84
+ABC RESULTS:              XNOR cells:      253
+ABC RESULTS:             ORNOT cells:       82
+ABC RESULTS:              NAND cells:      234
+ABC RESULTS:               AND cells:      432
+ABC RESULTS:                OR cells:      488
+ABC RESULTS:               NOR cells:      119
+ABC RESULTS:            ANDNOT cells:     1129
+ABC RESULTS:               XOR cells:      867
+ABC RESULTS:               MUX cells:      482
+ABC RESULTS:        internal signals:     4059
+ABC RESULTS:           input signals:      109
+ABC RESULTS:          output signals:       68
+Removing temp directory.
+
+102. Executing OPT pass (performing simple optimizations).
+
+102.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+<suppressed ~98 debug messages>
+
+102.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+102.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+102.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 4 unused cells and 754 unused wires.
+<suppressed ~68 debug messages>
+
+102.5. Finished fast OPT passes.
+
+103. Executing HIERARCHY pass (managing design hierarchy).
+
+103.1. Analyzing design hierarchy..
+Top module:  \alu
+
+103.2. Analyzing design hierarchy..
+Top module:  \alu
+Removed 0 unused modules.
+
+104. Executing CHECK pass (checking for obvious problems).
+Checking module alu...
+Found and reported 0 problems.
+
+105. Printing statistics.
+
+=== alu ===
+
+   Number of wires:               4474
+   Number of wire bits:           6770
+   Number of public wires:         373
+   Number of public wire bits:    2669
+   Number of ports:                  8
+   Number of port bits:            108
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4291
+     $_ANDNOT_                    1129
+     $_AND_                        432
+     $_DFF_P_                       32
+     $_MUX_                        482
+     $_NAND_                       234
+     $_NOR_                        119
+     $_NOT_                         80
+     $_ORNOT_                       82
+     $_OR_                         488
+     $_SDFF_PN0_                     3
+     $_SDFF_PN1_                     1
+     $_XNOR_                       253
+     $_XOR_                        867
+     $scopeinfo                     89
+
+106. Generating Graphviz representation of design.
+Writing dot description to `/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module alu to page 1.
+
+107. Executing OPT pass (performing simple optimizations).
+
+107.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+107.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+107.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \alu..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+107.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \alu.
+Performed a total of 0 changes.
+
+107.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\alu'.
+Removed a total of 0 cells.
+
+107.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+107.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+
+107.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module alu.
+
+107.9. Finished OPT passes. (There is nothing left to do.)
+
+108. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 89 unused cells and 361 unused wires.
+<suppressed ~450 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/tmp/5a2bf584ffb14fa0a5217639eff43638.lib ",
+   "modules": {
+      "\\alu": {
+         "num_wires":         4113,
+         "num_wire_bits":     4277,
+         "num_pub_wires":     12,
+         "num_pub_wire_bits": 176,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4202,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1129,
+            "$_AND_": 432,
+            "$_DFF_P_": 32,
+            "$_MUX_": 482,
+            "$_NAND_": 234,
+            "$_NOR_": 119,
+            "$_NOT_": 80,
+            "$_ORNOT_": 82,
+            "$_OR_": 488,
+            "$_SDFF_PN0_": 3,
+            "$_SDFF_PN1_": 1,
+            "$_XNOR_": 253,
+            "$_XOR_": 867
+         }
+      }
+   },
+      "design": {
+         "num_wires":         4113,
+         "num_wire_bits":     4277,
+         "num_pub_wires":     12,
+         "num_pub_wire_bits": 176,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4202,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1129,
+            "$_AND_": 432,
+            "$_DFF_P_": 32,
+            "$_MUX_": 482,
+            "$_NAND_": 234,
+            "$_NOR_": 119,
+            "$_NOT_": 80,
+            "$_ORNOT_": 82,
+            "$_OR_": 488,
+            "$_SDFF_PN0_": 3,
+            "$_SDFF_PN1_": 1,
+            "$_XNOR_": 253,
+            "$_XOR_": 867
+         }
+      }
+}
+
+109. Printing statistics.
+
+=== alu ===
+
+   Number of wires:               4113
+   Number of wire bits:           4277
+   Number of public wires:          12
+   Number of public wire bits:     176
+   Number of ports:                  8
+   Number of port bits:            108
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4202
+     $_ANDNOT_                    1129
+     $_AND_                        432
+     $_DFF_P_                       32
+     $_MUX_                        482
+     $_NAND_                       234
+     $_NOR_                        119
+     $_NOT_                         80
+     $_ORNOT_                       82
+     $_OR_                         488
+     $_SDFF_PN0_                     3
+     $_SDFF_PN1_                     1
+     $_XNOR_                       253
+     $_XOR_                        867
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFF_P_ is unknown!
+   Area for cell type $_SDFF_PN0_ is unknown!
+   Area for cell type $_SDFF_PN1_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+110. Executing TECHMAP pass (map to technology primitives).
+
+110.1. Executing Verilog-2005 frontend: /home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+110.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+111. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+112. Executing TECHMAP pass (map to technology primitives).
+
+112.1. Executing Verilog-2005 frontend: /home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+112.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+113. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+114. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+114.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\alu':
+  mapped 36 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/tmp/5a2bf584ffb14fa0a5217639eff43638.lib ",
+   "modules": {
+      "\\alu": {
+         "num_wires":         4117,
+         "num_wire_bits":     4281,
+         "num_pub_wires":     12,
+         "num_pub_wire_bits": 176,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4206,
+         "area":              765.734400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1129,
+            "$_AND_": 432,
+            "$_MUX_": 486,
+            "$_NAND_": 234,
+            "$_NOR_": 119,
+            "$_NOT_": 80,
+            "$_ORNOT_": 82,
+            "$_OR_": 488,
+            "$_XNOR_": 253,
+            "$_XOR_": 867,
+            "sky130_fd_sc_hd__dfxtp_2": 36
+         }
+      }
+   },
+      "design": {
+         "num_wires":         4117,
+         "num_wire_bits":     4281,
+         "num_pub_wires":     12,
+         "num_pub_wire_bits": 176,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         4206,
+         "area":              765.734400,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 1129,
+            "$_AND_": 432,
+            "$_MUX_": 486,
+            "$_NAND_": 234,
+            "$_NOR_": 119,
+            "$_NOT_": 80,
+            "$_ORNOT_": 82,
+            "$_OR_": 488,
+            "$_XNOR_": 253,
+            "$_XOR_": 867,
+            "sky130_fd_sc_hd__dfxtp_2": 36
+         }
+      }
+}
+
+115. Printing statistics.
+
+=== alu ===
+
+   Number of wires:               4117
+   Number of wire bits:           4281
+   Number of public wires:          12
+   Number of public wire bits:     176
+   Number of ports:                  8
+   Number of port bits:            108
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4206
+     $_ANDNOT_                    1129
+     $_AND_                        432
+     $_MUX_                        486
+     $_NAND_                       234
+     $_NOR_                        119
+     $_NOT_                         80
+     $_ORNOT_                       82
+     $_OR_                         488
+     $_XNOR_                       253
+     $_XOR_                        867
+     sky130_fd_sc_hd__dfxtp_2       36
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\alu': 765.734400
+     of which used for sequential elements: 765.734400 (100.00%)
+
+[INFO] Using generated ABC script '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/AREA_0.abc'…
+
+116. Executing ABC pass (technology mapping using ABC).
+
+116.1. Extracting gate netlist of module `\alu' to `/tmp/yosys-abc-mqF2KY/input.blif'..
+Extracted 4170 gates and 4281 wires to a netlist network with 109 inputs and 68 outputs.
+
+116.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-mqF2KY/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-mqF2KY/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-mqF2KY/input.blif 
+ABC: + read_lib -w /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/tmp/5a2bf584ffb14fa0a5217639eff43638.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.14 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/tmp/5a2bf584ffb14fa0a5217639eff43638.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.23 sec
+ABC: Memory =    9.54 MB. Time =     0.23 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =   3469 (  2.4 %)   Cap = 10.1 ff (  2.3 %)   Area =    33696.07 ( 91.8 %)   Delay =  7919.50 ps  (  0.9 %)               
+ABC: Path  0 --      16 : 0   77 pi                        A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout = 239.0 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     180 : 1   45 sky130_fd_sc_hd__inv_2    A =   3.75  Df = 479.8 -244.9 ps  S = 686.1 ps  Cin =  4.5 ff  Cout = 151.3 ff  Cmax = 331.4 ff  G = 3270  
+ABC: Path  2 --    1753 : 4    2 sky130_fd_sc_hd__or4b_2   A =  10.01  Df = 997.1 -250.2 ps  S = 115.9 ps  Cin =  1.5 ff  Cout =   6.6 ff  Cmax = 265.5 ff  G =  431  
+ABC: Path  3 --    1755 : 3    2 sky130_fd_sc_hd__and3_2   A =   7.51  Df =1227.2 -297.5 ps  S =  58.7 ps  Cin =  1.5 ff  Cout =   6.0 ff  Cmax = 309.5 ff  G =  389  
+ABC: Path  4 --    1757 : 2    1 sky130_fd_sc_hd__nor2_2   A =   6.26  Df =1362.0 -119.1 ps  S = 119.5 ps  Cin =  4.4 ff  Cout =   8.4 ff  Cmax = 141.9 ff  G =  186  
+ABC: Path  5 --    1758 : 2    2 sky130_fd_sc_hd__xnor2_2  A =  16.27  Df =1545.4 -106.9 ps  S = 220.5 ps  Cin =  8.5 ff  Cout =  13.2 ff  Cmax = 121.8 ff  G =  151  
+ABC: Path  6 --    1760 : 2    2 sky130_fd_sc_hd__xnor2_2  A =  16.27  Df =1755.2  -95.1 ps  S = 220.5 ps  Cin =  8.5 ff  Cout =  13.2 ff  Cmax = 121.8 ff  G =  151  
+ABC: Path  7 --    1762 : 2    2 sky130_fd_sc_hd__xnor2_2  A =  16.27  Df =1953.3 -141.1 ps  S = 139.1 ps  Cin =  8.5 ff  Cout =   6.2 ff  Cmax = 121.8 ff  G =   68  
+ABC: Path  8 --    1783 : 3    4 sky130_fd_sc_hd__and3_2   A =   7.51  Df =2159.7 -109.4 ps  S =  97.2 ps  Cin =  1.5 ff  Cout =  14.5 ff  Cmax = 309.5 ff  G =  905  
+ABC: Path  9 --    1785 : 3    2 sky130_fd_sc_hd__o21a_2   A =   8.76  Df =2365.2 -119.0 ps  S =  53.4 ps  Cin =  2.4 ff  Cout =   7.2 ff  Cmax = 294.8 ff  G =  279  
+ABC: Path 10 --    1787 : 4    2 sky130_fd_sc_hd__o211a_2  A =  10.01  Df =2624.1  -17.3 ps  S =  61.9 ps  Cin =  2.4 ff  Cout =   6.2 ff  Cmax = 268.3 ff  G =  245  
+ABC: Path 11 --    1788 : 3    4 sky130_fd_sc_hd__or3_2    A =   7.51  Df =3061.0 -217.2 ps  S = 108.6 ps  Cin =  1.5 ff  Cout =  12.3 ff  Cmax = 310.4 ff  G =  782  
+ABC: Path 12 --    1881 : 3    4 sky130_fd_sc_hd__or3_2    A =   7.51  Df =3604.9 -607.6 ps  S = 113.4 ps  Cin =  1.5 ff  Cout =  13.9 ff  Cmax = 310.4 ff  G =  886  
+ABC: Path 13 --    1884 : 4    2 sky130_fd_sc_hd__a211o_2  A =  10.01  Df =3933.3 -624.1 ps  S =  59.4 ps  Cin =  2.4 ff  Cout =   7.0 ff  Cmax = 325.0 ff  G =  287  
+ABC: Path 14 --    1885 : 4    4 sky130_fd_sc_hd__o211a_2  A =  10.01  Df =4079.1  -71.8 ps  S = 103.6 ps  Cin =  2.4 ff  Cout =  14.3 ff  Cmax = 268.3 ff  G =  571  
+ABC: Path 15 --    1888 : 4    2 sky130_fd_sc_hd__o211a_2  A =  10.01  Df =4394.9  -49.1 ps  S =  54.9 ps  Cin =  2.4 ff  Cout =   5.0 ff  Cmax = 268.3 ff  G =  196  
+ABC: Path 16 --    1889 : 4    3 sky130_fd_sc_hd__o211a_2  A =  10.01  Df =4611.0  -23.6 ps  S =  59.7 ps  Cin =  2.4 ff  Cout =   5.8 ff  Cmax = 268.3 ff  G =  230  
+ABC: Path 17 --    1989 : 4    2 sky130_fd_sc_hd__or4b_2   A =  10.01  Df =5214.2 -382.1 ps  S = 116.0 ps  Cin =  1.5 ff  Cout =   7.2 ff  Cmax = 265.5 ff  G =  453  
+ABC: Path 18 --    2189 : 5    2 sky130_fd_sc_hd__o311a_2  A =  11.26  Df =5565.6 -581.5 ps  S =  58.2 ps  Cin =  2.4 ff  Cout =   4.0 ff  Cmax = 293.9 ff  G =  160  
+ABC: Path 19 --    2658 : 4    3 sky130_fd_sc_hd__o31a_2   A =  10.01  Df =5906.7 -769.9 ps  S =  66.3 ps  Cin =  2.3 ff  Cout =   8.8 ff  Cmax = 285.7 ff  G =  350  
+ABC: Path 20 --    2924 : 4    4 sky130_fd_sc_hd__or4b_2   A =  10.01  Df =6583.1-1287.2 ps  S = 144.2 ps  Cin =  1.5 ff  Cout =  14.2 ff  Cmax = 265.5 ff  G =  932  
+ABC: Path 21 --    3518 : 5    2 sky130_fd_sc_hd__a2111o_2 A =  12.51  Df =7046.6-1598.9 ps  S =  75.1 ps  Cin =  2.4 ff  Cout =   7.0 ff  Cmax = 324.1 ff  G =  278  
+ABC: Path 22 --    3520 : 4    3 sky130_fd_sc_hd__a211o_2  A =  10.01  Df =7370.5-1782.4 ps  S =  66.4 ps  Cin =  2.4 ff  Cout =   9.9 ff  Cmax = 325.0 ff  G =  404  
+ABC: Path 23 --    3640 : 4    1 sky130_fd_sc_hd__a31o_2   A =   8.76  Df =7596.2-1870.6 ps  S =  49.4 ps  Cin =  2.4 ff  Cout =   1.8 ff  Cmax = 271.9 ff  G =   72  
+ABC: Path 24 --    3641 : 4    1 sky130_fd_sc_hd__a2bb2o_2 A =  11.26  Df =7919.5  -66.7 ps  S = 185.0 ps  Cin =  1.7 ff  Cout =  33.4 ff  Cmax = 300.3 ff  G = 1942  
+ABC: Start-point = pi15 (\b [2]).  End-point = po63 (\return_port [31]).
+ABC: netlist                       : i/o =  109/   68  lat =    0  nd =  3469  edge =  10236  area =33701.17  delay =24.00  lev = 24
+ABC: + write_blif /tmp/yosys-abc-mqF2KY/output.blif 
+
+116.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__a2111oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a221oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:       15
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__mux4_2 cells:       31
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__a311o_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o311a_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:      141
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:      148
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:       45
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:       82
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_2 cells:       76
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:      128
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       75
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:      123
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:       48
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:      109
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:      116
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       46
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       48
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:       30
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       81
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      334
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:       95
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:       93
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:      174
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:       77
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:      178
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       69
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:      207
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:      244
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:      137
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       95
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:      129
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       83
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:        9
+ABC RESULTS:        internal signals:     4104
+ABC RESULTS:           input signals:      109
+ABC RESULTS:          output signals:       68
+Removing temp directory.
+
+117. Executing SETUNDEF pass (replace undef values with defined constants).
+
+118. Executing HILOMAP pass (mapping to constant drivers).
+
+119. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+120. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \alu..
+Removed 0 unused cells and 4279 unused wires.
+<suppressed ~2 debug messages>
+
+121. Executing INSBUF pass (insert buffer cells for connected wires).
+
+122. Executing CHECK pass (checking for obvious problems).
+Checking module alu...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/tmp/5a2bf584ffb14fa0a5217639eff43638.lib ",
+   "modules": {
+      "\\alu": {
+         "num_wires":         3480,
+         "num_wire_bits":     3580,
+         "num_pub_wires":     75,
+         "num_pub_wire_bits": 175,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         3505,
+         "area":              34461.801600,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 2,
+            "sky130_fd_sc_hd__a2111oi_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 116,
+            "sky130_fd_sc_hd__a211oi_2": 82,
+            "sky130_fd_sc_hd__a21bo_2": 69,
+            "sky130_fd_sc_hd__a21boi_2": 2,
+            "sky130_fd_sc_hd__a21o_2": 207,
+            "sky130_fd_sc_hd__a21oi_2": 137,
+            "sky130_fd_sc_hd__a221o_2": 19,
+            "sky130_fd_sc_hd__a221oi_2": 1,
+            "sky130_fd_sc_hd__a22o_2": 174,
+            "sky130_fd_sc_hd__a22oi_2": 48,
+            "sky130_fd_sc_hd__a2bb2o_2": 18,
+            "sky130_fd_sc_hd__a2bb2oi_2": 2,
+            "sky130_fd_sc_hd__a311o_2": 7,
+            "sky130_fd_sc_hd__a31o_2": 95,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 17,
+            "sky130_fd_sc_hd__and2_2": 129,
+            "sky130_fd_sc_hd__and2b_2": 77,
+            "sky130_fd_sc_hd__and3_2": 141,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 93,
+            "sky130_fd_sc_hd__and4b_2": 4,
+            "sky130_fd_sc_hd__and4bb_2": 6,
+            "sky130_fd_sc_hd__dfxtp_2": 36,
+            "sky130_fd_sc_hd__inv_2": 83,
+            "sky130_fd_sc_hd__mux2_1": 123,
+            "sky130_fd_sc_hd__mux4_2": 31,
+            "sky130_fd_sc_hd__nand2_2": 334,
+            "sky130_fd_sc_hd__nand2b_2": 46,
+            "sky130_fd_sc_hd__nand3_2": 148,
+            "sky130_fd_sc_hd__nand3b_2": 6,
+            "sky130_fd_sc_hd__nand4_2": 95,
+            "sky130_fd_sc_hd__nor2_2": 178,
+            "sky130_fd_sc_hd__nor3_2": 21,
+            "sky130_fd_sc_hd__nor3b_2": 5,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__o211a_2": 109,
+            "sky130_fd_sc_hd__o211ai_2": 76,
+            "sky130_fd_sc_hd__o21a_2": 48,
+            "sky130_fd_sc_hd__o21ai_2": 75,
+            "sky130_fd_sc_hd__o21ba_2": 30,
+            "sky130_fd_sc_hd__o21bai_2": 12,
+            "sky130_fd_sc_hd__o221a_2": 15,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 16,
+            "sky130_fd_sc_hd__o22ai_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 7,
+            "sky130_fd_sc_hd__o311a_2": 6,
+            "sky130_fd_sc_hd__o31a_2": 9,
+            "sky130_fd_sc_hd__o31ai_2": 3,
+            "sky130_fd_sc_hd__o32a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 128,
+            "sky130_fd_sc_hd__or3_2": 45,
+            "sky130_fd_sc_hd__or3b_2": 16,
+            "sky130_fd_sc_hd__or4_2": 6,
+            "sky130_fd_sc_hd__or4b_2": 6,
+            "sky130_fd_sc_hd__or4bb_2": 5,
+            "sky130_fd_sc_hd__xnor2_2": 244,
+            "sky130_fd_sc_hd__xor2_2": 81
+         }
+      }
+   },
+      "design": {
+         "num_wires":         3480,
+         "num_wire_bits":     3580,
+         "num_pub_wires":     75,
+         "num_pub_wire_bits": 175,
+         "num_ports":         8,
+         "num_port_bits":     108,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         3505,
+         "area":              34461.801600,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 2,
+            "sky130_fd_sc_hd__a2111oi_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 116,
+            "sky130_fd_sc_hd__a211oi_2": 82,
+            "sky130_fd_sc_hd__a21bo_2": 69,
+            "sky130_fd_sc_hd__a21boi_2": 2,
+            "sky130_fd_sc_hd__a21o_2": 207,
+            "sky130_fd_sc_hd__a21oi_2": 137,
+            "sky130_fd_sc_hd__a221o_2": 19,
+            "sky130_fd_sc_hd__a221oi_2": 1,
+            "sky130_fd_sc_hd__a22o_2": 174,
+            "sky130_fd_sc_hd__a22oi_2": 48,
+            "sky130_fd_sc_hd__a2bb2o_2": 18,
+            "sky130_fd_sc_hd__a2bb2oi_2": 2,
+            "sky130_fd_sc_hd__a311o_2": 7,
+            "sky130_fd_sc_hd__a31o_2": 95,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 17,
+            "sky130_fd_sc_hd__and2_2": 129,
+            "sky130_fd_sc_hd__and2b_2": 77,
+            "sky130_fd_sc_hd__and3_2": 141,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 93,
+            "sky130_fd_sc_hd__and4b_2": 4,
+            "sky130_fd_sc_hd__and4bb_2": 6,
+            "sky130_fd_sc_hd__dfxtp_2": 36,
+            "sky130_fd_sc_hd__inv_2": 83,
+            "sky130_fd_sc_hd__mux2_1": 123,
+            "sky130_fd_sc_hd__mux4_2": 31,
+            "sky130_fd_sc_hd__nand2_2": 334,
+            "sky130_fd_sc_hd__nand2b_2": 46,
+            "sky130_fd_sc_hd__nand3_2": 148,
+            "sky130_fd_sc_hd__nand3b_2": 6,
+            "sky130_fd_sc_hd__nand4_2": 95,
+            "sky130_fd_sc_hd__nor2_2": 178,
+            "sky130_fd_sc_hd__nor3_2": 21,
+            "sky130_fd_sc_hd__nor3b_2": 5,
+            "sky130_fd_sc_hd__nor4_2": 4,
+            "sky130_fd_sc_hd__o211a_2": 109,
+            "sky130_fd_sc_hd__o211ai_2": 76,
+            "sky130_fd_sc_hd__o21a_2": 48,
+            "sky130_fd_sc_hd__o21ai_2": 75,
+            "sky130_fd_sc_hd__o21ba_2": 30,
+            "sky130_fd_sc_hd__o21bai_2": 12,
+            "sky130_fd_sc_hd__o221a_2": 15,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 16,
+            "sky130_fd_sc_hd__o22ai_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 7,
+            "sky130_fd_sc_hd__o311a_2": 6,
+            "sky130_fd_sc_hd__o31a_2": 9,
+            "sky130_fd_sc_hd__o31ai_2": 3,
+            "sky130_fd_sc_hd__o32a_2": 2,
+            "sky130_fd_sc_hd__or2_2": 128,
+            "sky130_fd_sc_hd__or3_2": 45,
+            "sky130_fd_sc_hd__or3b_2": 16,
+            "sky130_fd_sc_hd__or4_2": 6,
+            "sky130_fd_sc_hd__or4b_2": 6,
+            "sky130_fd_sc_hd__or4bb_2": 5,
+            "sky130_fd_sc_hd__xnor2_2": 244,
+            "sky130_fd_sc_hd__xor2_2": 81
+         }
+      }
+}
+
+123. Printing statistics.
+
+=== alu ===
+
+   Number of wires:               3480
+   Number of wire bits:           3580
+   Number of public wires:          75
+   Number of public wire bits:     175
+   Number of ports:                  8
+   Number of port bits:            108
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               3505
+     sky130_fd_sc_hd__a2111o_2       2
+     sky130_fd_sc_hd__a2111oi_2      1
+     sky130_fd_sc_hd__a211o_2      116
+     sky130_fd_sc_hd__a211oi_2      82
+     sky130_fd_sc_hd__a21bo_2       69
+     sky130_fd_sc_hd__a21boi_2       2
+     sky130_fd_sc_hd__a21o_2       207
+     sky130_fd_sc_hd__a21oi_2      137
+     sky130_fd_sc_hd__a221o_2       19
+     sky130_fd_sc_hd__a221oi_2       1
+     sky130_fd_sc_hd__a22o_2       174
+     sky130_fd_sc_hd__a22oi_2       48
+     sky130_fd_sc_hd__a2bb2o_2      18
+     sky130_fd_sc_hd__a2bb2oi_2      2
+     sky130_fd_sc_hd__a311o_2        7
+     sky130_fd_sc_hd__a31o_2        95
+     sky130_fd_sc_hd__a31oi_2        2
+     sky130_fd_sc_hd__a32o_2        17
+     sky130_fd_sc_hd__and2_2       129
+     sky130_fd_sc_hd__and2b_2       77
+     sky130_fd_sc_hd__and3_2       141
+     sky130_fd_sc_hd__and3b_2        5
+     sky130_fd_sc_hd__and4_2        93
+     sky130_fd_sc_hd__and4b_2        4
+     sky130_fd_sc_hd__and4bb_2       6
+     sky130_fd_sc_hd__dfxtp_2       36
+     sky130_fd_sc_hd__inv_2         83
+     sky130_fd_sc_hd__mux2_1       123
+     sky130_fd_sc_hd__mux4_2        31
+     sky130_fd_sc_hd__nand2_2      334
+     sky130_fd_sc_hd__nand2b_2      46
+     sky130_fd_sc_hd__nand3_2      148
+     sky130_fd_sc_hd__nand3b_2       6
+     sky130_fd_sc_hd__nand4_2       95
+     sky130_fd_sc_hd__nor2_2       178
+     sky130_fd_sc_hd__nor3_2        21
+     sky130_fd_sc_hd__nor3b_2        5
+     sky130_fd_sc_hd__nor4_2         4
+     sky130_fd_sc_hd__o211a_2      109
+     sky130_fd_sc_hd__o211ai_2      76
+     sky130_fd_sc_hd__o21a_2        48
+     sky130_fd_sc_hd__o21ai_2       75
+     sky130_fd_sc_hd__o21ba_2       30
+     sky130_fd_sc_hd__o21bai_2      12
+     sky130_fd_sc_hd__o221a_2       15
+     sky130_fd_sc_hd__o221ai_2       1
+     sky130_fd_sc_hd__o22a_2        16
+     sky130_fd_sc_hd__o22ai_2        1
+     sky130_fd_sc_hd__o2bb2a_2       7
+     sky130_fd_sc_hd__o311a_2        6
+     sky130_fd_sc_hd__o31a_2         9
+     sky130_fd_sc_hd__o31ai_2        3
+     sky130_fd_sc_hd__o32a_2         2
+     sky130_fd_sc_hd__or2_2        128
+     sky130_fd_sc_hd__or3_2         45
+     sky130_fd_sc_hd__or3b_2        16
+     sky130_fd_sc_hd__or4_2          6
+     sky130_fd_sc_hd__or4b_2         6
+     sky130_fd_sc_hd__or4bb_2        5
+     sky130_fd_sc_hd__xnor2_2      244
+     sky130_fd_sc_hd__xor2_2        81
+
+   Chip area for module '\alu': 34461.801600
+     of which used for sequential elements: 765.734400 (2.22%)
+
+124. Executing Verilog backend.
+Dumping module `\alu'.
+
+125. Executing JSON backend.

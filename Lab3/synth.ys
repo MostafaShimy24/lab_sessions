@@ -1,0 +1,15 @@
+# Read the RTL source
+read_verilog division_newton.v
+read_verilog dff_rg.v
+read_verilog inverse_function.v
+read_verilog normalize_q4_14.v
+# Set hierarchy and run synthesis
+hierarchy -top division_newton
+#synth -top division_newton
+
+proc
+opt
+opt_clean
+# Write netlist output
+#write_verilog -noattr netlist.v
+#write_blif netlist.blif

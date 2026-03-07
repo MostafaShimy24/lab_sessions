@@ -1,0 +1,26 @@
+digraph "alu" {
+label="alu";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="out_return_port_ui_view_convert_expr_FU", color="black", fontcolor="black"];
+n2 [ shape=octagon, label="return_port", color="black", fontcolor="black"];
+n3 [ shape=octagon, label="done_port", color="black", fontcolor="black"];
+n4 [ shape=octagon, label="opcode", color="black", fontcolor="black"];
+n5 [ shape=octagon, label="b", color="black", fontcolor="black"];
+n6 [ shape=octagon, label="a", color="black", fontcolor="black"];
+n7 [ shape=octagon, label="start_port", color="black", fontcolor="black"];
+n8 [ shape=octagon, label="reset", color="black", fontcolor="black"];
+n9 [ shape=octagon, label="clock", color="black", fontcolor="black"];
+c12 [ shape=record, label="{{<p10> in1}|return_port_ui_view_convert_expr_FU\n$paramod$2ffd7c677e7710ef2c2b2ae10f27557639ad878e&#9586;ui_view_convert_expr_FU|{<p11> out1}}",  ];
+c13 [ shape=record, label="{{<p6> a|<p5> b|<p9> clock|<p4> opcode|<p8> reset|<p7> start_port}|_alu_i0\n_alu|{<p3> done_port|<p2> return_port}}",  ];
+c13:p2:e -> n1:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n1:e -> c12:p10:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c12:p11:e -> n2:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c13:p3:e -> n3:w [color="black", fontcolor="black", label=""];
+n4:e -> c13:p4:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n5:e -> c13:p5:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n6:e -> c13:p6:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+n7:e -> c13:p7:w [color="black", fontcolor="black", label=""];
+n8:e -> c13:p8:w [color="black", fontcolor="black", label=""];
+n9:e -> c13:p9:w [color="black", fontcolor="black", label=""];
+}

@@ -1,0 +1,43 @@
+Reading OpenROAD database at '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/31-openroad-repairdesignpostgpl/alu.odb'…
+Reading library file at '/home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading design constraints file at '/nix/store/7g0vizqj28nnagzfcf4gm732zlaywx9g-python3-3.11.9-env/lib/python3.11/site-packages/librelane/scripts/base.sdc'…
+[WARNING STA-0366] port 'clk' not found.
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 10
+[INFO] Setting input delay to: 10
+[WARNING STA-0366] port 'clk' not found.
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[WARNING STA-0419] transition time can not be specified for virtual clocks.
+[INFO] Setting timing derate to: 5%
+[WARNING STA-0450] virtual clock clk can not be propagated.
+Placement Analysis
+---------------------------------
+total displacement          0.0 u
+average displacement        0.0 u
+max displacement            0.0 u
+original HPWL          126924.3 u
+legalized HPWL         129544.3 u
+delta HPWL                    2 %
+
+[INFO DPL-0020] Mirrored 1630 instances
+[INFO DPL-0021] HPWL before          129544.3 u
+[INFO DPL-0022] HPWL after           126924.3 u
+[INFO DPL-0023] HPWL delta               -2.0 %
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               234     878.34
+  Tap cell                               1428    1786.71
+  Timing Repair Buffer                    475    2961.59
+  Inverter                                 83     311.55
+  Sequential cell                          36     720.69
+  Multi-Input combinational cell         3386   26434.10
+  Total                                  5642   33092.99
+Writing OpenROAD database to '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/33-openroad-detailedplacement/alu.odb'…
+Writing netlist to '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/33-openroad-detailedplacement/alu.nl.v'…
+Writing powered netlist to '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/33-openroad-detailedplacement/alu.pnl.v'…
+Writing layout to '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/33-openroad-detailedplacement/alu.def'…
+Writing timing constraints to '/home/asiclab/Desktop/Lab2/runs/RUN_2026-02-22_21-45-16/33-openroad-detailedplacement/alu.sdc'…

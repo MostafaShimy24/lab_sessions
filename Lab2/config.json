@@ -1,0 +1,9 @@
+{
+  "DESIGN_NAME": "alu",
+  "VERILOG_FILES": ["dir::alu.v"],
+  "CLOCK_PERIOD": 50,
+  "CLOCK_PORT": "clk",
+  "DIE_AREA": [0,0,400,400],
+  "CORE_AREA": [40,40,360,360],
+  "FP_SIZING":"absolute"
+}
