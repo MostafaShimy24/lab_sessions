@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-03-16T13:47:59" hostname="ASICLab" package="fifo_system_top" id="0" name="cover" tests="5" errors="0" failures="0" time="0" skipped="3">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fifo_system_top_formal at fifo_system_top_formal.sv:43.13-43.41" time="0" type="ASSERT" location="fifo_system_top_formal.sv:43.13-43.41" id="_witness_.check_assert_fifo_system_top_formal_sv_43_6">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fifo_system_top_formal at fifo_system_top_formal.sv:48.13-48.42" time="0" type="ASSERT" location="fifo_system_top_formal.sv:48.13-48.42" id="_witness_.check_assert_fifo_system_top_formal_sv_48_10">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property ASSERT in fifo_system_top_formal at fifo_system_top_formal.sv:53.13-53.35" time="0" type="ASSERT" location="fifo_system_top_formal.sv:53.13-53.35" id="_witness_.check_assert_fifo_system_top_formal_sv_53_14">
+<skipped />
+</testcase>
+<testcase classname="cover" name="Property COVER in fifo_system_top_formal at fifo_system_top_formal.sv:92.13-92.40" time="0" type="COVER" location="fifo_system_top_formal.sv:92.13-92.40" id="_witness_.check_cover_fifo_system_top_formal_sv_92_32" tracefile="engine_0/trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in fifo_system_top_formal at fifo_system_top_formal.sv:97.13-97.40" time="0" type="COVER" location="fifo_system_top_formal.sv:97.13-97.40" id="_witness_.check_cover_fifo_system_top_formal_sv_97_35" tracefile="engine_0/trace0.vcd">
+</testcase>
+<system-out>SBY 13:47:56 [fifo_system_top_bmc] Removing directory '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_bmc'.
+SBY 13:47:57 [fifo_system_top_cover] Removing directory '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/fifo_system_top.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/write_module.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/write_module.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/read_module.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/read_module.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/Async_fifo.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/Async_fifo.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_mem.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/fifo_mem.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_wr.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/fifo_wr.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_rd.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/fifo_rd.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/DF_Sync.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/DF_Sync.v'.
+SBY 13:47:57 [fifo_system_top_cover] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_formal.sv' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_cover/src/fifo_system_top_formal.sv'.
+SBY 13:47:57 [fifo_system_top_cover] engine_0: smtbmc
+SBY 13:47:57 [fifo_system_top_cover] base: starting process &quot;cd fifo_system_top_cover/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 13:47:57 [fifo_system_top_cover] base: finished (returncode=0)
+SBY 13:47:57 [fifo_system_top_cover] prep: starting process &quot;cd fifo_system_top_cover/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 13:47:57 [fifo_system_top_cover] prep: finished (returncode=0)
+SBY 13:47:57 [fifo_system_top_cover] smt2: starting process &quot;cd fifo_system_top_cover/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 13:47:58 [fifo_system_top_cover] smt2: finished (returncode=0)
+SBY 13:47:59 [fifo_system_top_cover] engine_0: starting process &quot;cd fifo_system_top_cover; yosys-smtbmc --presat --unroll -c --noprogress -t 60  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Solver: yices
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at fifo_system_top_formal: fifo_system_top_formal.sv:97.13-97.40 (_witness_.check_cover_fifo_system_top_formal_sv_97_35)
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Reached cover statement in step 1 at fifo_system_top_formal: fifo_system_top_formal.sv:92.13-92.40 (_witness_.check_cover_fifo_system_top_formal_sv_92_32)
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 13:47:59 [fifo_system_top_cover] engine_0: ##   0:00:00  Status: passed
+SBY 13:47:59 [fifo_system_top_cover] engine_0: finished (returncode=0)
+SBY 13:47:59 [fifo_system_top_cover] engine_0: Status returned by engine: pass
+SBY 13:47:59 [fifo_system_top_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY 13:47:59 [fifo_system_top_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 13:47:59 [fifo_system_top_cover] summary: engine_0 (smtbmc) returned pass
+SBY 13:47:59 [fifo_system_top_cover] summary: cover trace: fifo_system_top_cover/engine_0/trace0.vcd
+SBY 13:47:59 [fifo_system_top_cover] summary:   reached cover statement fifo_system_top_formal._witness_.check_cover_fifo_system_top_formal_sv_97_35 at fifo_system_top_formal.sv:97.13-97.40 step 1
+SBY 13:47:59 [fifo_system_top_cover] summary: cover trace: fifo_system_top_cover/engine_0/trace1.vcd
+SBY 13:47:59 [fifo_system_top_cover] summary:   reached cover statement fifo_system_top_formal._witness_.check_cover_fifo_system_top_formal_sv_92_32 at fifo_system_top_formal.sv:92.13-92.40 step 1
+SBY 13:47:59 [fifo_system_top_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

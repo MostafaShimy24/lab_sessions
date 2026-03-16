@@ -1,0 +1,38 @@
+[tasks]
+bmc
+cover
+prove
+
+[options]
+bmc: mode bmc
+cover: mode cover
+prove: mode prove
+
+depth 60
+
+[engines]
+smtbmc 
+
+[script]
+read -formal fifo_system_top.v
+read -formal write_module.v
+read -formal read_module.v
+read -formal Async_fifo.v
+read -formal fifo_mem.v
+read -formal fifo_wr.v
+read -formal fifo_rd.v
+read -formal DF_Sync.v
+read -formal -sv fifo_system_top_formal.sv
+
+prep -top fifo_system_top_formal
+
+[files]
+fifo_system_top.v
+write_module.v
+read_module.v
+Async_fifo.v
+fifo_mem.v
+fifo_wr.v
+fifo_rd.v
+DF_Sync.v
+fifo_system_top_formal.sv

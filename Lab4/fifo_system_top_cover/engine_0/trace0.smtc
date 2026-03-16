@@ -1,0 +1,29 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$115] false)
+assume (= [$auto$async2sync.cc:107:execute$121] false)
+assume (= [$auto$async2sync.cc:116:execute$119] true)
+assume (= [$auto$async2sync.cc:116:execute$125] true)
+assume (= [_witness_.anyinit_procdff_63] true)
+assume (= [_witness_.anyinit_procdff_68] false)
+
+state 0
+assume (= [i_r_clk] false)
+assume (= [i_r_inc] false)
+assume (= [i_r_rstn] true)
+assume (= [i_w_clk] false)
+assume (= [i_w_inc] false)
+assume (= [i_w_rstn] false)
+assume (= [o_empty] true)
+assume (= [o_full] false)
+assume (= [w_addr] #b0000)
+
+state 1
+assume (= [i_r_clk] false)
+assume (= [i_r_inc] false)
+assume (= [i_r_rstn] false)
+assume (= [i_w_clk] false)
+assume (= [i_w_inc] false)
+assume (= [i_w_rstn] false)
+assume (= [o_empty] false)
+assume (= [o_full] false)
+assume (= [w_addr] #b0000)

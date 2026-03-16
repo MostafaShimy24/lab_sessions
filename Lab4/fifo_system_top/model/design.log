@@ -1,0 +1,53 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing Verilog-2005 frontend: fifo_system_top.v
+Parsing formal SystemVerilog input from `fifo_system_top.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_system_top'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: write_module.v
+Parsing formal SystemVerilog input from `write_module.v' to AST representation.
+Storing AST representation for module `$abstract\write_module'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: read_module.v
+Parsing formal SystemVerilog input from `read_module.v' to AST representation.
+Storing AST representation for module `$abstract\read_module'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: Async_fifo.v
+Parsing formal SystemVerilog input from `Async_fifo.v' to AST representation.
+Storing AST representation for module `$abstract\Async_fifo'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: fifo_mem.v
+Parsing formal SystemVerilog input from `fifo_mem.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_mem'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: fifo_wr.v
+Parsing formal SystemVerilog input from `fifo_wr.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_wr'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: fifo_rd.v
+Parsing formal SystemVerilog input from `fifo_rd.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_rd'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: DF_Sync.v
+Parsing formal SystemVerilog input from `DF_Sync.v' to AST representation.
+Storing AST representation for module `$abstract\DF_Sync'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: fifo_system_top_formal.sv
+Parsing formal SystemVerilog input from `fifo_system_top_formal.sv' to AST representation.
+fifo_system_top_formal.sv:23: ERROR: syntax error, unexpected TOK_DECREMENT

@@ -1,0 +1,322 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing Verilog-2005 frontend: fifo_system_top.v
+Parsing formal SystemVerilog input from `fifo_system_top.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_system_top'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: write_module.v
+Parsing formal SystemVerilog input from `write_module.v' to AST representation.
+Storing AST representation for module `$abstract\write_module'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: read_module.v
+Parsing formal SystemVerilog input from `read_module.v' to AST representation.
+Storing AST representation for module `$abstract\read_module'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: Async_fifo.v
+Parsing formal SystemVerilog input from `Async_fifo.v' to AST representation.
+Storing AST representation for module `$abstract\Async_fifo'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: fifo_mem.v
+Parsing formal SystemVerilog input from `fifo_mem.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_mem'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: fifo_wr.v
+Parsing formal SystemVerilog input from `fifo_wr.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_wr'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: fifo_rd.v
+Parsing formal SystemVerilog input from `fifo_rd.v' to AST representation.
+Storing AST representation for module `$abstract\fifo_rd'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: DF_Sync.v
+Parsing formal SystemVerilog input from `DF_Sync.v' to AST representation.
+Storing AST representation for module `$abstract\DF_Sync'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: fifo_system_top_formal.sv
+Parsing formal SystemVerilog input from `fifo_system_top_formal.sv' to AST representation.
+Storing AST representation for module `$abstract\fifo_system_top_formal'.
+Successfully finished Verilog frontend.
+
+10. Executing PREP pass.
+
+10.1. Executing HIERARCHY pass (managing design hierarchy).
+
+10.2. Executing AST frontend in derive mode using pre-parsed AST for module `\fifo_system_top_formal'.
+Generating RTLIL representation for module `\fifo_system_top_formal'.
+
+10.2.1. Analyzing design hierarchy..
+Top module:  \fifo_system_top_formal
+
+10.2.2. Analyzing design hierarchy..
+Top module:  \fifo_system_top_formal
+Removing unused module `$abstract\fifo_system_top_formal'.
+Removing unused module `$abstract\DF_Sync'.
+Removing unused module `$abstract\fifo_rd'.
+Removing unused module `$abstract\fifo_wr'.
+Removing unused module `$abstract\fifo_mem'.
+Removing unused module `$abstract\Async_fifo'.
+Removing unused module `$abstract\read_module'.
+Removing unused module `$abstract\write_module'.
+Removing unused module `$abstract\fifo_system_top'.
+Removed 9 unused modules.
+Module fifo_system_top_formal directly or indirectly contains formal properties -> setting "keep" attribute.
+
+10.3. Executing PROC pass (convert processes to netlists).
+
+10.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$fifo_system_top_formal.sv:31$3 in module fifo_system_top_formal.
+Marked 1 switch rules as full_case in process $proc$fifo_system_top_formal.sv:23$1 in module fifo_system_top_formal.
+Removed a total of 0 dead cases.
+
+10.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+10.3.4. Executing PROC_INIT pass (extract init attributes).
+
+10.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \i_r_rstn in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:31$3'.
+Found async reset \i_w_rstn in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:23$1'.
+
+10.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~11 debug messages>
+
+10.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:95$34'.
+     1/1: $cover$fifo_system_top_formal.sv:97$35_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:90$31'.
+     1/1: $cover$fifo_system_top_formal.sv:92$32_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:81$28'.
+     1/1: $assume$fifo_system_top_formal.sv:83$30_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:75$24'.
+     1/1: $assume$fifo_system_top_formal.sv:77$27_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:64$20'.
+     1/1: $assume$fifo_system_top_formal.sv:66$21_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:59$16'.
+     1/1: $assume$fifo_system_top_formal.sv:61$17_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:51$13'.
+     1/1: $assert$fifo_system_top_formal.sv:53$14_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:46$9'.
+     1/1: $assert$fifo_system_top_formal.sv:48$10_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:41$5'.
+     1/1: $assert$fifo_system_top_formal.sv:43$6_EN
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:31$3'.
+     1/1: $0\seen_full[0:0]
+Creating decoders for process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:23$1'.
+     1/1: $0\seen_empty[0:0]
+
+10.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+10.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\fifo_system_top_formal.\seen_full' using process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:31$3'.
+  created $adff cell `$procdff$63' with positive edge clock and positive level reset.
+Creating register for signal `\fifo_system_top_formal.\seen_empty' using process `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:23$1'.
+  created $adff cell `$procdff$68' with positive edge clock and positive level reset.
+
+10.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+10.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:95$34'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:95$34'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:90$31'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:90$31'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:81$28'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:81$28'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:75$24'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:75$24'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:64$20'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:64$20'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:59$16'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:59$16'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:51$13'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:51$13'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:46$9'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:46$9'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:41$5'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:41$5'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:31$3'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:31$3'.
+Found and cleaned up 1 empty switch in `\fifo_system_top_formal.$proc$fifo_system_top_formal.sv:23$1'.
+Removing empty process `fifo_system_top_formal.$proc$fifo_system_top_formal.sv:23$1'.
+Cleaned up 11 empty switches.
+
+10.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+<suppressed ~4 debug messages>
+
+10.4. Executing FUTURE pass.
+
+10.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+
+10.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fifo_system_top_formal..
+Removed 4 unused cells and 28 unused wires.
+<suppressed ~5 debug messages>
+
+10.7. Executing CHECK pass (checking for obvious problems).
+Checking module fifo_system_top_formal...
+Found and reported 0 problems.
+
+10.8. Executing OPT pass (performing simple optimizations).
+
+10.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+
+10.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fifo_system_top_formal'.
+Computing hashes of 36 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+Computing hashes of 34 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+Computing hashes of 32 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+10.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fifo_system_top_formal..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+10.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fifo_system_top_formal.
+Performed a total of 0 changes.
+
+10.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fifo_system_top_formal'.
+Computing hashes of 32 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+Computing hashes of 27 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+10.8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fifo_system_top_formal..
+Removed 0 unused cells and 9 unused wires.
+<suppressed ~1 debug messages>
+
+10.8.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+
+10.8.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+10.8.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \fifo_system_top_formal..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~12 debug messages>
+
+10.8.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \fifo_system_top_formal.
+Performed a total of 0 changes.
+
+10.8.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fifo_system_top_formal'.
+Computing hashes of 27 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+Removed a total of 0 cells.
+
+10.8.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fifo_system_top_formal..
+
+10.8.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+
+10.8.14. Finished fast OPT passes. (There is nothing left to do.)
+
+10.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 27 bits (of 32) from port B of cell fifo_system_top_formal.$lt$fifo_system_top_formal.sv:53$15 ($lt).
+
+10.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fifo_system_top_formal..
+
+10.11. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+10.12. Executing OPT pass (performing simple optimizations).
+
+10.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module fifo_system_top_formal.
+
+10.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\fifo_system_top_formal'.
+Computing hashes of 27 cells of `\fifo_system_top_formal'.
+Finding duplicate cells in `\fifo_system_top_formal'.
+Removed a total of 0 cells.
+
+10.12.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \fifo_system_top_formal..
+
+10.12.4. Finished fast OPT passes.
+
+10.13. Executing SORT pass.
+
+10.14. Printing statistics.
+
+=== fifo_system_top_formal ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       27 wires
+       30 wire bits
+       11 public wires
+       14 public wire bits
+        9 ports
+       12 port bits
+       27 cells
+        2   $adff
+        9   $check
+        6   $logic_and
+        3   $logic_not
+        1   $lt
+        6   $mux
+
+10.15. Executing CHECK pass (checking for obvious problems).
+Checking module fifo_system_top_formal...
+Found and reported 0 problems.
+
+11. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `fifo_system_top_formal'. Setting top module to fifo_system_top_formal.
+
+11.1. Analyzing design hierarchy..
+Top module:  \fifo_system_top_formal
+
+11.2. Analyzing design hierarchy..
+Top module:  \fifo_system_top_formal
+Removed 0 unused modules.
+Module fifo_system_top_formal directly or indirectly contains formal properties -> setting "keep" attribute.
+
+12. Executing jny backend.
+
+13. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: 56aaecaed4, CPU: user 0.02s system 0.00s, MEM: 16.78 MB peak
+Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)
+Time spent: 40% 18x read_verilog (0 sec), 13% 2x hierarchy (0 sec), ...

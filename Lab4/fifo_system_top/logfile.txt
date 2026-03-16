@@ -1,0 +1,20 @@
+SBY 12:40:45 [fifo_system_top] Removing directory '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/fifo_system_top.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/write_module.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/write_module.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/read_module.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/read_module.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/Async_fifo.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/Async_fifo.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_mem.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/fifo_mem.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_wr.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/fifo_wr.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_rd.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/fifo_rd.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/DF_Sync.v' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/DF_Sync.v'.
+SBY 12:40:45 [fifo_system_top] Copy '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top_formal.sv' to '/home/asiclab/Desktop/lab_sessions/Lab4/fifo_system_top/src/fifo_system_top_formal.sv'.
+SBY 12:40:45 [fifo_system_top] engine_0: smtbmc boolector
+SBY 12:40:45 [fifo_system_top] base: starting process "cd fifo_system_top/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 12:40:46 [fifo_system_top] base: fifo_system_top_formal.sv:23: ERROR: syntax error, unexpected TOK_DECREMENT
+SBY 12:40:46 [fifo_system_top] base: finished (returncode=1)
+SBY 12:40:46 [fifo_system_top] base: task failed. ERROR.
+SBY 12:40:46 [fifo_system_top] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 12:40:46 [fifo_system_top] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 12:40:46 [fifo_system_top] summary: engine_0 (smtbmc boolector) did not return a status
+SBY 12:40:46 [fifo_system_top] summary: engine_0 did not produce any traces
+SBY 12:40:46 [fifo_system_top] DONE (ERROR, rc=16)
