@@ -1,0 +1,51 @@
+class my_sequence extends uvm_sequence #(my_seq_item);
+
+  `uvm_object_utils(my_sequence)
+  `uvm_declare_p_sequencer(my_sequencer)
+
+  function new(string name = "my_sequence");
+    super.new(name);
+  endfunction
+
+  task body();
+    my_seq_item req;
+    bit write_phase;
+
+    wait (p_sequencer.vif.rst_n == 1'b1);
+    @(posedge p_sequencer.vif.clk);
+
+    write_phase = 1'b1;
+
+    forever begin
+      @(posedge p_sequencer.vif.clk);
+
+      if (write_phase) begin
+        if (p_sequencer.vif.full) begin
+          `uvm_info("SEQ", "FIFO full detected. Switching to read phase.", UVM_MEDIUM)
+          write_phase = 1'b0;
+        end
+        else begin
+          req = my_seq_item::type_id::create("req");
+          start_item(req);
+          if (!req.randomize() with { wr_en == 1'b1; })
+            `uvm_fatal("RANDFAIL", "Failed to randomize write item")
+          finish_item(req);
+        end
+      end
+      else begin
+        if (p_sequencer.vif.empty) begin
+          `uvm_info("SEQ", "FIFO empty detected. Sequence finished.", UVM_MEDIUM)
+          break;
+        end
+        else begin
+          req = my_seq_item::type_id::create("req");
+          start_item(req);
+          req.wr_en = 1'b0;
+          req.data  = '0;
+          finish_item(req);
+        end
+      end
+    end
+  endtask
+
+endclass
