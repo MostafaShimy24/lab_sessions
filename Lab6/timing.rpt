@@ -1,0 +1,29 @@
+Startpoint: in0 (input port clocked by clk)
+Endpoint: y (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (propagated)
+   2.00    2.00 v input external delay
+   0.00    2.00 v in0 (in)
+   0.35    2.35 v _1_/X (sky130_fd_sc_hd__maj3_1)
+   0.77    3.13 ^ _2_/X (sky130_fd_sc_hd__xor2_1)
+   0.00    3.13 ^ y (out)
+           3.13   data arrival time
+
+  10.00   10.00   clock clk (rise edge)
+   0.00   10.00   clock network delay (propagated)
+  -0.20    9.80   clock uncertainty
+   0.00    9.80   clock reconvergence pessimism
+  -2.00    7.80   output external delay
+           7.80   data required time
+---------------------------------------------------------
+           7.80   data required time
+          -3.13   data arrival time
+---------------------------------------------------------
+           4.67   slack (MET)
+
+
