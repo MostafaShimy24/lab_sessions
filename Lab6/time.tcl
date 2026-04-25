@@ -5,12 +5,21 @@ read_liberty /home/asiclab/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108c
 
 read_verilog LUT_synth.v
 link_design LUT
+
+# Read constraints 
 read_sdc sta.sdc
+
+# Use propagated clocks
 set_propagated_clock [all_clocks]
 
-# Clock period 
-set clk_period 6.0
+# ------------------------------------------------------------
+# CLOCK PERIOD 
+# ------------------------------------------------------------
+set clk_period 10.0
 
+# ------------------------------------------------------------
+# STA PROCEDURE
+# ------------------------------------------------------------
 proc run_sta {mode_name mode_value clk_period} {
 
     # ----------------------------------------
@@ -23,12 +32,21 @@ proc run_sta {mode_name mode_value clk_period} {
     puts "=================================="
 
     # ----------------------------------------
-    # REPORTS
+    # SETUP ANALYSIS (MAX DELAY)
     # ----------------------------------------
-    report_checks -path_delay max > ${mode_name}_timing.rpt
-    report_checks -path_delay min > ${mode_name}_hold.rpt
+    report_checks -path_delay max -fields {slew cap input_pins nets fanout} \
+        > ${mode_name}_setup.rpt
+
+    # ----------------------------------------
+    # HOLD ANALYSIS (MIN DELAY)
+    # ----------------------------------------
+    report_checks -path_delay min \
+        > ${mode_name}_hold.rpt
+
+    # ----------------------------------------
+    # WORST NEGATIVE SLACK (WNS)
+    # ----------------------------------------
     report_wns > ${mode_name}_wns.rpt
-    report_tns > ${mode_name}_tns.rpt
 
     # ----------------------------------------
     # EXTRACT WNS
@@ -37,18 +55,22 @@ proc run_sta {mode_name mode_value clk_period} {
     set data [read $fp]
     close $fp
 
-    # Extract WNS value
     regexp {(-?[0-9.]+)} $data -> wns
 
     # ----------------------------------------
-    # FMAX CALCULATION
+    # CRITICAL PATH DELAY
     # ----------------------------------------
     set critical_path [expr $clk_period - $wns]
+
+    # ----------------------------------------
+    # MAX FREQUENCY (Fmax)
+    # ----------------------------------------
+    # Fmax = 1 / critical_path
     set fmax [expr 1000.0 / $critical_path]
 
     puts "WNS: $wns ns"
     puts "Critical Path Delay: $critical_path ns"
-    puts "Fmax: $fmax MHz"
+    puts "Maximum Frequency (Fmax): $fmax MHz"
     puts "----------------------------------"
 }
 

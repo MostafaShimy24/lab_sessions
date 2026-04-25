@@ -15,15 +15,14 @@ Path Type: min
 
    0.00    0.00   clock clk (rise edge)
    0.00    0.00   clock network delay (propagated)
-   0.20    0.20   clock uncertainty
-   0.00    0.20   clock reconvergence pessimism
-           0.20 ^ _4_/CLK (sky130_fd_sc_hd__dfrtp_1)
-  -0.05    0.15   library hold time
-           0.15   data required time
+   0.00    0.00   clock reconvergence pessimism
+           0.00 ^ _4_/CLK (sky130_fd_sc_hd__dfrtp_1)
+  -0.05   -0.05   library hold time
+          -0.05   data required time
 ---------------------------------------------------------
-           0.15   data required time
+          -0.05   data required time
           -2.07   data arrival time
 ---------------------------------------------------------
-           1.93   slack (MET)
+           2.13   slack (MET)
 
 

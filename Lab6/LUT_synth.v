@@ -21,8 +21,8 @@ module LUT(clk, rst_n, in, shift_amt, is_sync, y);
   wire y;
   wire y_reg;
   sky130_fd_sc_hd__maj3_1 _1_ (
-    .A(in[0]),
-    .B(in[1]),
+    .A(in[1]),
+    .B(in[0]),
     .C(shift_amt[0]),
     .X(_0_)
   );
