@@ -1,0 +1,31 @@
+Startpoint: shift_amt[1] (input port clocked by clk)
+Endpoint: _4_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+      Cap      Slew     Delay      Time   Description
+-------------------------------------------------------------------------------
+             0.1000    0.0000    0.0000   clock clk (rise edge)
+                       0.0000    0.0000   clock network delay (ideal)
+                       2.0000    2.0000 ^ input external delay
+   0.0045    0.0283    0.0163    2.0163 ^ shift_amt[1] (in)
+                                          shift_amt[1] (net)
+             0.0283    0.0000    2.0163 ^ _2_/A (sky130_fd_sc_hd__xor2_1)
+   0.0035    0.0399    0.0566    2.0729 v _2_/X (sky130_fd_sc_hd__xor2_1)
+                                          comb_y (net)
+             0.0399    0.0000    2.0729 v _4_/D (sky130_fd_sc_hd__dfrtp_1)
+                                 2.0729   data arrival time
+
+             0.1000    0.0000    0.0000   clock clk (rise edge)
+                       0.0000    0.0000   clock network delay (ideal)
+                       0.0000    0.0000   clock reconvergence pessimism
+                                 0.0000 ^ _4_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      -0.0312   -0.0312   library hold time
+                                -0.0312   data required time
+-------------------------------------------------------------------------------
+                                -0.0312   data required time
+                                -2.0729   data arrival time
+-------------------------------------------------------------------------------
+                                 2.1041   slack (MET)
+
+

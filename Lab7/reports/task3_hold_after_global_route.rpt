@@ -1,0 +1,28 @@
+Startpoint: shift_amt[1] (input port clocked by clk)
+Endpoint: _4_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   2.00    2.00 ^ input external delay
+   0.02    2.02 ^ shift_amt[1] (in)
+   0.07    2.09 v _2_/X (sky130_fd_sc_hd__xor2_1)
+   0.00    2.09 v _4_/D (sky130_fd_sc_hd__dfrtp_1)
+           2.09   data arrival time
+
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   0.00    0.00   clock reconvergence pessimism
+           0.00 ^ _4_/CLK (sky130_fd_sc_hd__dfrtp_1)
+  -0.03   -0.03   library hold time
+          -0.03   data required time
+---------------------------------------------------------
+          -0.03   data required time
+          -2.09   data arrival time
+---------------------------------------------------------
+           2.13   slack (MET)
+
+
