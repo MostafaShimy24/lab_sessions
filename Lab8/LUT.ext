@@ -1,0 +1,159 @@
+timestamp 0
+version 8.3
+tech sky130A
+style ngspice()
+scale 1000 1 500000
+resistclasses 4400000 2200000 950000 3050000 120000 197000 114000 191000 120000 197000 114000 191000 48200 319800 2000000 48200 48200 12800 125 125 47 47 29 5
+use sky130_fd_sc_hd__fill_1 FILLER_1_3 1 0 4324 0 -1 5440
+use sky130_fd_sc_hd__fill_8 FILLER_0_3 1 0 4324 0 1 4352
+use sky130_fd_sc_hd__fill_8 FILLER_0_11 1 0 5060 0 1 4352
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_1_Left_5 1 0 4048 0 -1 5440
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_0_Left_4 1 0 4048 0 1 4352
+use sky130_fd_sc_hd__fill_1 FILLER_1_24 1 0 6256 0 -1 5440
+use sky130_fd_sc_hd__fill_2 FILLER_0_23 1 0 6164 0 1 4352
+use sky130_fd_sc_hd__fill_4 FILLER_0_19 1 0 5796 0 1 4352
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_1_Right_1 -1 0 6624 0 -1 5440
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_0_Right_0 -1 0 6624 0 1 4352
+use sky130_fd_sc_hd__dfrtp_1 _4_ 1 0 4416 0 -1 5440
+use sky130_fd_sc_hd__xor2_1 _2_ 1 0 4324 0 1 5440
+use sky130_fd_sc_hd__mux2_1 _3_ 1 0 4968 0 1 5440
+use sky130_fd_sc_hd__fill_2 FILLER_2_23 1 0 6164 0 1 5440
+use sky130_fd_sc_hd__fill_4 FILLER_2_19 1 0 5796 0 1 5440
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_2_Right_2 -1 0 6624 0 1 5440
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_2_Left_6 1 0 4048 0 1 5440
+use sky130_fd_sc_hd__maj3_1 _1_ 1 0 5060 0 -1 6528
+use sky130_fd_sc_hd__fill_2 FILLER_3_23 1 0 6164 0 -1 6528
+use sky130_fd_sc_hd__fill_4 FILLER_3_19 1 0 5796 0 -1 6528
+use sky130_fd_sc_hd__fill_8 FILLER_3_3 1 0 4324 0 -1 6528
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_3_Right_3 -1 0 6624 0 -1 6528
+use sky130_fd_sc_hd__decap_3 PHY_EDGE_ROW_3_Left_7 1 0 4048 0 -1 6528
+port "rst_n" 5 5736 10612 5764 10708 m2
+port "clk" 1 4632 10612 4660 10708 m2
+port "shift_amt[1]" 7 4816 10612 4844 10708 m2
+port "is_sync" 4 5184 10612 5212 10708 m2
+port "y" 8 5000 10612 5028 10708 m2
+port "in[1]" 3 5552 10612 5580 10708 m2
+port "in[0]" 2 5368 10612 5396 10708 m2
+port "shift_amt[0]" 6 5920 10612 5948 10708 m2
+node "m1_4048_4304#" 0 0 4048 4304 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "m1_4048_4848#" 0 0 4048 4848 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "rst_n" 0 0 5736 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "m1_4048_5392#" 0 0 4048 5392 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "m1_4048_5936#" 0 0 4048 5936 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "m1_4048_6480#" 0 0 4048 6480 m1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "clk" 0 0 4632 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_5456_5524#" 0 0 5456 5524 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "shift_amt[1]" 0 0 4816 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "is_sync" 0 0 5184 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_4720_5252#" 0 0 4720 5252 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "y" 0 0 5000 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "li_4628_5728#" 0 0 4628 5728 v0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "in[1]" 0 0 5552 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "in[0]" 0 0 5368 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+node "shift_amt[0]" 0 0 5920 10612 m2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+substrate "SUB" 0 0 -1073741817 -1073741817 space 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "PHY_EDGE_ROW_3_Right_3/VPB" "FILLER_3_19/VPB" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_3_19/VPB" "FILLER_3_23/VPB"
+merge "FILLER_3_23/VPB" "PHY_EDGE_ROW_3_Left_7/VPB"
+merge "PHY_EDGE_ROW_3_Left_7/VPB" "FILLER_3_3/VPB"
+merge "FILLER_3_3/VPB" "_1_/VPB"
+merge "_1_/VPB" "PHY_EDGE_ROW_2_Right_2/VPB"
+merge "PHY_EDGE_ROW_2_Right_2/VPB" "FILLER_2_19/VPB"
+merge "FILLER_2_19/VPB" "FILLER_2_23/VPB"
+merge "FILLER_2_23/VPB" "PHY_EDGE_ROW_2_Left_6/VPB"
+merge "PHY_EDGE_ROW_2_Left_6/VPB" "_3_/VPB"
+merge "_3_/VPB" "_2_/VPB"
+merge "PHY_EDGE_ROW_3_Right_3/VGND" "FILLER_3_19/VGND" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_3_19/VGND" "FILLER_3_23/VGND"
+merge "FILLER_3_23/VGND" "PHY_EDGE_ROW_3_Left_7/VGND"
+merge "PHY_EDGE_ROW_3_Left_7/VGND" "FILLER_3_3/VGND"
+merge "FILLER_3_3/VGND" "_1_/VGND"
+merge "_1_/VGND" "m1_4048_6480#"
+merge "PHY_EDGE_ROW_0_Right_0/VPB" "PHY_EDGE_ROW_1_Right_1/VPB" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "PHY_EDGE_ROW_1_Right_1/VPB" "FILLER_0_19/VPB"
+merge "FILLER_0_19/VPB" "FILLER_0_23/VPB"
+merge "FILLER_0_23/VPB" "FILLER_1_24/VPB"
+merge "FILLER_1_24/VPB" "_4_/VPB"
+merge "_4_/VPB" "PHY_EDGE_ROW_0_Left_4/VPB"
+merge "PHY_EDGE_ROW_0_Left_4/VPB" "PHY_EDGE_ROW_1_Left_5/VPB"
+merge "PHY_EDGE_ROW_1_Left_5/VPB" "FILLER_0_11/VPB"
+merge "FILLER_0_11/VPB" "FILLER_0_3/VPB"
+merge "FILLER_0_3/VPB" "FILLER_1_3/VPB"
+merge "PHY_EDGE_ROW_0_Right_0/VPWR" "PHY_EDGE_ROW_1_Right_1/VPWR" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "PHY_EDGE_ROW_1_Right_1/VPWR" "FILLER_0_19/VPWR"
+merge "FILLER_0_19/VPWR" "FILLER_0_23/VPWR"
+merge "FILLER_0_23/VPWR" "FILLER_1_24/VPWR"
+merge "FILLER_1_24/VPWR" "_4_/VPWR"
+merge "_4_/VPWR" "PHY_EDGE_ROW_0_Left_4/VPWR"
+merge "PHY_EDGE_ROW_0_Left_4/VPWR" "PHY_EDGE_ROW_1_Left_5/VPWR"
+merge "PHY_EDGE_ROW_1_Left_5/VPWR" "FILLER_0_11/VPWR"
+merge "FILLER_0_11/VPWR" "FILLER_0_3/VPWR"
+merge "FILLER_0_3/VPWR" "FILLER_1_3/VPWR"
+merge "FILLER_1_3/VPWR" "m1_4048_4848#"
+merge "PHY_EDGE_ROW_2_Right_2/VGND" "FILLER_2_19/VGND" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_2_19/VGND" "FILLER_2_23/VGND"
+merge "FILLER_2_23/VGND" "PHY_EDGE_ROW_1_Right_1/VGND"
+merge "PHY_EDGE_ROW_1_Right_1/VGND" "FILLER_1_24/VGND"
+merge "FILLER_1_24/VGND" "PHY_EDGE_ROW_2_Left_6/VGND"
+merge "PHY_EDGE_ROW_2_Left_6/VGND" "_3_/VGND"
+merge "_3_/VGND" "_2_/VGND"
+merge "_2_/VGND" "_4_/VGND"
+merge "_4_/VGND" "PHY_EDGE_ROW_1_Left_5/VGND"
+merge "PHY_EDGE_ROW_1_Left_5/VGND" "FILLER_1_3/VGND"
+merge "FILLER_1_3/VGND" "m1_4048_5392#"
+merge "_3_/A1" "_4_/Q" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_4_/Q" "li_5456_5524#"
+merge "PHY_EDGE_ROW_3_Right_3/VNB" "FILLER_3_19/VNB" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_3_19/VNB" "FILLER_3_23/VNB"
+merge "FILLER_3_23/VNB" "PHY_EDGE_ROW_3_Left_7/VNB"
+merge "PHY_EDGE_ROW_3_Left_7/VNB" "FILLER_3_3/VNB"
+merge "FILLER_3_3/VNB" "_1_/VNB"
+merge "_1_/VNB" "PHY_EDGE_ROW_2_Right_2/VNB"
+merge "PHY_EDGE_ROW_2_Right_2/VNB" "FILLER_2_19/VNB"
+merge "FILLER_2_19/VNB" "FILLER_2_23/VNB"
+merge "FILLER_2_23/VNB" "PHY_EDGE_ROW_0_Right_0/VNB"
+merge "PHY_EDGE_ROW_0_Right_0/VNB" "PHY_EDGE_ROW_1_Right_1/VNB"
+merge "PHY_EDGE_ROW_1_Right_1/VNB" "FILLER_0_19/VNB"
+merge "FILLER_0_19/VNB" "FILLER_0_23/VNB"
+merge "FILLER_0_23/VNB" "FILLER_1_24/VNB"
+merge "FILLER_1_24/VNB" "PHY_EDGE_ROW_2_Left_6/VNB"
+merge "PHY_EDGE_ROW_2_Left_6/VNB" "_3_/VNB"
+merge "_3_/VNB" "_2_/VNB"
+merge "_2_/VNB" "_4_/VNB"
+merge "_4_/VNB" "PHY_EDGE_ROW_0_Left_4/VNB"
+merge "PHY_EDGE_ROW_0_Left_4/VNB" "PHY_EDGE_ROW_1_Left_5/VNB"
+merge "PHY_EDGE_ROW_1_Left_5/VNB" "FILLER_0_11/VNB"
+merge "FILLER_0_11/VNB" "FILLER_0_3/VNB"
+merge "FILLER_0_3/VNB" "FILLER_1_3/VNB"
+merge "FILLER_1_3/VNB" "SUB"
+merge "PHY_EDGE_ROW_0_Right_0/VGND" "FILLER_0_19/VGND" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_0_19/VGND" "FILLER_0_23/VGND"
+merge "FILLER_0_23/VGND" "PHY_EDGE_ROW_0_Left_4/VGND"
+merge "PHY_EDGE_ROW_0_Left_4/VGND" "FILLER_0_11/VGND"
+merge "FILLER_0_11/VGND" "FILLER_0_3/VGND"
+merge "FILLER_0_3/VGND" "m1_4048_4304#"
+merge "PHY_EDGE_ROW_3_Right_3/VPWR" "FILLER_3_19/VPWR" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "FILLER_3_19/VPWR" "FILLER_3_23/VPWR"
+merge "FILLER_3_23/VPWR" "PHY_EDGE_ROW_2_Right_2/VPWR"
+merge "PHY_EDGE_ROW_2_Right_2/VPWR" "FILLER_2_19/VPWR"
+merge "FILLER_2_19/VPWR" "FILLER_2_23/VPWR"
+merge "FILLER_2_23/VPWR" "PHY_EDGE_ROW_3_Left_7/VPWR"
+merge "PHY_EDGE_ROW_3_Left_7/VPWR" "FILLER_3_3/VPWR"
+merge "FILLER_3_3/VPWR" "_1_/VPWR"
+merge "_1_/VPWR" "PHY_EDGE_ROW_2_Left_6/VPWR"
+merge "PHY_EDGE_ROW_2_Left_6/VPWR" "_3_/VPWR"
+merge "_3_/VPWR" "_2_/VPWR"
+merge "_2_/VPWR" "m1_4048_5936#"
+merge "_4_/CLK" "clk" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_2_/X" "_3_/A0" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_3_/A0" "_4_/D"
+merge "_4_/D" "li_4720_5252#"
+merge "_1_/A" "in[1]" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_1_/B" "in[0]" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_1_/C" "shift_amt[0]" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_3_/X" "y" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_4_/RESET_B" "rst_n" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_3_/S" "is_sync" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_2_/A" "shift_amt[1]" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_1_/X" "_2_/B" 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+merge "_2_/B" "li_4628_5728#"

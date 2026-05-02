@@ -1,0 +1,10 @@
+magic -T sky130A.tech -noconsole -dnull magic_lvs.tcl 
+netgen -batch source netgen.tcl
+cat sky130_fd_sc_hd.spice LUT_layout_lvs.spice > lut_combined.spice
+
+
+DRC
+magic -T sky130A.tech -noconsole -dnull magic.tcl
+klayout LUT.gds -m klayout_drc_report.lyrdb
+klayout -b -r sky130A.lydrc   -rd input=LUT.gds   -rd topcell=LUT   -rd report=klayout_drc_report.lyrdb
+./run_klayout_drc.sh

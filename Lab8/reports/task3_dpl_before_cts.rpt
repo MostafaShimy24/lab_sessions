@@ -1,0 +1,29 @@
+{
+    "DRC": [
+        {
+            "name": "Placement_failures",
+            "description": "Cells that DPL failed to place.",
+            "violations": [
+                {
+                    "type": "box",
+                    "shape": [
+                        {
+                            "x": "10.119999999999999",
+                            "y": "13.401999999999999"
+                        },
+                        {
+                            "x": "19.32",
+                            "y": "16.122"
+                        }
+                    ],
+                    "sources": [
+                        {
+                            "type": "inst",
+                            "name": "_4_"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
