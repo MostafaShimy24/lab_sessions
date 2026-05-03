@@ -1,0 +1,5 @@
+$ 'iverilog' -B '/nix/store/zscrq5qw704sa576x4nqj2rjiiixmxrs-iverilog-13.0/lib/ivl'  -Ttyp -o LUT_netlist.v.chained.v.tb.sv.a.out LUT_netlist.v.chained.v.tb.sv 2>&1
+$ 'vvp' LUT_netlist.v.chained.v.tb.sv.a.out
+Success: expected 0010111 got 0010111
+SUCCESS_STRING
+LUT_netlist.v.chained.v.tb.sv:71: $finish called at 76 (1s)
