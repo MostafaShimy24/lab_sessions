@@ -123,10 +123,39 @@ module sky130_fd_sc_hd__xor2_1 (X, A, B, VPWR, VGND, VPB, VNB);
   assign X = A ^ B;
 endmodule
 
+
+
+
+
+
+
+
+
 module sky130_fd_sc_hd__clkinv_1 (Y, A, VPWR, VGND, VPB, VNB);
   output Y;
   input A, VPWR, VGND, VPB, VNB;
   assign Y = ~A;
 endmodule
+
+
+
+module sky130_fd_sc_hd__a21oi_1 (Y, A1, A2, B1, VPWR, VGND, VPB, VNB);
+  output Y;
+  input A1, A2, B1, VPWR, VGND, VPB, VNB;
+  assign Y = ~((A1 & A2) | B1);
+endmodule
+
+module sky130_fd_sc_hd__lpflow_isobufsrc_1 (X, A, SLEEP, VPWR, VGND, VPB, VNB);
+  output X;
+  input A, SLEEP, VPWR, VGND, VPB, VNB;
+  assign X = A;
+endmodule
+
+module sky130_fd_sc_hd__nand3_1 (Y, A, B, C, VPWR, VGND, VPB, VNB);
+  output Y;
+  input A, B, C, VPWR, VGND, VPB, VNB;
+  assign Y = ~(A & B & C);
+endmodule
+
 
 

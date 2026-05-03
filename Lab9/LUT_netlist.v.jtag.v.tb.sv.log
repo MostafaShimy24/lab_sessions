@@ -1,0 +1,5 @@
+$ 'iverilog' -B '/nix/store/zscrq5qw704sa576x4nqj2rjiiixmxrs-iverilog-13.0/lib/ivl'  -Ttyp -o LUT_netlist.v.jtag.v.tb.sv.a.out LUT_netlist.v.jtag.v.tb.sv 2>&1
+$ 'vvp' LUT_netlist.v.jtag.v.tb.sv.a.out
+ERROR: LUT_netlist.v.jtag.v.tb.sv:85: EXECUTING_PRELOAD_CHAIN_INST_FAILED
+       Time: 128  Scope: testbench
+LUT_netlist.v.jtag.v.tb.sv:86: $finish called at 128 (1s)
