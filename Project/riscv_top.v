@@ -268,6 +268,8 @@ module riscv_top #(
     wire [1:0]  ex_wb_sel;
     wire        ex_reg_write,   ex_is_jump;
 
+    wire conv_done_sig;
+
     ex_stage #(
         .CONV_LATENCY (CONV_LATENCY),
         .DATA_WIDTH   (DATA_WIDTH),
@@ -314,7 +316,8 @@ module riscv_top #(
         .flush_o          (flush),
         .branch_target_o  (branch_target),
         .jump_target_o    (jump_target),
-        .stall_o          (stall)
+        .stall_o          (stall),
+        .conv_done_o      (conv_done_sig)
     );
 
     // =========================================================================
@@ -330,6 +333,27 @@ module riscv_top #(
     reg [1:0]  ex_mem_wb_sel;
     reg        ex_mem_reg_write,   ex_mem_is_jump;
 
+    // Hold CONV instruction's WB control signals during stall
+    reg [1:0] conv_wb_sel_hold;
+    reg       conv_reg_write_hold;
+    reg [4:0] conv_rd_addr_hold;
+    reg [31:0] conv_pc_plus4_hold;
+
+    always @(posedge clk) begin
+    if (!rst_n) begin
+        conv_wb_sel_hold    <= 2'b00;
+        conv_reg_write_hold <= 1'b0;
+        conv_rd_addr_hold   <= 5'h0;
+        conv_pc_plus4_hold  <= 32'h4;
+    end else if (stall) begin
+        // Capture from EX/MEM register (frozen during stall) NOT from EX outputs
+        conv_wb_sel_hold    <= ex_mem_wb_sel;      // was: ex_wb_sel
+        conv_reg_write_hold <= ex_mem_reg_write;   // was: ex_reg_write
+        conv_rd_addr_hold   <= ex_mem_rd_addr;     // was: ex_rd_addr
+        conv_pc_plus4_hold  <= ex_mem_pc_plus4;    // was: ex_pc_plus4
+    end
+    end
+
     always @(posedge clk) begin
         if (!rst_n) begin
             ex_mem_alu_result   <= 32'h0;
@@ -344,34 +368,21 @@ module riscv_top #(
             ex_mem_wb_sel       <= 2'b00;
             ex_mem_reg_write    <= 1'b0;
             ex_mem_is_jump      <= 1'b0;
-        // end else if (!stall) begin
-        //     ex_mem_alu_result   <= ex_alu_result;
-        //     ex_mem_conv_result  <= ex_conv_result;
-        //     ex_mem_rs2_data     <= ex_rs2_data;
-        //     ex_mem_rd_addr      <= ex_rd_addr;
-        //     ex_mem_pc_plus4     <= ex_pc_plus4;
-        //     ex_mem_mem_read     <= ex_mem_read;
-        //     ex_mem_mem_write    <= ex_mem_write;
-        //     ex_mem_mem_size     <= ex_mem_size;
-        //     ex_mem_mem_sign_ext <= ex_mem_sign_ext;
-        //     ex_mem_wb_sel       <= ex_wb_sel;
-        //     ex_mem_reg_write    <= ex_reg_write;
-        //     ex_mem_is_jump      <= ex_is_jump;
-        end else if (conv_done) begin
-        // Special capture: latch conv_result when Conv-PE finishes
-        // All other fields already correct (frozen during stall)
-            ex_mem_conv_result <= ex_conv_result;
-            ex_mem_wb_sel      <= ex_wb_sel;       // ensure 2'b10 is captured
-            ex_mem_reg_write   <= ex_reg_write;
-            ex_mem_rd_addr     <= ex_rd_addr;
-            ex_mem_pc_plus4    <= ex_pc_plus4;
-            ex_mem_alu_result  <= ex_alu_result;
-            ex_mem_rs2_data    <= ex_rs2_data;
-            ex_mem_mem_read    <= ex_mem_read;
-            ex_mem_mem_write   <= ex_mem_write;
-            ex_mem_mem_size    <= ex_mem_size;
-            ex_mem_mem_sign_ext<= ex_mem_sign_ext;
-            ex_mem_is_jump     <= ex_is_jump;
+            end else if (conv_done_sig) begin
+                // DONE cycle: ID/EX has already advanced to next instruction.
+                // Use the held control signals captured during BUSY.
+                ex_mem_conv_result  <= ex_conv_result;       // valid right now
+                ex_mem_wb_sel       <= conv_wb_sel_hold;     // 2'b10 from CONV instr
+                ex_mem_reg_write    <= conv_reg_write_hold;  // 1
+                ex_mem_rd_addr      <= conv_rd_addr_hold;    // x12 or x13
+                ex_mem_pc_plus4     <= conv_pc_plus4_hold;
+                ex_mem_alu_result   <= 32'h0;
+                ex_mem_rs2_data     <= 32'h0;
+                ex_mem_mem_read     <= 1'b0;
+                ex_mem_mem_write    <= 1'b0;
+                ex_mem_mem_size     <= 2'b10;
+                ex_mem_mem_sign_ext <= 1'b1;
+                ex_mem_is_jump      <= 1'b0;
         end else if (!stall) begin
             ex_mem_alu_result   <= ex_alu_result;
             ex_mem_conv_result  <= ex_conv_result;
@@ -446,7 +457,7 @@ module riscv_top #(
             mem_wb_wb_sel      <= 2'b00;
             mem_wb_reg_write   <= 1'b0;
             mem_wb_is_jump     <= 1'b0;
-        end else if (!stall) begin
+        end else if (!stall && !conv_done_sig) begin
             mem_wb_alu_result  <= mem_alu_result;
             mem_wb_load_data   <= mem_load_data;
             mem_wb_conv_result <= mem_conv_result;

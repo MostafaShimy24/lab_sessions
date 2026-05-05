@@ -91,7 +91,9 @@ module ex_stage #(
     output wire [31:0] jump_target_o,
 
     // ---- Stall (to all stages) ----------------------------------------------
-    output wire        stall_o         // Conv-PE busy
+    output wire        stall_o,         // Conv-PE busy
+
+    output wire        conv_done_o
 );
 
     // =========================================================================
@@ -174,48 +176,11 @@ module ex_stage #(
     assign branch_target_o = branch_target;
     assign jump_target_o   = jump_target;
 
-    // =========================================================================
-    // Conv-PE instance
-    // =========================================================================
-
-
-    wire        conv_busy;
-    wire        conv_done;
-    wire [ACCUM_WIDTH-1:0] conv_result;
-    wire [1:0]  conv_status;
-
-    conv_pe #(
-        .DATA_WIDTH   (DATA_WIDTH),
-        .ACCUM_WIDTH  (ACCUM_WIDTH),
-        .CONV_LATENCY (CONV_LATENCY)
-    ) u_conv_pe (
-        .clk         (clk),
-        .rst_n       (rst_n),
-        .conv_start  (conv_start_i),
-        //.conv_start  (conv_start_pulse),
-        .init        (conv_init_i),
-        .operand_a   (rs1_data_i),
-        .operand_b   (rs2_data_i),
-        .conv_busy   (conv_busy),
-        .conv_done   (conv_done),
-        .conv_result (conv_result),
-        .conv_status (conv_status)
-    );
-
-    // // =========================================================================
-    // // Conv-PE rising-edge detector
-    // // conv_start_i stays HIGH during stall — pulse only on first cycle
-    // // =========================================================================
-    // reg  conv_start_i_r;
-    // always @(posedge clk) begin
-    //     if (!rst_n) conv_start_i_r <= 1'b0;
-    //     else        conv_start_i_r <= conv_start_i;
-    // end
-    // wire conv_start_pulse = conv_start_i & ~conv_start_i_r;
-
     // // =========================================================================
     // // Conv-PE instance
     // // =========================================================================
+
+
     // wire        conv_busy;
     // wire        conv_done;
     // wire [ACCUM_WIDTH-1:0] conv_result;
@@ -228,7 +193,8 @@ module ex_stage #(
     // ) u_conv_pe (
     //     .clk         (clk),
     //     .rst_n       (rst_n),
-    //     .conv_start  (conv_start_pulse),   // ← pulse, not raw level
+    //     //.conv_start  (conv_start_i),
+    //     .conv_start  (conv_start_pulse),
     //     .init        (conv_init_i),
     //     .operand_a   (rs1_data_i),
     //     .operand_b   (rs2_data_i),
@@ -237,6 +203,42 @@ module ex_stage #(
     //     .conv_result (conv_result),
     //     .conv_status (conv_status)
     // );
+
+    // =========================================================================
+    // Conv-PE rising-edge detector
+    // conv_start_i stays HIGH during stall — pulse only on first cycle
+    // =========================================================================
+    reg  conv_start_i_r;
+    always @(posedge clk) begin
+        if (!rst_n) conv_start_i_r <= 1'b0;
+        else        conv_start_i_r <= conv_start_i;
+    end
+    wire conv_start_pulse = conv_start_i & ~conv_start_i_r;
+
+    // =========================================================================
+    // Conv-PE instance
+    // =========================================================================
+    wire        conv_busy;
+    wire        conv_done;
+    wire [ACCUM_WIDTH-1:0] conv_result;
+    wire [1:0]  conv_status;
+
+    conv_pe #(
+        .DATA_WIDTH   (DATA_WIDTH),
+        .ACCUM_WIDTH  (ACCUM_WIDTH),
+        .CONV_LATENCY (CONV_LATENCY)
+    ) u_conv_pe (
+        .clk         (clk),
+        .rst_n       (rst_n),
+        .conv_start  (conv_start_pulse),   // ← pulse, not raw level
+        .init        (conv_init_i),
+        .operand_a   (rs1_data_i),
+        .operand_b   (rs2_data_i),
+        .conv_busy   (conv_busy),
+        .conv_done   (conv_done),
+        .conv_result (conv_result),
+        .conv_status (conv_status)
+    );
 
 
     // =========================================================================
@@ -258,6 +260,7 @@ module ex_stage #(
 
     assign stall_o       = conv_busy;
 
+    assign conv_done_o = conv_done;
 endmodule
 
 `default_nettype wire

@@ -98,14 +98,17 @@ module tb_riscv_top;
 
         // 288 instrs + pipeline(5) + branch penalties + Conv stalls
         // Temporary Conv-PE monitor — remove after debugging
-    // $monitor("[%4d] conv_busy=%b conv_done=%b conv_result=%h wb_we=%b wb_addr=x%0d wb_data=%h",
-    //     cycle_num,
-    //     dut.u_ex.conv_busy,
-    //     dut.u_ex.conv_done,
-    //     dut.u_ex.conv_result,
-    //     dut.wb_we,
-    //     dut.wb_addr,
-    //     dut.wb_data);
+// Debug Conv hold registers
+// $monitor("[%4d] stall=%b conv_done=%b | hold: wb_sel=%b reg_wr=%b rd=%0d | ex_mem: wb_sel=%b reg_wr=%b rd=%0d",
+//     cycle_num,
+//     dut.stall,
+//     dut.conv_done_sig,
+//     dut.conv_wb_sel_hold,
+//     dut.conv_reg_write_hold,
+//     dut.conv_rd_addr_hold,
+//     dut.ex_mem_wb_sel,
+//     dut.ex_mem_reg_write,
+//     dut.ex_mem_rd_addr);
         repeat(550) @(posedge clk); #1;
 
         $display("\n--- Test 2: ADD / SUB ---");
