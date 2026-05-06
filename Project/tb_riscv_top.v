@@ -90,7 +90,7 @@ module tb_riscv_top;
 
     initial begin
         $display("================================================================");
-        $display("  ELCT1005 PROJ02 — Directed Testbench — tb_riscv_top.v  (v4)");
+        $display("  RISCV TestBench");
         $display("================================================================");
 
         rst_n=1'b0; repeat(5) @(posedge clk); @(negedge clk); rst_n=1'b1;
