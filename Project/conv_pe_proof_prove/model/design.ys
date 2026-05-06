@@ -1,0 +1,9 @@
+# running in conv_pe_proof_prove/src/
+read -formal conv_pe_formal.sv
+read -formal conv_pe.v
+prep -top conv_pe
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

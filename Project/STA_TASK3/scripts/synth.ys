@@ -1,0 +1,74 @@
+# ============================================================
+# synth.ys — Yosys synthesis for Phase 3 STA
+# ============================================================
+
+# ------------------------------------------------------------
+# Read RTL from ORIGINAL PROJECT DIRECTORY
+# ------------------------------------------------------------
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/riscv_top.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/alu.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/conv_pe.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/regfile.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/imem.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/dmem.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/if_stage.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/id_stage.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/ex_stage.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/mem_stage.v
+read_verilog /home/asiclab/Desktop/lab_sessions/Project/wb_stage.v
+
+# ------------------------------------------------------------
+# Hierarchy
+# ------------------------------------------------------------
+hierarchy -top riscv_top
+
+# ------------------------------------------------------------
+# PRE-OPTIMIZATION GRAPH
+# ------------------------------------------------------------
+show -format dot -prefix ../images/pre_opt riscv_top
+# ------------------------------------------------------------
+# Generic synthesis
+# ------------------------------------------------------------
+proc
+opt
+fsm
+opt
+memory
+opt
+
+# ------------------------------------------------------------
+# Technology mapping
+# ------------------------------------------------------------
+techmap
+opt
+
+# ------------------------------------------------------------
+# Flip-flop mapping
+# ------------------------------------------------------------
+dfflibmap -liberty \
+/home/asiclab/Desktop/oss-cad-suite/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ------------------------------------------------------------
+# Logic optimization
+# ------------------------------------------------------------
+abc -liberty \
+/home/asiclab/Desktop/oss-cad-suite/share/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# ------------------------------------------------------------
+# POST-OPTIMIZATION GRAPH
+# ------------------------------------------------------------
+show -format dot -prefix ../images/post_opt riscv_top
+# ------------------------------------------------------------
+# Final cleanup
+# ------------------------------------------------------------
+clean
+
+# ------------------------------------------------------------
+# Statistics
+# ------------------------------------------------------------
+stat
+
+# ------------------------------------------------------------
+# Write synthesized netlist
+# ------------------------------------------------------------
+write_verilog ../netlists/riscv_top_synth.v

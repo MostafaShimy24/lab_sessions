@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-05-06T10:04:05" hostname="ASICLab" package="id_ex_cover" id="0" name="cover" tests="2" errors="0" failures="0" time="642" skipped="0">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="cover" name="build execution" time="0">
+</testcase>
+<testcase classname="cover" name="Property COVER in id_ex_wrapper at id_ex_wrapper.v:412.13-417.14" time="0" type="COVER" location="id_ex_wrapper.v:412.13-417.14" id="_witness_.check_cover_id_ex_wrapper_v_412_33" tracefile="engine_0/trace1.vcd">
+</testcase>
+<testcase classname="cover" name="Property COVER in id_ex_wrapper at id_ex_wrapper.v:424.13-428.14" time="0" type="COVER" location="id_ex_wrapper.v:424.13-428.14" id="_witness_.check_cover_id_ex_wrapper_v_424_40" tracefile="engine_0/trace0.vcd">
+</testcase>
+<system-out>SBY  9:53:23 [id_ex_cover_cover] Removing directory '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/id_ex_formal.sv' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/id_ex_formal.sv'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/id_ex_wrapper.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/id_ex_wrapper.v'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/id_stage.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/id_stage.v'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/ex_stage.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/ex_stage.v'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/regfile.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/regfile.v'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/alu.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/alu.v'.
+SBY  9:53:23 [id_ex_cover_cover] Copy '/home/asiclab/Desktop/lab_sessions/Project/conv_pe.v' to '/home/asiclab/Desktop/lab_sessions/Project/id_ex_cover_cover/src/conv_pe.v'.
+SBY  9:53:23 [id_ex_cover_cover] engine_0: smtbmc z3
+SBY  9:53:23 [id_ex_cover_cover] base: starting process &quot;cd id_ex_cover_cover/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY  9:53:23 [id_ex_cover_cover] base: id_ex_wrapper.v:426: Warning: Identifier `\u_ex.u_conv_pe.conv_done' is implicitly declared.
+SBY  9:53:23 [id_ex_cover_cover] base: Warning: Wire id_ex_wrapper.\u_ex.u_conv_pe.conv_done is used but has no driver.
+SBY  9:53:23 [id_ex_cover_cover] base: finished (returncode=0)
+SBY  9:53:23 [id_ex_cover_cover] prep: starting process &quot;cd id_ex_cover_cover/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY  9:53:23 [id_ex_cover_cover] prep: Warning: Wire id_ex_wrapper.\u_ex.u_conv_pe.conv_done is used but has no driver.
+SBY  9:53:23 [id_ex_cover_cover] prep: finished (returncode=0)
+SBY  9:53:23 [id_ex_cover_cover] smt2: starting process &quot;cd id_ex_cover_cover/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY  9:53:23 [id_ex_cover_cover] smt2: finished (returncode=0)
+SBY  9:53:23 [id_ex_cover_cover] engine_0: starting process &quot;cd id_ex_cover_cover; yosys-smtbmc -s z3 --presat -c --noprogress -t 30  --append 5 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2&quot;
+SBY  9:53:23 [id_ex_cover_cover] engine_0: ##   0:00:00  Solver: z3
+SBY  9:53:23 [id_ex_cover_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  9:53:23 [id_ex_cover_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  9:54:28 [id_ex_cover_cover] engine_0: ##   0:01:05  waiting for solver (1 minute)
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Appending additional step 2.
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Appending additional step 3.
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Appending additional step 4.
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Appending additional step 5.
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Appending additional step 6.
+SBY  9:54:48 [id_ex_cover_cover] engine_0: ##   0:01:24  Re-solving with appended steps..
+SBY  9:55:48 [id_ex_cover_cover] engine_0: ##   0:02:25  waiting for solver (1 minute)
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Reached cover statement in step 1 at id_ex_wrapper: id_ex_wrapper.v:424.13-428.14 (_witness_.check_cover_id_ex_wrapper_v_424_40)
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY  9:57:24 [id_ex_cover_cover] engine_0: ##   0:04:00  Checking cover reachability in step 1..
+SBY  9:58:24 [id_ex_cover_cover] engine_0: ##   0:05:00  waiting for solver (1 minute)
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Appending additional step 2.
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Appending additional step 3.
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Appending additional step 4.
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Appending additional step 5.
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Appending additional step 6.
+SBY  9:59:00 [id_ex_cover_cover] engine_0: ##   0:05:36  Re-solving with appended steps..
+SBY 10:00:05 [id_ex_cover_cover] engine_0: ##   0:06:41  waiting for solver (1 minute)
+SBY 10:04:04 [id_ex_cover_cover] engine_0: ##   0:10:41  Reached cover statement in step 1 at id_ex_wrapper: id_ex_wrapper.v:412.13-417.14 (_witness_.check_cover_id_ex_wrapper_v_412_33)
+SBY 10:04:04 [id_ex_cover_cover] engine_0: ##   0:10:41  Writing trace to VCD file: engine_0/trace1.vcd
+SBY 10:04:04 [id_ex_cover_cover] engine_0: ##   0:10:41  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY 10:04:05 [id_ex_cover_cover] engine_0: ##   0:10:41  Writing trace to constraints file: engine_0/trace1.smtc
+SBY 10:04:05 [id_ex_cover_cover] engine_0: ##   0:10:41  Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY 10:04:05 [id_ex_cover_cover] engine_0: ##   0:10:41  Status: passed
+SBY 10:04:05 [id_ex_cover_cover] engine_0: finished (returncode=0)
+SBY 10:04:05 [id_ex_cover_cover] engine_0: Status returned by engine: pass
+SBY 10:04:05 [id_ex_cover_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:10:42 (642)
+SBY 10:04:05 [id_ex_cover_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:10:42 (642)
+SBY 10:04:05 [id_ex_cover_cover] summary: engine_0 (smtbmc z3) returned pass
+SBY 10:04:05 [id_ex_cover_cover] summary: cover trace: id_ex_cover_cover/engine_0/trace0.vcd
+SBY 10:04:05 [id_ex_cover_cover] summary:   reached cover statement id_ex_wrapper._witness_.check_cover_id_ex_wrapper_v_424_40 at id_ex_wrapper.v:424.13-428.14 step 1
+SBY 10:04:05 [id_ex_cover_cover] summary: cover trace: id_ex_cover_cover/engine_0/trace1.vcd
+SBY 10:04:05 [id_ex_cover_cover] summary:   reached cover statement id_ex_wrapper._witness_.check_cover_id_ex_wrapper_v_412_33 at id_ex_wrapper.v:412.13-417.14 step 1
+SBY 10:04:05 [id_ex_cover_cover] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>
