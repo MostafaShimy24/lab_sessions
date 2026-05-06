@@ -1,21 +1,33 @@
 #==============================================================================
-# run.do — QuestaSim .do Script for Interactive UVM Simulation with Coverage
+# run.do ? QuestaSim .do Script for UVM Simulation with Merged Coverage
 #==============================================================================
 # Usage:
 #   do run.do
 #==============================================================================
 
-# Create and map work library
+quietly catch {quit -sim}
+
+#------------------------------------------------------------------------------
+# Clean and create work library
+#------------------------------------------------------------------------------
 if {[file exists work]} {
-    vdel -lib work -all
+    quietly catch {vdel -lib work -all}
 }
+
 vlib work
 vmap work work
 
-# Optional: delete old coverage database
-if {[file exists coverage.ucdb]} {
-    file delete coverage.ucdb
-}
+#------------------------------------------------------------------------------
+# Create results directory and delete old coverage outputs
+#------------------------------------------------------------------------------
+file mkdir results
+
+quietly catch {file delete results/cov_arith.ucdb}
+quietly catch {file delete results/cov_mem.ucdb}
+quietly catch {file delete results/cov_branch.ucdb}
+quietly catch {file delete results/cov_merged.ucdb}
+quietly catch {file delete results/full_coverage_report.txt}
+quietly catch {file delete results/functional_coverage_report.txt}
 
 #------------------------------------------------------------------------------
 # Compile RTL sources with coverage enabled
@@ -35,9 +47,8 @@ vlog -timescale 1ns/1ps +acc -cover bcesft \
 
 #------------------------------------------------------------------------------
 # Compile SystemVerilog/UVM TB sources with coverage enabled
-# IMPORTANT:
-# The coverage file must be compiled after the transaction classes are known.
-# If riscv_uvm_pkg.sv already includes riscv_coverage.sv, do NOT compile it again.
+# Note: riscv_coverage.sv is included inside riscv_uvm_pkg.sv.
+# Do NOT compile riscv_coverage.sv separately.
 #------------------------------------------------------------------------------
 vlog -sv -timescale 1ns/1ps +acc -cover bcesft \
     +incdir+../pkg \
@@ -47,18 +58,15 @@ vlog -sv -timescale 1ns/1ps +acc -cover bcesft \
     ../pkg/riscv_uvm_pkg.sv \
     ../tb/tb_top.sv
 
-#------------------------------------------------------------------------------
-# Launch simulation with coverage enabled
-#------------------------------------------------------------------------------
+#==============================================================================
+# Run test_arith
+#==============================================================================
 vsim -coverage -voptargs="+acc" \
     +UVM_TESTNAME=test_arith \
     +UVM_VERBOSITY=UVM_MEDIUM \
-    -sv_seed random \
+    -sv_seed 1 \
     work.tb_top
 
-#------------------------------------------------------------------------------
-# Add key signals to waveform
-#------------------------------------------------------------------------------
 add wave -group "Clock/Reset" /tb_top/clk /tb_top/rst_n
 
 add wave -group "IF Stage"    /tb_top/u_dut/u_if/pc_reg \
@@ -83,22 +91,65 @@ add wave -group "Conv-PE"     /tb_top/u_dut/u_ex/u_conv_pe/state_r \
                               /tb_top/u_dut/u_ex/u_conv_pe/accum_r \
                               /tb_top/u_dut/u_ex/u_conv_pe/conv_status
 
-#------------------------------------------------------------------------------
-# Run simulation
-#------------------------------------------------------------------------------
 run -all
+coverage save results/cov_arith.ucdb
+quit -sim
 
-#------------------------------------------------------------------------------
-# Save coverage database
-#------------------------------------------------------------------------------
-coverage save -onexit coverage.ucdb
-coverage save coverage.ucdb
+#==============================================================================
+# Run test_mem
+#==============================================================================
+vsim -coverage -voptargs="+acc" \
+    +UVM_TESTNAME=test_mem \
+    +UVM_VERBOSITY=UVM_MEDIUM \
+    -sv_seed 2 \
+    work.tb_top
 
-#------------------------------------------------------------------------------
-# Open coverage GUI
-#------------------------------------------------------------------------------
-view coverage
-coverage report -details
+run -all
+coverage save results/cov_mem.ucdb
+quit -sim
 
-# Optional: open standalone coverage viewer
-# vcover gui coverage.ucdb
+#==============================================================================
+# Run test_branch
+#==============================================================================
+vsim -coverage -voptargs="+acc" \
+    +UVM_TESTNAME=test_branch \
+    +UVM_VERBOSITY=UVM_MEDIUM \
+    -sv_seed 3 \
+    work.tb_top
+
+run -all
+coverage save results/cov_branch.ucdb
+quit -sim
+
+#==============================================================================
+# Merge coverage databases
+#==============================================================================
+vcover merge results/cov_merged.ucdb \
+    results/cov_arith.ucdb \
+    results/cov_mem.ucdb \
+    results/cov_branch.ucdb
+
+#==============================================================================
+# Generate coverage reports
+#==============================================================================
+vcover report results/cov_merged.ucdb \
+    -details \
+    -all \
+    -output results/full_coverage_report.txt
+
+vcover report results/cov_merged.ucdb \
+    -cvg \
+    -details \
+    -output results/functional_coverage_report.txt
+
+#==============================================================================
+# Open merged coverage database in Questa
+#==============================================================================
+coverage open results/cov_merged.ucdb
+
+puts "============================================================"
+puts "Coverage merge completed successfully."
+puts "Merged UCDB:              results/cov_merged.ucdb"
+puts "Full coverage report:     results/full_coverage_report.txt"
+puts "Functional coverage:      results/functional_coverage_report.txt"
+puts "============================================================"

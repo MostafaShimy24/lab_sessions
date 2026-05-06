@@ -1,5 +1,5 @@
 //==============================================================================
-// wb_monitor.sv — Write-Back Stage Monitor (Passive)
+// wb_monitor.sv ? Write-Back Stage Monitor (Passive)
 //------------------------------------------------------------------------------
 // Observes register write-backs at the WB stage via hierarchical probes.
 // On every cycle where wb_we=1 and wb_addr!=0, a transaction is sent to the

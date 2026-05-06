@@ -129,7 +129,7 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     endgroup
 
     // =========================================================================
-    // Covergroup 4: Branch Type × Taken/Not-Taken
+    // Covergroup 4: Branch Type ? Taken/Not-Taken
     // =========================================================================
     covergroup cg_branch;
         option.per_instance = 1;
