@@ -1,5 +1,5 @@
 #==============================================================================
-# run.do — QuestaSim .do Script for Interactive UVM Simulation
+# run.do — QuestaSim .do Script for Interactive UVM Simulation with Coverage
 #==============================================================================
 # Usage:
 #   do run.do
@@ -12,8 +12,15 @@ if {[file exists work]} {
 vlib work
 vmap work work
 
-# Compile RTL sources (Verilog-2001)
-vlog -timescale 1ns/1ps +acc \
+# Optional: delete old coverage database
+if {[file exists coverage.ucdb]} {
+    file delete coverage.ucdb
+}
+
+#------------------------------------------------------------------------------
+# Compile RTL sources with coverage enabled
+#------------------------------------------------------------------------------
+vlog -timescale 1ns/1ps +acc -cover bcesft \
     ../../alu.v \
     ../../regfile.v \
     ../../conv_pe.v \
@@ -26,21 +33,32 @@ vlog -timescale 1ns/1ps +acc \
     ../../wb_stage.v \
     ../../riscv_top.v
 
-# Compile SystemVerilog TB sources
-vlog -sv -timescale 1ns/1ps +acc \
-    +incdir+../pkg +incdir+.. \
+#------------------------------------------------------------------------------
+# Compile SystemVerilog/UVM TB sources with coverage enabled
+# IMPORTANT:
+# The coverage file must be compiled after the transaction classes are known.
+# If riscv_uvm_pkg.sv already includes riscv_coverage.sv, do NOT compile it again.
+#------------------------------------------------------------------------------
+vlog -sv -timescale 1ns/1ps +acc -cover bcesft \
+    +incdir+../pkg \
+    +incdir+.. \
+    +incdir+../coverage \
     ../tb/riscv_if.sv \
     ../pkg/riscv_uvm_pkg.sv \
     ../tb/tb_top.sv
 
-# Launch simulation
-vsim -voptargs="+acc" \
+#------------------------------------------------------------------------------
+# Launch simulation with coverage enabled
+#------------------------------------------------------------------------------
+vsim -coverage -voptargs="+acc" \
     +UVM_TESTNAME=test_arith \
     +UVM_VERBOSITY=UVM_MEDIUM \
     -sv_seed random \
     work.tb_top
 
+#------------------------------------------------------------------------------
 # Add key signals to waveform
+#------------------------------------------------------------------------------
 add wave -group "Clock/Reset" /tb_top/clk /tb_top/rst_n
 
 add wave -group "IF Stage"    /tb_top/u_dut/u_if/pc_reg \
@@ -65,5 +83,22 @@ add wave -group "Conv-PE"     /tb_top/u_dut/u_ex/u_conv_pe/state_r \
                               /tb_top/u_dut/u_ex/u_conv_pe/accum_r \
                               /tb_top/u_dut/u_ex/u_conv_pe/conv_status
 
+#------------------------------------------------------------------------------
 # Run simulation
+#------------------------------------------------------------------------------
 run -all
+
+#------------------------------------------------------------------------------
+# Save coverage database
+#------------------------------------------------------------------------------
+coverage save -onexit coverage.ucdb
+coverage save coverage.ucdb
+
+#------------------------------------------------------------------------------
+# Open coverage GUI
+#------------------------------------------------------------------------------
+view coverage
+coverage report -details
+
+# Optional: open standalone coverage viewer
+# vcover gui coverage.ucdb

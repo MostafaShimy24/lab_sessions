@@ -1,22 +1,23 @@
 //==============================================================================
-// riscv_coverage.sv — Functional Coverage Collector
-//------------------------------------------------------------------------------
-// Collects coverage for:
-//   1. All RV32I opcode classes (cg_opcode)
-//   2. All conv_status FSM transitions (cg_conv_status)
-//   3. ALU boundary operand values (cg_alu_boundary)
-//   4. Branch type × taken/not-taken cross (cg_branch)
+// riscv_coverage.sv ? Functional Coverage Collector
 //==============================================================================
+
+`ifndef RISCV_COVERAGE_SV
+`define RISCV_COVERAGE_SV
 
 class riscv_coverage extends uvm_subscriber #(wb_txn);
 
     `uvm_component_utils(riscv_coverage)
 
-    // Analysis export for Conv-PE transactions
+    // Extra analysis export for Conv-PE transactions.
+    // uvm_analysis_imp_conv must already be declared in riscv_uvm_pkg.sv using:
+    // `uvm_analysis_imp_decl(_conv)
     uvm_analysis_imp_conv #(conv_txn, riscv_coverage) conv_export;
 
+    virtual riscv_if vif;
+
     // =========================================================================
-    // Coverage variables (sampled from DUT via hierarchical probes)
+    // Coverage variables
     // =========================================================================
     bit [6:0]  sampled_opcode;
     bit [3:0]  sampled_alu_op;
@@ -26,7 +27,6 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     bit        sampled_branch_taken;
     bit        sampled_is_branch;
 
-    // Conv-PE transition tracking
     bit [1:0]  conv_prev_status;
     bit [1:0]  conv_curr_status;
 
@@ -76,8 +76,10 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
             bins idle_to_busy = binsof(cp_prev.idle) && binsof(cp_curr.busy);
             bins busy_to_done = binsof(cp_prev.busy) && binsof(cp_curr.done);
             bins done_to_idle = binsof(cp_prev.done) && binsof(cp_curr.idle);
-            ignore_bins same  = binsof(cp_prev.idle) && binsof(cp_curr.idle);
+
+            ignore_bins idle_stay = binsof(cp_prev.idle) && binsof(cp_curr.idle);
             ignore_bins busy_stay = binsof(cp_prev.busy) && binsof(cp_curr.busy);
+            ignore_bins done_stay = binsof(cp_prev.done) && binsof(cp_curr.done);
         }
     endgroup
 
@@ -127,7 +129,7 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     endgroup
 
     // =========================================================================
-    // Covergroup 4: Branch Type × Taken/Not-Taken
+    // Covergroup 4: Branch Type � Taken/Not-Taken
     // =========================================================================
     covergroup cg_branch;
         option.per_instance = 1;
@@ -155,27 +157,32 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     // =========================================================================
     function new(string name = "riscv_coverage", uvm_component parent = null);
         super.new(name, parent);
+
         cg_opcode       = new();
         cg_conv_status  = new();
         cg_alu_boundary = new();
         cg_branch       = new();
     endfunction
 
+    // =========================================================================
+    // Build Phase
+    // =========================================================================
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
+
         conv_export = new("conv_export", this);
+
+        if (!uvm_config_db #(virtual riscv_if)::get(this, "", "vif", vif)) begin
+            `uvm_fatal("NOVIF", "Virtual interface not set for riscv_coverage")
+        end
     endfunction
 
     // =========================================================================
-    // WB transaction handler (from subscriber base class)
+    // WB transaction handler
     // =========================================================================
     virtual function void write(wb_txn t);
-        // Sample opcode from the instruction currently in WB
-        // We probe the IF/ID instruction word indirectly — for opcode coverage
-        // we sample the ID/EX pipeline register's opcode at the EX stage.
-        // This is called every WB cycle, but we sample opcode from the instruction
-        // that produced this WB result.
-        // For simplicity, we sample the pipeline state at the time of WB.
+        // Currently not sampling from wb_txn directly.
+        // Pipeline-level coverage is sampled periodically in run_phase().
     endfunction
 
     // =========================================================================
@@ -188,14 +195,9 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     endfunction
 
     // =========================================================================
-    // Periodic sampling task — samples pipeline signals every clock cycle
+    // Periodic sampling task
     // =========================================================================
-    virtual riscv_if vif;
-
     task run_phase(uvm_phase phase);
-        if (!uvm_config_db #(virtual riscv_if)::get(this, "", "vif", vif))
-            `uvm_fatal("NOVIF", "Virtual interface not set for riscv_coverage")
-
         @(posedge vif.rst_n);
 
         forever begin
@@ -205,51 +207,45 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
         end
     endtask
 
+    // =========================================================================
+    // Sample pipeline signals through virtual interface
+    // =========================================================================
     function void sample_pipeline_signals();
-        bit [31:0] id_ex_instr;
-        bit [6:0]  ex_opcode;
-        bit        stall_active;
 
-        stall_active = vif.stall;
+        if (vif.stall) begin
+            return;
+        end
 
-        // Don't sample during stall (pipeline frozen, stale data)
-        if (stall_active) return;
-
-        // Sample the opcode of the instruction in the EX stage
-        // We reconstruct the opcode from the decoded signals:
-        // Use the conv_start and mem signals to infer the opcode class.
-        // For precise opcode tracking, we probe the IF/ID register (2 stages ahead)
-        // or maintain a pipeline shadow. Here we use the IF/ID instr for the
-        // instruction currently being decoded.
         sampled_opcode = vif.if_id_instr[6:0];
         cg_opcode.sample();
 
-        // Sample ALU operands in the EX stage
         sampled_alu_op = vif.id_ex_alu_op;
         sampled_alu_a  = vif.ex_op_a;
         sampled_alu_b  = vif.ex_op_b;
         cg_alu_boundary.sample();
 
-        // Sample branch signals in EX stage
         sampled_is_branch     = vif.id_ex_is_branch;
         sampled_branch_funct3 = vif.id_ex_branch_funct3;
         sampled_branch_taken  = vif.ex_branch_taken;
 
-        if (sampled_is_branch)
+        if (sampled_is_branch) begin
             cg_branch.sample();
+        end
     endfunction
 
     // =========================================================================
     // End-of-test coverage report
     // =========================================================================
     function void report_phase(uvm_phase phase);
-        `uvm_info("COV", $sformatf("========================================"), UVM_NONE)
-        `uvm_info("COV", $sformatf("  Coverage Summary"), UVM_NONE)
+        `uvm_info("COV", "========================================", UVM_NONE)
+        `uvm_info("COV", "  Coverage Summary", UVM_NONE)
         `uvm_info("COV", $sformatf("  cg_opcode:       %.1f%%", cg_opcode.get_inst_coverage()), UVM_NONE)
         `uvm_info("COV", $sformatf("  cg_conv_status:  %.1f%%", cg_conv_status.get_inst_coverage()), UVM_NONE)
         `uvm_info("COV", $sformatf("  cg_alu_boundary: %.1f%%", cg_alu_boundary.get_inst_coverage()), UVM_NONE)
         `uvm_info("COV", $sformatf("  cg_branch:       %.1f%%", cg_branch.get_inst_coverage()), UVM_NONE)
-        `uvm_info("COV", $sformatf("========================================"), UVM_NONE)
+        `uvm_info("COV", "========================================", UVM_NONE)
     endfunction
 
 endclass : riscv_coverage
+
+`endif

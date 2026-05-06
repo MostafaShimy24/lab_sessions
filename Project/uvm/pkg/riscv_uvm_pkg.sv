@@ -1,5 +1,5 @@
 //==============================================================================
-// riscv_uvm_pkg.sv — UVM Package for RISC-V Verification
+// riscv_uvm_pkg.sv ? UVM Package for RISC-V Verification
 //------------------------------------------------------------------------------
 // Imports all UVM testbench classes in dependency order.
 // The `uvm_analysis_imp_decl macros must come before any class that uses them.
@@ -11,7 +11,11 @@ package riscv_uvm_pkg;
     `include "uvm_macros.svh"
 
     // =========================================================================
-    // Analysis port suffix declarations (must precede scoreboard/coverage)
+    // Analysis implementation suffix declarations
+    // Must appear before any class that uses:
+    //   uvm_analysis_imp_wb
+    //   uvm_analysis_imp_store
+    //   uvm_analysis_imp_conv
     // =========================================================================
     `uvm_analysis_imp_decl(_wb)
     `uvm_analysis_imp_decl(_store)
@@ -24,7 +28,12 @@ package riscv_uvm_pkg;
     `include "../agents/dmem_agent/dmem_txn.sv"
 
     // =========================================================================
-    // Monitors (transaction classes defined in monitor files)
+    // Monitors
+    // These files define monitor classes and may also define:
+    //   wb_txn
+    //   store_txn
+    //   conv_txn
+    // Therefore, they must be included before scoreboard and coverage.
     // =========================================================================
     `include "../monitors/wb_monitor.sv"
     `include "../monitors/dmem_store_monitor.sv"
@@ -43,16 +52,23 @@ package riscv_uvm_pkg;
 
     // =========================================================================
     // Scoreboard
+    // Depends on wb_txn, store_txn/dmem_store_txn, and conv_txn.
     // =========================================================================
     `include "../scoreboard/riscv_scoreboard.sv"
 
     // =========================================================================
     // Coverage
+    // Depends on:
+    //   wb_txn
+    //   conv_txn
+    //   uvm_analysis_imp_conv
+    // Must be included after monitor transaction types are known.
     // =========================================================================
     `include "../coverage/riscv_coverage.sv"
 
     // =========================================================================
     // Environment
+    // Depends on agents, scoreboard, and coverage.
     // =========================================================================
     `include "../env/riscv_env.sv"
 
