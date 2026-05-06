@@ -37,8 +37,8 @@ class test_branch extends riscv_base_test;
     function void dump_branch_markers();
         bit [31:0] x30_val, x31_val;
 
-        x30_val = tb_top.u_dut.u_id.u_regfile.regs[30];
-        x31_val = tb_top.u_dut.u_id.u_regfile.regs[31];
+        x30_val = vif.read_regfile(30);
+        x31_val = vif.read_regfile(31);
 
         `uvm_info("TEST", "=== Branch Marker Registers ===", UVM_LOW)
         `uvm_info("TEST", $sformatf("  x30 = 0x%08h", x30_val), UVM_LOW)
@@ -50,7 +50,7 @@ class test_branch extends riscv_base_test;
             bit [31:0] val;
             `uvm_info("TEST", "=== Full Register File ===", UVM_LOW)
             for (i = 1; i < 32; i++) begin
-                val = tb_top.u_dut.u_id.u_regfile.regs[i];
+                val = vif.read_regfile(i);
                 if (val != 0)
                     `uvm_info("TEST", $sformatf("  x%0d = 0x%08h", i, val), UVM_LOW)
             end

@@ -39,11 +39,11 @@ class riscv_base_test extends uvm_test;
 
         // Fill all of imem with NOPs first
         for (i = 0; i < 1024; i++)
-            tb_top.u_dut.u_imem.mem[i] = nop_default;
+            vif.write_imem(i, nop_default);
 
         // Write program words
         for (i = 0; i < program_words.size(); i++) begin
-            tb_top.u_dut.u_imem.mem[i] = program_words[i];
+            vif.write_imem(i, program_words[i]);
             `uvm_info("TEST", $sformatf("  imem[%0d] = 0x%08h", i, program_words[i]), UVM_HIGH)
         end
     endtask
@@ -70,8 +70,8 @@ class riscv_base_test extends uvm_test;
         // Load program during reset
         load_program_backdoor();
         @(negedge vif.clk);
-        // Release reset via force/release on tb_top signal
-        tb_top.rst_n = 1'b1;
+        // Release reset via vif
+        vif.release_reset();
         `uvm_info("TEST", "Reset released", UVM_MEDIUM)
     endtask
 
@@ -88,8 +88,8 @@ class riscv_base_test extends uvm_test;
             #1;
 
             // Check if PC is stuck (self-loop detected)
-            if (tb_top.u_dut.u_if.pc_reg === prev_pc &&
-                !tb_top.u_dut.stall) begin
+            if (vif.pc_reg === prev_pc &&
+                !vif.stall) begin
                 stall_count++;
                 if (stall_count > 5) begin
                     `uvm_info("TEST", $sformatf("Program completed at PC=0x%08h after %0d cycles",

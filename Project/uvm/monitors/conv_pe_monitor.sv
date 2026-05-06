@@ -61,15 +61,15 @@ class conv_pe_monitor extends uvm_monitor;
             @(posedge vif.clk);
             #1;
 
-            curr_state = tb_top.u_dut.u_ex.u_conv_pe.conv_status;
+            curr_state = vif.conv_status;
 
             if (curr_state != prev_state) begin
                 txn = conv_txn::type_id::create("conv_txn");
                 txn.prev_status = prev_state;
                 txn.curr_status = curr_state;
-                txn.busy        = tb_top.u_dut.u_ex.u_conv_pe.conv_busy;
-                txn.done        = tb_top.u_dut.u_ex.u_conv_pe.conv_done;
-                txn.result      = tb_top.u_dut.u_ex.u_conv_pe.conv_result;
+                txn.busy        = vif.conv_busy;
+                txn.done        = vif.conv_done;
+                txn.result      = vif.conv_result;
                 txn.tstamp      = $time;
                 `uvm_info("CONV_MON", txn.convert2string(), UVM_MEDIUM)
                 ap.write(txn);

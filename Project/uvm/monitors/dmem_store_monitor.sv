@@ -54,11 +54,11 @@ class dmem_store_monitor extends uvm_monitor;
             #1;
 
             // Probe the MEM stage store signals
-            if (tb_top.u_dut.ex_mem_mem_write) begin
+            if (vif.ex_mem_mem_write) begin
                 txn = store_txn::type_id::create("store_txn");
-                txn.addr   = tb_top.u_dut.ex_mem_alu_result;
-                txn.data   = tb_top.u_dut.ex_mem_rs2_data;
-                txn.size   = tb_top.u_dut.ex_mem_mem_size;
+                txn.addr   = vif.ex_mem_alu_result;
+                txn.data   = vif.ex_mem_rs2_data;
+                txn.size   = vif.ex_mem_mem_size;
                 txn.tstamp = $time;
                 `uvm_info("STORE_MON", txn.convert2string(), UVM_HIGH)
                 ap.write(txn);

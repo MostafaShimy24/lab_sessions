@@ -53,12 +53,12 @@ class wb_monitor extends uvm_monitor;
             @(posedge vif.clk);
             #1; // sample after clock edge settles
 
-            // Hierarchical probes into the DUT WB signals
-            if (tb_top.u_dut.wb_we && tb_top.u_dut.wb_addr != 5'd0) begin
+            // Hierarchical probes now routed through virtual interface
+            if (vif.wb_we && vif.wb_addr != 5'd0) begin
                 txn = wb_txn::type_id::create("wb_txn");
                 txn.we      = 1'b1;
-                txn.rd_addr = tb_top.u_dut.wb_addr;
-                txn.rd_data = tb_top.u_dut.wb_data;
+                txn.rd_addr = vif.wb_addr;
+                txn.rd_data = vif.wb_data;
                 txn.tstamp  = $time;
                 `uvm_info("WB_MON", txn.convert2string(), UVM_HIGH)
                 ap.write(txn);

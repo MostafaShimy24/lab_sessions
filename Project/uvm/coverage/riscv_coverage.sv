@@ -210,7 +210,7 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
         bit [6:0]  ex_opcode;
         bit        stall_active;
 
-        stall_active = tb_top.u_dut.stall;
+        stall_active = vif.stall;
 
         // Don't sample during stall (pipeline frozen, stale data)
         if (stall_active) return;
@@ -221,19 +221,19 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
         // For precise opcode tracking, we probe the IF/ID register (2 stages ahead)
         // or maintain a pipeline shadow. Here we use the IF/ID instr for the
         // instruction currently being decoded.
-        sampled_opcode = tb_top.u_dut.if_id_instr[6:0];
+        sampled_opcode = vif.if_id_instr[6:0];
         cg_opcode.sample();
 
         // Sample ALU operands in the EX stage
-        sampled_alu_op = tb_top.u_dut.id_ex_alu_op;
-        sampled_alu_a  = tb_top.u_dut.u_ex.op_a;
-        sampled_alu_b  = tb_top.u_dut.u_ex.op_b;
+        sampled_alu_op = vif.id_ex_alu_op;
+        sampled_alu_a  = vif.ex_op_a;
+        sampled_alu_b  = vif.ex_op_b;
         cg_alu_boundary.sample();
 
         // Sample branch signals in EX stage
-        sampled_is_branch     = tb_top.u_dut.id_ex_is_branch;
-        sampled_branch_funct3 = tb_top.u_dut.id_ex_branch_funct3;
-        sampled_branch_taken  = tb_top.u_dut.u_ex.branch_taken;
+        sampled_is_branch     = vif.id_ex_is_branch;
+        sampled_branch_funct3 = vif.id_ex_branch_funct3;
+        sampled_branch_taken  = vif.ex_branch_taken;
 
         if (sampled_is_branch)
             cg_branch.sample();

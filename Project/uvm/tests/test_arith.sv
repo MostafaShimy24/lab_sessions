@@ -49,7 +49,7 @@ class test_arith extends riscv_base_test;
             if (i == 0)
                 val = 32'h0;
             else
-                val = tb_top.u_dut.u_id.u_regfile.regs[i];
+                val = vif.read_regfile(i);
             if (val != 0)
                 `uvm_info("TEST", $sformatf("  x%0d = 0x%08h", i, val), UVM_LOW)
         end

@@ -111,9 +111,9 @@ class riscv_scoreboard extends uvm_scoreboard;
     function void iss_load_from_dut();
         int i;
         for (i = 0; i < 1024; i++)
-            iss_program[i] = tb_top.u_dut.u_imem.mem[i];
+            iss_program[i] = vif.read_imem(i);
         for (i = 0; i < 4096; i++)
-            iss_dmem[i] = tb_top.u_dut.u_mem.u_dmem.mem[i];
+            iss_dmem[i] = vif.read_dmem(i);
         `uvm_info("ISS", "Program and dmem loaded from DUT", UVM_MEDIUM)
     endfunction
 
