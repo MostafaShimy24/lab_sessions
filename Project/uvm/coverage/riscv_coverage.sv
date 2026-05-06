@@ -13,7 +13,7 @@ class riscv_coverage extends uvm_subscriber #(wb_txn);
     `uvm_component_utils(riscv_coverage)
 
     // Analysis export for Conv-PE transactions
-    uvm_analysis_imp_suffix #(conv_txn, conv, riscv_coverage) conv_export;
+    uvm_analysis_imp_conv #(conv_txn, riscv_coverage) conv_export;
 
     // =========================================================================
     // Coverage variables (sampled from DUT via hierarchical probes)

@@ -21,9 +21,9 @@ class riscv_scoreboard extends uvm_scoreboard;
     `uvm_component_utils(riscv_scoreboard)
 
     // Analysis exports
-    uvm_analysis_imp_suffix #(wb_txn, wb, riscv_scoreboard) wb_export;
-    uvm_analysis_imp_suffix #(store_txn, store, riscv_scoreboard) store_export;
-    uvm_analysis_imp_suffix #(conv_txn, conv, riscv_scoreboard) conv_export;
+    uvm_analysis_imp_wb #(wb_txn, riscv_scoreboard) wb_export;
+    uvm_analysis_imp_store #(store_txn, riscv_scoreboard) store_export;
+    uvm_analysis_imp_conv #(conv_txn, riscv_scoreboard) conv_export;
 
     // =========================================================================
     // ISS Reference Model State
