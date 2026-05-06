@@ -78,46 +78,69 @@ class riscv_base_test extends uvm_test;
     // =========================================================================
     // Wait for program to reach terminal self-loop
     // =========================================================================
-    task wait_for_completion(int max_cycles = 5000);
-        int cycle;
-        bit [31:0] prev_pc;
-        int stall_count;
+// =========================================================================
+// Wait for program to reach terminal self-loop
+// =========================================================================
+task wait_for_completion(int max_cycles = 5000);
+    int cycle;
+    bit [31:0] prev_pc;
+    int stall_count;
 
-        for (cycle = 0; cycle < max_cycles; cycle++) begin
-            @(posedge vif.clk);
-            #1;
+    prev_pc = 32'hFFFF_FFFF;
+    stall_count = 0;
 
-            // Check if PC is stuck (self-loop detected)
-            if (vif.pc_reg === prev_pc &&
-                !vif.stall) begin
-                stall_count++;
-                if (stall_count > 5) begin
-                    `uvm_info("TEST", $sformatf("Program completed at PC=0x%08h after %0d cycles",
-                              prev_pc, cycle), UVM_MEDIUM)
-                    return;
-                end
-            end else begin
-                stall_count = 0;
+    for (cycle = 0; cycle < max_cycles; cycle++) begin
+        @(posedge vif.clk);
+        #1;
+
+        // Check if PC is stuck and pipeline is not stalled.
+        // This indicates the terminal self-loop.
+        if ((vif.pc_reg === prev_pc) && !vif.stall) begin
+            stall_count++;
+
+            if (stall_count > 5) begin
+                `uvm_info("TEST", $sformatf(
+                    "Program completed at PC=0x%08h after %0d cycles",
+                    prev_pc,
+                    cycle
+                ), UVM_MEDIUM)
+                return;
             end
-            prev_pc = tb_top.u_dut.u_if.pc_reg;
+        end
+        else begin
+            stall_count = 0;
         end
 
-        `uvm_warning("TEST", $sformatf("Timeout after %0d cycles — PC=0x%08h",
-                     max_cycles, prev_pc))
-    endtask
+        prev_pc = vif.pc_reg;
+    end
+
+    `uvm_warning("TEST", $sformatf(
+        "Timeout after %0d cycles ? PC=0x%08h",
+        max_cycles,
+        prev_pc
+    ))
+endtask
 
     // =========================================================================
     // Default run phase — subclasses override to start specific sequences
     // =========================================================================
-    task run_phase(uvm_phase phase);
-        phase.raise_objection(this);
+// =========================================================================
+// Default run phase ? subclasses override to start specific sequences
+// =========================================================================
+// =========================================================================
+// Default run phase ? subclasses override to start specific sequences
+// =========================================================================
+task run_phase(uvm_phase phase);
+    phase.raise_objection(this);
 
-        apply_reset();
+    apply_reset();
 
-        // Give some time for pipeline drain after completion
-        repeat (20) @(posedge vif.clk);
+    wait_for_completion(5000);
 
-        phase.drop_objection(this);
-    endtask
+    // Give some time for pipeline drain after completion
+    repeat (20) @(posedge vif.clk);
+
+    phase.drop_objection(this);
+endtask
 
 endclass : riscv_base_test
