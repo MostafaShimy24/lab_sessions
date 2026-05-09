@@ -1,7 +1,7 @@
 ==================================================
 PHASE 3 SUMMARY
 ==================================================
-Target Period     : 100000.0000 ns
-WNS               : 32110.1261 ns
-Critical Period   : 67889.8739 ns
-Maximum Frequency : 0.0147 MHz
+Target Period     : 30.0000 ns
+WNS               : 2.6932 ns
+Critical Period   : 27.3068 ns
+Maximum Frequency : 36.6209 MHz

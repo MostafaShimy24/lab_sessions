@@ -30,13 +30,27 @@ fault cut -o riscv_top_cut_netlist.v --clock clk --reset rst_n --activeLow --byp
 
 fault atpg \
 -c riscv_custom_cells.v \
--v 100 \
--r 50 \
--m 95 \
---ceiling 1000 \
+-v 20 \
+-r 15 \
+-m 75 \
+--ceiling 70 \
 riscv_top_cut_netlist.v \
 --clock clk \
 --reset rst_n \
 --activeLow \
 --bypassing VDD=1 \
 --bypassing GND=0
+
+
+
+fault chain \
+  -l /home/asiclab/Desktop/lab_sessions/Project/STA_TASK3/sky130_fd_sc_hd__tt_025C_1v80.lib \
+  -c /home/asiclab/Desktop/lab_sessions/Project/DFT_TASK4/riscv_custom_cells.v \
+  --clock clk \
+  --reset rst_n \
+  --activeLow \
+  --bypassing VDD=1 \
+  --bypassing GND=0 \
+  --dff sky130_fd_sc_hd__dfxtp_1 \
+  -o /home/asiclab/Desktop/lab_sessions/Project/DFT_TASK4/riscv_top_scan_netlist.v \
+  /home/asiclab/Desktop/lab_sessions/Project/DFT_TASK4/riscv_top_fault_netlist.v

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NETLIST=${1:-riscv_top_netlist.v}
+NETLIST=${1:-riscv_top_cut_netlist.v}
 OUTPUT=${2:-riscv_custom_cells.v}
 
 echo "Scanning $NETLIST for sky130 cells..."
