@@ -1,0 +1,45 @@
+Startpoint: __uuf__.u_ex.u_conv_pe._5641_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: __uuf__.u_if._654_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+    Delay      Time   Description
+-------------------------------------------------------------
+   0.0000    0.0000   clock clk (rise edge)
+   0.0000    0.0000   clock source latency
+   0.1375    0.1375 ^ clk (in)
+   0.1629    0.3004 ^ _1969_/X (sky130_fd_sc_hd__mux2_1)
+   0.3001    0.6005 ^ clkbuf_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.3355    0.9360 ^ clkbuf_3_4_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1868    1.1228 ^ clkbuf_7_69_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1771    1.2999 ^ clkbuf_8_139__f___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.0006    1.3006 ^ __uuf__.u_ex.u_conv_pe._5641_/CLK (sky130_fd_sc_hd__dfxtp_1)
+   0.3560    1.6566 v __uuf__.u_ex.u_conv_pe._5641_/Q (sky130_fd_sc_hd__dfxtp_1)
+  36.1311   37.7877 ^ __uuf__.u_ex.u_conv_pe._2823_/X (sky130_fd_sc_hd__lpflow_isobufsrc_1)
+  18.5911   56.3788 v __uuf__.u_if._365_/Y (sky130_fd_sc_hd__nand2b_1)
+   2.2859   58.6647 v __uuf__.u_if._451_/X (sky130_fd_sc_hd__o221a_1)
+   0.3156   58.9804 v _1995_/X (sky130_fd_sc_hd__mux2_1)
+   0.0001   58.9804 v __uuf__.u_if._654_/D (sky130_fd_sc_hd__dfxtp_1)
+            58.9804   data arrival time
+
+1000.0000 1000.0000   clock clk (rise edge)
+   0.0000 1000.0000   clock source latency
+   0.1374 1000.1375 ^ clk (in)
+   0.1629 1000.3004 ^ _1969_/X (sky130_fd_sc_hd__mux2_1)
+   0.2909 1000.5913 ^ clkbuf_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.3295 1000.9208 ^ clkbuf_3_7_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1813 1001.1021 ^ clkbuf_7_117_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1662 1001.2683 ^ clkbuf_8_234__f___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.0010 1001.2693 ^ __uuf__.u_if._654_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.1000 1001.1693   clock uncertainty
+   0.0092 1001.1785   clock reconvergence pessimism
+  -0.1955 1000.9831   library setup time
+          1000.9831   data required time
+-------------------------------------------------------------
+          1000.9831   data required time
+           -58.9804   data arrival time
+-------------------------------------------------------------
+           942.0026   slack (MET)
+
+
