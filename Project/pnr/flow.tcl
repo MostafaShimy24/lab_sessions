@@ -56,7 +56,11 @@ set_voltage_domain -name CORE -power VDD -ground VSS
 
 # We use robust stripes to ensure IR drop < 5% (90mV for 1.8V VDD)
 define_pdn_grid -name stdcell_grid -starts_with POWER -voltage_domain CORE -pins {met1 met4}
-add_pdn_stripe -grid stdcell_grid -layer met1 -width 0.48 -pitch 5.44 -offset 0 -starts_with POWER -followpins
+
+# FIX: Removed pitch, offset, and starts_with for the followpins layer
+add_pdn_stripe -grid stdcell_grid -layer met1 -width 0.48 -followpins
+
+# Vertical met4 stripes
 add_pdn_stripe -grid stdcell_grid -layer met4 -width 1.6 -pitch 10.0 -offset 2.0 -starts_with POWER
 add_pdn_connect -grid stdcell_grid -layers {met1 met4}
 
@@ -119,6 +123,9 @@ detailed_route
 # ==============================================================================
 # TASK: POST-LAYOUT ANALYSIS & EXPORTS
 # ==============================================================================
+
+# FIX: Logically tie power/ground to all newly inserted CTS and Filler cells
+global_connect
 
 # Write final DEF layout file
 write_def $results_dir/final.def
