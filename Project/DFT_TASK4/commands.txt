@@ -30,10 +30,10 @@ fault cut -o riscv_top_cut_netlist.v --clock clk --reset rst_n --activeLow --byp
 
 fault atpg \
 -c riscv_custom_cells.v \
--v 20 \
--r 15 \
--m 75 \
---ceiling 70 \
+-v 150 \
+-r 25 \
+-m 95 \
+--ceiling 1200 \
 riscv_top_cut_netlist.v \
 --clock clk \
 --reset rst_n \

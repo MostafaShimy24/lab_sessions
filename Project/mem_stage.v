@@ -84,8 +84,8 @@ module mem_stage #(
     wire [31:0] load_data;
 
     dmem #(
-        .DEPTH_BYTES (64),
-        .ADDR_WIDTH  (6),
+        .DEPTH_BYTES (1),
+        .ADDR_WIDTH  (1),
         .HEX_FILE    (DMEM_HEX)
     ) u_dmem (
         .clk      (clk),

@@ -47,8 +47,8 @@
 `default_nettype none
 
 module dmem #(
-    parameter integer DEPTH_BYTES = 4096,           // 4 KB
-    parameter integer ADDR_WIDTH  = 12,             // log2(DEPTH_BYTES) = 12
+    parameter integer DEPTH_BYTES = 1,           // 4 KB
+    parameter integer ADDR_WIDTH  = 1,             // log2(DEPTH_BYTES) = 12
     parameter         HEX_FILE    = "data.hex",     // optional pre-load
     parameter [31:0]  ZERO_FILL   = 32'h00000000    // power-up word value
 ) (
