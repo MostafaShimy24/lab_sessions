@@ -1,0 +1,29 @@
+[tasks]
+cover
+
+[options]
+cover: mode cover
+cover: depth 30
+cover: append 5
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal id_ex_formal.sv
+read -formal -D FORMAL id_ex_wrapper.v
+read -formal id_stage.v
+read -formal ex_stage.v
+read -formal regfile.v
+read -formal alu.v
+read -formal conv_pe.v
+prep -top id_ex_wrapper -flatten
+
+[files]
+id_ex_formal.sv
+../rtl/src/id_ex_wrapper.v
+../rtl/src/id_stage.v
+../rtl/src/ex_stage.v
+../rtl/src/regfile.v
+../rtl/src/alu.v
+../rtl/src/conv_pe.v

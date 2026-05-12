@@ -18,7 +18,7 @@ read_verilog -sv ../rtl/src/dmem.v
 hierarchy -check -top riscv_top_synth
 
 # ── Step 3: Show netlist BEFORE optimisation (hierarchical view) ──────────────
-show -stretch -format dot -prefix show_before riscv_top_synth
+show -stretch -format dot -prefix ./results/show_before riscv_top_synth
 
 # ── Step 4: Flatten — merge all submodules into one netlist ──────────────────
 # Required so opt/abc can see and optimise all logic together
@@ -41,10 +41,10 @@ abc -liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib -D 10
 clean
 
 # ── Step 7: Show netlist AFTER optimisation (gate-level view) ─────────────────
-show -stretch -format dot -prefix show_after riscv_top_synth
+show -stretch -format dot -prefix ./results/show_after riscv_top_synth
 
 # ── Step 8: Write gate-level netlist ─────────────────────────────────────────
-write_verilog -noattr -noexpr -nohex -nodec ./riscv_top_netlist.v
+write_verilog -noattr -noexpr -nohex -nodec ./results/riscv_top_netlist.v
 
 # ── Step 9: Print statistics ──────────────────────────────────────────────────
 stat -liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib

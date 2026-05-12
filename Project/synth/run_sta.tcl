@@ -19,7 +19,7 @@ read_liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib
 # READ GATE-LEVEL NETLIST
 # ============================================================
 
-read_verilog $WORK_DIR/riscv_top_netlist.v
+read_verilog $WORK_DIR/results/riscv_top_netlist.v
 
 # ============================================================
 # LINK DESIGN
@@ -53,7 +53,7 @@ report_checks \
     -format full_clock_expanded \
     -fields {slew cap input nets fanout} \
     -digits 4 \
-    > $WORK_DIR/setup_timing.rpt
+    > $WORK_DIR/results/setup_timing.rpt
 
 # ============================================================
 # HOLD TIMING REPORT
@@ -63,13 +63,13 @@ report_checks \
     -path_delay min \
     -format full_clock_expanded \
     -digits 4 \
-    > $WORK_DIR/hold_timing.rpt
+    > $WORK_DIR/results/hold_timing.rpt
 
 # ============================================================
 # WNS / TNS REPORT
 # ============================================================
 
-set wns_file [open "$WORK_DIR/wns_tns.rpt" w]
+set wns_file [open "$WORK_DIR/results/wns_tns.rpt" w]
 
 puts $wns_file "=================================================="
 puts $wns_file "WNS / TNS REPORT"
@@ -92,13 +92,13 @@ report_check_types \
     -max_cap \
     -max_fanout \
     -violators \
-    > $WORK_DIR/violations.rpt
+    > $WORK_DIR/results/violations.rpt
 
 # ============================================================
 # MAXIMUM FREQUENCY SUMMARY
 # ============================================================
 
-set summary_file [open "$WORK_DIR/summary.rpt" w]
+set summary_file [open "$WORK_DIR/results/summary.rpt" w]
 
 set wns [sta::worst_slack -max]
 
@@ -123,7 +123,7 @@ close $summary_file
 # POWER REPORT
 # ============================================================
 
-report_power > $WORK_DIR/power_report.rpt
+report_power > $WORK_DIR/results/power_report.rpt
 
 puts ""
 puts "=================================================="

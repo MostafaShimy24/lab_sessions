@@ -5,7 +5,7 @@ fault synth \
 -l ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib \
 -t riscv_top_synth \
 -o riscv_top_fault_netlist.v \
-../synth/riscv_top_netlist.v
+../synth/results/riscv_top_netlist.v
 
 
 
