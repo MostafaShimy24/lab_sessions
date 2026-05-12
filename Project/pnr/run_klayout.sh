@@ -5,10 +5,10 @@
 # ==============================================================================
 
 # Define paths
-export PDK_ROOT="/mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A"
+export PDK_ROOT="../pdk"
 
 # The Sky130 Manufacturing Rule (MR) DRC deck for KLayout
-export DRC_DECK="$PDK_ROOT/libs.tech/klayout/drc/sky130A_mr.drc"
+export DRC_DECK="$PDK_ROOT/sky130A_mr.drc"
 
 cd results
 

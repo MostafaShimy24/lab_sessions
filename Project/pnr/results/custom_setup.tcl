@@ -539,3 +539,15 @@ ignore class sky130_fd_sc_hd__tapvpwrvgnd_1
 # Force top-level net mapping
 equate nodes riscv_top_synth VDD VDD
 equate nodes riscv_top_synth VSS VSS
+
+# --- CUSTOM LAB ALIGNMENT ---
+# Ignore physical-only filler and tap cells for Gate-Level LVS
+ignore class sky130_fd_sc_hd__fill_1
+ignore class sky130_fd_sc_hd__fill_2
+ignore class sky130_fd_sc_hd__fill_4
+ignore class sky130_fd_sc_hd__fill_8
+ignore class sky130_fd_sc_hd__tapvpwrvgnd_1
+
+# Force top-level net mapping
+equate nodes riscv_top_synth VDD VDD
+equate nodes riscv_top_synth VSS VSS

@@ -1,0 +1,38 @@
+Warning: run_sta.tcl line 1, unknown field nets.
+Startpoint: u_ex/u_conv_pe/_5641_
+            (rising edge-triggered flip-flop clocked by clk)
+Endpoint: u_ex/u_conv_pe/_5696_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout       Cap      Slew     Delay      Time   Description
+-------------------------------------------------------------------------------------
+                    0.0000    0.0000    0.0000   clock clk (rise edge)
+                              0.0000    0.0000   clock network delay (ideal)
+                    0.0000    0.0000    0.0000 ^ u_ex/u_conv_pe/_5641_/CLK (sky130_fd_sc_hd__dfxtp_1)
+     3    0.0068    0.0445    0.2917    0.2917 v u_ex/u_conv_pe/_5641_/Q (sky130_fd_sc_hd__dfxtp_1)
+                    0.0445    0.0000    0.2917 v u_ex/u_conv_pe/_2823_/SLEEP (sky130_fd_sc_hd__lpflow_isobufsrc_1)
+   705    2.6683   47.2047   34.3681   34.6599 ^ u_ex/u_conv_pe/_2823_/X (sky130_fd_sc_hd__lpflow_isobufsrc_1)
+                   47.2047    0.0000   34.6599 ^ u_ex/u_conv_pe/_2831_/B (sky130_fd_sc_hd__nand2_1)
+    40    0.0882    6.5995   13.2782   47.9381 v u_ex/u_conv_pe/_2831_/Y (sky130_fd_sc_hd__nand2_1)
+                    6.5995    0.0000   47.9381 v u_ex/u_conv_pe/_4218_/C1 (sky130_fd_sc_hd__a221oi_1)
+     1    0.0025    1.0894    1.9374   49.8754 ^ u_ex/u_conv_pe/_4218_/Y (sky130_fd_sc_hd__a221oi_1)
+                    1.0894    0.0000   49.8754 ^ u_ex/u_conv_pe/_4220_/A (sky130_fd_sc_hd__nor2_1)
+     1    0.0017    0.1359    0.0929   49.9683 v u_ex/u_conv_pe/_4220_/Y (sky130_fd_sc_hd__nor2_1)
+                    0.1359    0.0000   49.9683 v u_ex/u_conv_pe/_5696_/D (sky130_fd_sc_hd__dfxtp_1)
+                                       49.9683   data arrival time
+
+                    0.0000   60.0000   60.0000   clock clk (rise edge)
+                              0.0000   60.0000   clock network delay (ideal)
+                             -0.1000   59.9000   clock uncertainty
+                              0.0000   59.9000   clock reconvergence pessimism
+                                       59.9000 ^ u_ex/u_conv_pe/_5696_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                             -0.1610   59.7390   library setup time
+                                       59.7390   data required time
+-------------------------------------------------------------------------------------
+                                       59.7390   data required time
+                                      -49.9683   data arrival time
+-------------------------------------------------------------------------------------
+                                        9.7706   slack (MET)
+
+

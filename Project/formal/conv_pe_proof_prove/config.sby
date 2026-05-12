@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal conv_pe_formal.sv
+read -formal conv_pe.v
+prep -top conv_pe
+
+[files]
+conv_pe_formal.sv
+conv_pe.v

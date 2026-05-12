@@ -23,23 +23,23 @@ Path Type: max
    0.0001   58.9804 v __uuf__.u_if._654_/D (sky130_fd_sc_hd__dfxtp_1)
             58.9804   data arrival time
 
-1000.0000 1000.0000   clock clk (rise edge)
-   0.0000 1000.0000   clock source latency
-   0.1374 1000.1375 ^ clk (in)
-   0.1629 1000.3004 ^ _1969_/X (sky130_fd_sc_hd__mux2_1)
-   0.2909 1000.5913 ^ clkbuf_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
-   0.3295 1000.9208 ^ clkbuf_3_7_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
-   0.1813 1001.1021 ^ clkbuf_7_117_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
-   0.1662 1001.2683 ^ clkbuf_8_234__f___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
-   0.0010 1001.2693 ^ __uuf__.u_if._654_/CLK (sky130_fd_sc_hd__dfxtp_1)
-  -0.1000 1001.1693   clock uncertainty
-   0.0092 1001.1785   clock reconvergence pessimism
-  -0.1955 1000.9831   library setup time
-          1000.9831   data required time
+  60.0000   60.0000   clock clk (rise edge)
+   0.0000   60.0000   clock source latency
+   0.1375   60.1375 ^ clk (in)
+   0.1629   60.3004 ^ _1969_/X (sky130_fd_sc_hd__mux2_1)
+   0.2909   60.5913 ^ clkbuf_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.3294   60.9207 ^ clkbuf_3_7_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1813   61.1021 ^ clkbuf_7_117_0___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.1662   61.2683 ^ clkbuf_8_234__f___uuf__.__clk_source__/X (sky130_fd_sc_hd__clkbuf_4)
+   0.0010   61.2693 ^ __uuf__.u_if._654_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.1000   61.1693   clock uncertainty
+   0.0092   61.1784   clock reconvergence pessimism
+  -0.1955   60.9830   library setup time
+            60.9830   data required time
 -------------------------------------------------------------
-          1000.9831   data required time
+            60.9830   data required time
            -58.9804   data arrival time
 -------------------------------------------------------------
-           942.0026   slack (MET)
+             2.0025   slack (MET)
 
 

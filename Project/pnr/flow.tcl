@@ -3,10 +3,10 @@
 # ==============================================================================
 
 # 1. Setup PDK Paths
-set pdk_base "/mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A"
-set tech_lef "${pdk_base}/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef"
-set macro_lef "${pdk_base}/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef"
-set lib_file "${pdk_base}/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+set pdk_base "../pdk"
+set tech_lef "${pdk_base}/sky130_fd_sc_hd__nom.tlef"
+set macro_lef "${pdk_base}/sky130_fd_sc_hd.lef"
+set lib_file "${pdk_base}/sky130_fd_sc_hd__tt_025C_1v80.lib"
 
 set_thread_count 16
 
@@ -19,10 +19,10 @@ read_lef $tech_lef
 read_lef $macro_lef
 read_liberty $lib_file
 
-# Read scan netlist from DFT_TASK4
-read_verilog ../DFT_TASK4/riscv_top_scan_netlist.v
+# Read scan netlist from dft
+read_verilog ../dft/riscv_top_scan_netlist.v
 link_design riscv_top_synth
-read_sdc ../STA_TASK3/constraints.sdc
+read_sdc ../synth/constraints.sdc
 
 # ==============================================================================
 # FLOORPLANNING
@@ -132,7 +132,7 @@ write_def $results_dir/final.def
 write_verilog -include_pwr_gnd $results_dir/final.v
 
 # 1. Define the SKY130 extraction rules file
-set ext_rules "${pdk_base}/libs.tech/librelane/rules.openrcx.sky130A.nom.spef_extractor"
+set ext_rules "${pdk_base}/rules.openrcx.sky130A.nom.spef_extractor"
 
 # 2. Run the formal RC extraction engine
 extract_parasitics -ext_model_file $ext_rules

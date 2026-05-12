@@ -1,18 +1,18 @@
 #!/bin/bash
 
-export PDK_ROOT="/mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A"
+export PDK_ROOT="../pdk"
 
 echo "========================================"
 echo "      STEP 1: SPICE EXTRACTION          "
 echo "========================================"
-magic -dnull -noconsole -T $PDK_ROOT/libs.tech/magic/sky130A.tech extract_layout.tcl
+magic -dnull -noconsole -T $PDK_ROOT/sky130A.tech extract_layout.tcl
 
 echo ""
 echo "========================================"
 echo "      STEP 2: PREPARING LVS SETUP       "
 echo "========================================"
 # Copy the default foundry setup script
-cp $PDK_ROOT/libs.tech/netgen/sky130A_setup.tcl results/custom_setup.tcl
+cp $PDK_ROOT/sky130A_setup.tcl results/custom_setup.tcl
 
 # Inject commands to make Netgen ignore the physical dummy cells
 cat << 'EOF' >> results/custom_setup.tcl

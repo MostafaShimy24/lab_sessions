@@ -1,9 +1,0 @@
-Elapsed clock time [H:MM:SS (secs)]: 0:10:42 (642)
-Elapsed process time [H:MM:SS (secs)]: 0:10:42 (642)
-engine_0 (smtbmc z3) returned pass
-cover trace: engine_0/trace0.vcd
-cover trace: engine_0/trace0.yw
-  reached cover statement id_ex_wrapper._witness_.check_cover_id_ex_wrapper_v_424_40 at id_ex_wrapper.v:424.13-428.14 step 1
-cover trace: engine_0/trace1.vcd
-cover trace: engine_0/trace1.yw
-  reached cover statement id_ex_wrapper._witness_.check_cover_id_ex_wrapper_v_412_33 at id_ex_wrapper.v:412.13-417.14 step 1

@@ -1,9 +1,9 @@
-set PDK_ROOT "/mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A"
+set PDK_ROOT "../pdk"
 
 puts "--- 1. Reading Tech LEF and Standard Cell LEF ---"
 # Magic MUST read the tech LEF first to understand vias!
-lef read $PDK_ROOT/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
-lef read $PDK_ROOT/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
+lef read $PDK_ROOT/sky130_fd_sc_hd__nom.tlef
+lef read $PDK_ROOT/sky130_fd_sc_hd.lef
 
 puts "--- 2. Reading Routed DEF ---"
 def read results/final.def

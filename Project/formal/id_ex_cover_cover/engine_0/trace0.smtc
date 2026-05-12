@@ -1,0 +1,62 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$900] false)
+assume (= [$auto$async2sync.cc:116:execute$904] true)
+assume (= [$auto$async2sync.cc:116:execute$910] true)
+assume (= [cycle_count] #b001100)
+assume (= [id_ex_branch_funct3] #b000)
+assume (= [id_ex_conv_start] true)
+assume (= [id_ex_is_branch] true)
+assume (= [id_ex_is_jal] false)
+assume (= [id_ex_is_jalr] false)
+assume (= [id_ex_rd_addr] #b00100)
+assume (= [id_ex_reg_write] false)
+assume (= [id_ex_rs1_data] #x00000100)
+assume (= [id_ex_rs2_data] #x00040000)
+assume (= [seen_conv_start] true)
+assume (= [seen_instr] true)
+assume (= [u_ex.conv_start_i_r] false)
+assume (= [u_ex.u_conv_pe.cnt_r] #x2)
+assume (= [u_ex.u_conv_pe.state_r] #b10)
+assume (= (select [u_id.u_regfile.regs] #b00000) #x00001000)
+
+state 0
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 1
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 2
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 3
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 4
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 5
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)
+
+state 6
+assume (= [clk] false)
+assume (= [instr_i] #x00000013)
+assume (= [pc_i] #x00000000)
+assume (= [rst_n] true)

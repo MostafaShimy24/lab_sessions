@@ -1,18 +1,18 @@
 # ==============================================================================
 # run_drc.tcl - Magic Script for GDS Generation and DRC Analysis
 # ==============================================================================
-# magic -dnull -noconsole -T /mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A/libs.tech/magic/sky130A.tech run_drc.tcl
+# magic -dnull -noconsole -T ../pdk/sky130A.tech run_drc.tcl
 
-set PDK_ROOT "/mnt/FA685EF1685EAC5F/University/Advanced-Microelectronics-Lab/pdk/sky130A"
+set PDK_ROOT "../pdk"
 
 puts "--- 1. Reading Standard Cell LEF ---"
 # Magic needs the LEF first to understand the bounding boxes and pin locations
-lef read $PDK_ROOT/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
-lef read $PDK_ROOT/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef
+lef read $PDK_ROOT/sky130_fd_sc_hd.lef
+lef read $PDK_ROOT/sky130_fd_sc_hd__nom.tlef
 
 puts "--- 2. Loading Standard Cell GDS ---"
 # Replace the abstract LEF boxes with the actual physical transistor layouts
-gds read $PDK_ROOT/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+gds read $PDK_ROOT/sky130_fd_sc_hd.gds
 
 puts "--- 3. Reading Routed DEF ---"
 # Load your routing from OpenROAD

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/YosysHQ/yosys/main/misc/jny.schema.json",
+  "generator": "Yosys 0.63+87 (git sha1 2f1cdc2df, clang++ 18.1.8 -fPIC -O3)",
+  "version": "0.0.1",
+  "invocation": "write_jny -no-connections ../model/design.json ",
+  "features": ["attributes", "properties"],
+  "modules": [
+      {
+        "name": "riscv_top",
+        "cell_sorts": [
+
+        ],
+        "attributes": {
+            "hdlname": "riscv_top",
+            "top": "00000000000000000000000000000001",
+            "src": "riscv_top.v:38.1-490.10"
+        }
+      }
+  ]
+}
