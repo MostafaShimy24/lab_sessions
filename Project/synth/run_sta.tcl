@@ -102,7 +102,7 @@ set summary_file [open "$WORK_DIR/results/summary.rpt" w]
 
 set wns [sta::worst_slack -max]
 
-set target_period 30.0
+set target_period 60.0
 
 set critical_period [expr {$target_period - $wns}]
 
