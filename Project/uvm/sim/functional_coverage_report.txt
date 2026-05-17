@@ -1,0 +1,516 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /riscv_uvm_pkg
+=== Design Unit: work.riscv_uvm_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      4        na        na    44.79%
+        Coverpoints/Crosses         11        na        na        na
+            Covergroup Bins         66        23        43    34.84%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_opcode          33.33%        100          -    Uncovered            
+    covered/total bins:                                     4         12          -                      
+    missing/total bins:                                     8         12          -                      
+    % Hit:                                             33.33%        100          -                      
+    Coverpoint cp_opcode                               33.33%        100          -    Uncovered            
+        covered/total bins:                                 4         12          -                      
+        missing/total bins:                                 8         12          -                      
+        % Hit:                                         33.33%        100          -                      
+        bin r_type                                          0          1          -    ZERO                 
+        bin i_arith                                      6042          1          -    Covered              
+        bin load                                            0          1          -    ZERO                 
+        bin store                                           0          1          -    ZERO                 
+        bin branch                                          0          1          -    ZERO                 
+        bin jal                                          1995          1          -    Covered              
+        bin jalr                                            0          1          -    ZERO                 
+        bin lui                                             2          1          -    Covered              
+        bin auipc                                           0          1          -    ZERO                 
+        bin fence                                           0          1          -    ZERO                 
+        bin system                                          0          1          -    ZERO                 
+        bin custom0                                         2          1          -    Covered              
+ Covergroup instance cg_opcode                         33.33%        100          -    Uncovered            
+    covered/total bins:                                     4         12          -                      
+    missing/total bins:                                     8         12          -                      
+    % Hit:                                             33.33%        100          -                      
+    Coverpoint cp_opcode                               33.33%        100          -    Uncovered            
+        covered/total bins:                                 4         12          -                      
+        missing/total bins:                                 8         12          -                      
+        % Hit:                                         33.33%        100          -                      
+        bin r_type                                          0          1          -    ZERO                 
+        bin i_arith                                      6042          1          -    Covered              
+        bin load                                            0          1          -    ZERO                 
+        bin store                                           0          1          -    ZERO                 
+        bin branch                                          0          1          -    ZERO                 
+        bin jal                                          1995          1          -    Covered              
+        bin jalr                                            0          1          -    ZERO                 
+        bin lui                                             2          1          -    Covered              
+        bin auipc                                           0          1          -    ZERO                 
+        bin fence                                           0          1          -    ZERO                 
+        bin system                                          0          1          -    ZERO                 
+        bin custom0                                         2          1          -    Covered              
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_conv_status     83.33%        100          -    Uncovered            
+    covered/total bins:                                     9         12          -                      
+    missing/total bins:                                     3         12          -                      
+    % Hit:                                             75.00%        100          -                      
+    Coverpoint cp_prev                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Coverpoint cp_curr                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Cross cx_transition                                50.00%        100          -    Uncovered            
+        covered/total bins:                                 3          6          -                      
+        missing/total bins:                                 3          6          -                      
+        % Hit:                                         50.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin idle_to_busy                                2          1          -    Covered              
+            bin busy_to_done                                2          1          -    Covered              
+            bin done_to_idle                                2          1          -    Covered              
+            bin <*,*>                                       0          1          9    ZERO                 
+        Illegal and Ignore Bins:
+            ignore_bin done_stay                            0                     -    ZERO                 
+            ignore_bin busy_stay                            0                     -    ZERO                 
+            ignore_bin idle_stay                            0                     -    ZERO                 
+ Covergroup instance cg_conv_status                    83.33%        100          -    Uncovered            
+    covered/total bins:                                     9         12          -                      
+    missing/total bins:                                     3         12          -                      
+    % Hit:                                             75.00%        100          -                      
+    Coverpoint cp_prev                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Coverpoint cp_curr                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Cross cx_transition                                50.00%        100          -    Uncovered            
+        covered/total bins:                                 3          6          -                      
+        missing/total bins:                                 3          6          -                      
+        % Hit:                                         50.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin idle_to_busy                                2          1          -    Covered              
+            bin busy_to_done                                2          1          -    Covered              
+            bin done_to_idle                                2          1          -    Covered              
+            bin <*,*>                                       0          1          9    ZERO                 
+        Illegal and Ignore Bins:
+            ignore_bin done_stay                            0                     -    ZERO                 
+            ignore_bin busy_stay                            0                     -    ZERO                 
+            ignore_bin idle_stay                            0                     -    ZERO                 
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_alu_boundary 
+                                                       62.50%        100          -    Uncovered            
+    covered/total bins:                                    10         22          -                      
+    missing/total bins:                                    12         22          -                      
+    % Hit:                                             45.45%        100          -                      
+    Coverpoint cp_operand_a                            60.00%        100          -    Uncovered            
+        covered/total bins:                                 3          5          -                      
+        missing/total bins:                                 2          5          -                      
+        % Hit:                                         60.00%        100          -                      
+        bin zero                                         8038          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         0          1          -    ZERO                 
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         1          1          -    Covered              
+        default bin others                                  1                     -    Occurred             
+    Coverpoint cp_operand_b                            80.00%        100          -    Uncovered            
+        covered/total bins:                                 4          5          -                      
+        missing/total bins:                                 1          5          -                      
+        % Hit:                                         80.00%        100          -                      
+        bin zero                                         8033          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         2          1          -    Covered              
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         2          1          -    Covered              
+        default bin others                                  3                     -    Occurred             
+    Coverpoint cp_shift_amt                           100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero_shift                                   8035          1          -    Covered              
+        bin max_shift                                       2          1          -    Covered              
+        default bin others                                  4                     -    Occurred             
+    Coverpoint cp_alu_op                               10.00%        100          -    Uncovered            
+        covered/total bins:                                 1         10          -                      
+        missing/total bins:                                 9         10          -                      
+        % Hit:                                         10.00%        100          -                      
+        bin add                                          8041          1          -    Covered              
+        bin sub                                             0          1          -    ZERO                 
+        bin sll                                             0          1          -    ZERO                 
+        bin slt                                             0          1          -    ZERO                 
+        bin sltu                                            0          1          -    ZERO                 
+        bin xor_                                            0          1          -    ZERO                 
+        bin srl                                             0          1          -    ZERO                 
+        bin sra                                             0          1          -    ZERO                 
+        bin or_                                             0          1          -    ZERO                 
+        bin and_                                            0          1          -    ZERO                 
+ Covergroup instance cg_alu_boundary                   62.50%        100          -    Uncovered            
+    covered/total bins:                                    10         22          -                      
+    missing/total bins:                                    12         22          -                      
+    % Hit:                                             45.45%        100          -                      
+    Coverpoint cp_operand_a                            60.00%        100          -    Uncovered            
+        covered/total bins:                                 3          5          -                      
+        missing/total bins:                                 2          5          -                      
+        % Hit:                                         60.00%        100          -                      
+        bin zero                                         8038          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         0          1          -    ZERO                 
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         1          1          -    Covered              
+        default bin others                                  1                     -    Occurred             
+    Coverpoint cp_operand_b                            80.00%        100          -    Uncovered            
+        covered/total bins:                                 4          5          -                      
+        missing/total bins:                                 1          5          -                      
+        % Hit:                                         80.00%        100          -                      
+        bin zero                                         8033          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         2          1          -    Covered              
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         2          1          -    Covered              
+        default bin others                                  3                     -    Occurred             
+    Coverpoint cp_shift_amt                           100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero_shift                                   8035          1          -    Covered              
+        bin max_shift                                       2          1          -    Covered              
+        default bin others                                  4                     -    Occurred             
+    Coverpoint cp_alu_op                               10.00%        100          -    Uncovered            
+        covered/total bins:                                 1         10          -                      
+        missing/total bins:                                 9         10          -                      
+        % Hit:                                         10.00%        100          -                      
+        bin add                                          8041          1          -    Covered              
+        bin sub                                             0          1          -    ZERO                 
+        bin sll                                             0          1          -    ZERO                 
+        bin slt                                             0          1          -    ZERO                 
+        bin sltu                                            0          1          -    ZERO                 
+        bin xor_                                            0          1          -    ZERO                 
+        bin srl                                             0          1          -    ZERO                 
+        bin sra                                             0          1          -    ZERO                 
+        bin or_                                             0          1          -    ZERO                 
+        bin and_                                            0          1          -    ZERO                 
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_branch           0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         20          -                      
+    missing/total bins:                                    20         20          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp_branch_type                           0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          6          -                      
+        missing/total bins:                                 6          6          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin beq                                             0          1          -    ZERO                 
+        bin bne                                             0          1          -    ZERO                 
+        bin blt                                             0          1          -    ZERO                 
+        bin bge                                             0          1          -    ZERO                 
+        bin bltu                                            0          1          -    ZERO                 
+        bin bgeu                                            0          1          -    ZERO                 
+    Coverpoint cp_taken                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          2          -                      
+        missing/total bins:                                 2          2          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin taken                                           0          1          -    ZERO                 
+        bin not_taken                                       0          1          -    ZERO                 
+    Cross cx_branch_x_taken                             0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         12          -                      
+        missing/total bins:                                12         12          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*>                                       0          1         12    ZERO                 
+ Covergroup instance cg_branch                          0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         20          -                      
+    missing/total bins:                                    20         20          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp_branch_type                           0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          6          -                      
+        missing/total bins:                                 6          6          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin beq                                             0          1          -    ZERO                 
+        bin bne                                             0          1          -    ZERO                 
+        bin blt                                             0          1          -    ZERO                 
+        bin bge                                             0          1          -    ZERO                 
+        bin bltu                                            0          1          -    ZERO                 
+        bin bgeu                                            0          1          -    ZERO                 
+    Coverpoint cp_taken                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          2          -                      
+        missing/total bins:                                 2          2          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin taken                                           0          1          -    ZERO                 
+        bin not_taken                                       0          1          -    ZERO                 
+    Cross cx_branch_x_taken                             0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         12          -                      
+        missing/total bins:                                12         12          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*>                                       0          1         12    ZERO                 
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_opcode          33.33%        100          -    Uncovered            
+    covered/total bins:                                     4         12          -                      
+    missing/total bins:                                     8         12          -                      
+    % Hit:                                             33.33%        100          -                      
+    Coverpoint cp_opcode                               33.33%        100          -    Uncovered            
+        covered/total bins:                                 4         12          -                      
+        missing/total bins:                                 8         12          -                      
+        % Hit:                                         33.33%        100          -                      
+        bin r_type                                          0          1          -    ZERO                 
+        bin i_arith                                      6042          1          -    Covered              
+        bin load                                            0          1          -    ZERO                 
+        bin store                                           0          1          -    ZERO                 
+        bin branch                                          0          1          -    ZERO                 
+        bin jal                                          1995          1          -    Covered              
+        bin jalr                                            0          1          -    ZERO                 
+        bin lui                                             2          1          -    Covered              
+        bin auipc                                           0          1          -    ZERO                 
+        bin fence                                           0          1          -    ZERO                 
+        bin system                                          0          1          -    ZERO                 
+        bin custom0                                         2          1          -    Covered              
+ Covergroup instance cg_opcode                         33.33%        100          -    Uncovered            
+    covered/total bins:                                     4         12          -                      
+    missing/total bins:                                     8         12          -                      
+    % Hit:                                             33.33%        100          -                      
+    Coverpoint cp_opcode                               33.33%        100          -    Uncovered            
+        covered/total bins:                                 4         12          -                      
+        missing/total bins:                                 8         12          -                      
+        % Hit:                                         33.33%        100          -                      
+        bin r_type                                          0          1          -    ZERO                 
+        bin i_arith                                      6042          1          -    Covered              
+        bin load                                            0          1          -    ZERO                 
+        bin store                                           0          1          -    ZERO                 
+        bin branch                                          0          1          -    ZERO                 
+        bin jal                                          1995          1          -    Covered              
+        bin jalr                                            0          1          -    ZERO                 
+        bin lui                                             2          1          -    Covered              
+        bin auipc                                           0          1          -    ZERO                 
+        bin fence                                           0          1          -    ZERO                 
+        bin system                                          0          1          -    ZERO                 
+        bin custom0                                         2          1          -    Covered              
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_conv_status     83.33%        100          -    Uncovered            
+    covered/total bins:                                     9         12          -                      
+    missing/total bins:                                     3         12          -                      
+    % Hit:                                             75.00%        100          -                      
+    Coverpoint cp_prev                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Coverpoint cp_curr                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Cross cx_transition                                50.00%        100          -    Uncovered            
+        covered/total bins:                                 3          6          -                      
+        missing/total bins:                                 3          6          -                      
+        % Hit:                                         50.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin idle_to_busy                                2          1          -    Covered              
+            bin busy_to_done                                2          1          -    Covered              
+            bin done_to_idle                                2          1          -    Covered              
+            bin <*,*>                                       0          1          9    ZERO                 
+        Illegal and Ignore Bins:
+            ignore_bin done_stay                            0                     -    ZERO                 
+            ignore_bin busy_stay                            0                     -    ZERO                 
+            ignore_bin idle_stay                            0                     -    ZERO                 
+ Covergroup instance cg_conv_status                    83.33%        100          -    Uncovered            
+    covered/total bins:                                     9         12          -                      
+    missing/total bins:                                     3         12          -                      
+    % Hit:                                             75.00%        100          -                      
+    Coverpoint cp_prev                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Coverpoint cp_curr                                100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                            2          1          -    Covered              
+        bin busy                                            2          1          -    Covered              
+        bin done                                            2          1          -    Covered              
+    Cross cx_transition                                50.00%        100          -    Uncovered            
+        covered/total bins:                                 3          6          -                      
+        missing/total bins:                                 3          6          -                      
+        % Hit:                                         50.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin idle_to_busy                                2          1          -    Covered              
+            bin busy_to_done                                2          1          -    Covered              
+            bin done_to_idle                                2          1          -    Covered              
+            bin <*,*>                                       0          1          9    ZERO                 
+        Illegal and Ignore Bins:
+            ignore_bin done_stay                            0                     -    ZERO                 
+            ignore_bin busy_stay                            0                     -    ZERO                 
+            ignore_bin idle_stay                            0                     -    ZERO                 
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_alu_boundary 
+                                                       62.50%        100          -    Uncovered            
+    covered/total bins:                                    10         22          -                      
+    missing/total bins:                                    12         22          -                      
+    % Hit:                                             45.45%        100          -                      
+    Coverpoint cp_operand_a                            60.00%        100          -    Uncovered            
+        covered/total bins:                                 3          5          -                      
+        missing/total bins:                                 2          5          -                      
+        % Hit:                                         60.00%        100          -                      
+        bin zero                                         8038          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         0          1          -    ZERO                 
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         1          1          -    Covered              
+        default bin others                                  1                     -    Occurred             
+    Coverpoint cp_operand_b                            80.00%        100          -    Uncovered            
+        covered/total bins:                                 4          5          -                      
+        missing/total bins:                                 1          5          -                      
+        % Hit:                                         80.00%        100          -                      
+        bin zero                                         8033          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         2          1          -    Covered              
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         2          1          -    Covered              
+        default bin others                                  3                     -    Occurred             
+    Coverpoint cp_shift_amt                           100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero_shift                                   8035          1          -    Covered              
+        bin max_shift                                       2          1          -    Covered              
+        default bin others                                  4                     -    Occurred             
+    Coverpoint cp_alu_op                               10.00%        100          -    Uncovered            
+        covered/total bins:                                 1         10          -                      
+        missing/total bins:                                 9         10          -                      
+        % Hit:                                         10.00%        100          -                      
+        bin add                                          8041          1          -    Covered              
+        bin sub                                             0          1          -    ZERO                 
+        bin sll                                             0          1          -    ZERO                 
+        bin slt                                             0          1          -    ZERO                 
+        bin sltu                                            0          1          -    ZERO                 
+        bin xor_                                            0          1          -    ZERO                 
+        bin srl                                             0          1          -    ZERO                 
+        bin sra                                             0          1          -    ZERO                 
+        bin or_                                             0          1          -    ZERO                 
+        bin and_                                            0          1          -    ZERO                 
+ Covergroup instance cg_alu_boundary                   62.50%        100          -    Uncovered            
+    covered/total bins:                                    10         22          -                      
+    missing/total bins:                                    12         22          -                      
+    % Hit:                                             45.45%        100          -                      
+    Coverpoint cp_operand_a                            60.00%        100          -    Uncovered            
+        covered/total bins:                                 3          5          -                      
+        missing/total bins:                                 2          5          -                      
+        % Hit:                                         60.00%        100          -                      
+        bin zero                                         8038          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         0          1          -    ZERO                 
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         1          1          -    Covered              
+        default bin others                                  1                     -    Occurred             
+    Coverpoint cp_operand_b                            80.00%        100          -    Uncovered            
+        covered/total bins:                                 4          5          -                      
+        missing/total bins:                                 1          5          -                      
+        % Hit:                                         80.00%        100          -                      
+        bin zero                                         8033          1          -    Covered              
+        bin pos_one                                         1          1          -    Covered              
+        bin neg_one                                         2          1          -    Covered              
+        bin max_pos                                         0          1          -    ZERO                 
+        bin min_neg                                         2          1          -    Covered              
+        default bin others                                  3                     -    Occurred             
+    Coverpoint cp_shift_amt                           100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero_shift                                   8035          1          -    Covered              
+        bin max_shift                                       2          1          -    Covered              
+        default bin others                                  4                     -    Occurred             
+    Coverpoint cp_alu_op                               10.00%        100          -    Uncovered            
+        covered/total bins:                                 1         10          -                      
+        missing/total bins:                                 9         10          -                      
+        % Hit:                                         10.00%        100          -                      
+        bin add                                          8041          1          -    Covered              
+        bin sub                                             0          1          -    ZERO                 
+        bin sll                                             0          1          -    ZERO                 
+        bin slt                                             0          1          -    ZERO                 
+        bin sltu                                            0          1          -    ZERO                 
+        bin xor_                                            0          1          -    ZERO                 
+        bin srl                                             0          1          -    ZERO                 
+        bin sra                                             0          1          -    ZERO                 
+        bin or_                                             0          1          -    ZERO                 
+        bin and_                                            0          1          -    ZERO                 
+ TYPE /riscv_uvm_pkg/riscv_coverage/cg_branch           0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         20          -                      
+    missing/total bins:                                    20         20          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp_branch_type                           0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          6          -                      
+        missing/total bins:                                 6          6          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin beq                                             0          1          -    ZERO                 
+        bin bne                                             0          1          -    ZERO                 
+        bin blt                                             0          1          -    ZERO                 
+        bin bge                                             0          1          -    ZERO                 
+        bin bltu                                            0          1          -    ZERO                 
+        bin bgeu                                            0          1          -    ZERO                 
+    Coverpoint cp_taken                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          2          -                      
+        missing/total bins:                                 2          2          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin taken                                           0          1          -    ZERO                 
+        bin not_taken                                       0          1          -    ZERO                 
+    Cross cx_branch_x_taken                             0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         12          -                      
+        missing/total bins:                                12         12          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*>                                       0          1         12    ZERO                 
+ Covergroup instance cg_branch                          0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         20          -                      
+    missing/total bins:                                    20         20          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp_branch_type                           0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          6          -                      
+        missing/total bins:                                 6          6          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin beq                                             0          1          -    ZERO                 
+        bin bne                                             0          1          -    ZERO                 
+        bin blt                                             0          1          -    ZERO                 
+        bin bge                                             0          1          -    ZERO                 
+        bin bltu                                            0          1          -    ZERO                 
+        bin bgeu                                            0          1          -    ZERO                 
+    Coverpoint cp_taken                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          2          -                      
+        missing/total bins:                                 2          2          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin taken                                           0          1          -    ZERO                 
+        bin not_taken                                       0          1          -    ZERO                 
+    Cross cx_branch_x_taken                             0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         12          -                      
+        missing/total bins:                                12         12          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*>                                       0          1         12    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 44.79%  COVERGROUP TYPES: 4
+
+Total Coverage By Instance (filtered view): 44.79%
+

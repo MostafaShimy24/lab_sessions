@@ -1,0 +1,112 @@
+//==============================================================================
+// wb_monitor.sv — Write-Back Stage Monitor (Passive)
+//------------------------------------------------------------------------------
+// Observes register write-backs at the WB stage via hierarchical probes.
+// On every cycle where wb_we=1 and wb_addr!=0, a transaction is sent to the
+// scoreboard and coverage collector via analysis ports.
+//==============================================================================
+
+class wb_txn extends uvm_sequence_item;
+    `uvm_object_utils(wb_txn)
+
+    // Existing writeback fields
+    bit [4:0]  rd_addr;
+    bit [31:0] rd_data;
+    bit        we;
+    time       tstamp;
+
+    // New coverage fields
+    bit        valid;
+    bit [31:0] instr;
+
+    // ALU coverage fields
+    bit        alu_valid;
+    bit [31:0] alu_a;
+    bit [31:0] alu_b;
+    bit [3:0]  alu_op;
+
+    // Branch coverage field
+    bit        branch_taken;
+
+    function new(string name = "wb_txn");
+        super.new(name);
+    endfunction
+
+    virtual function string convert2string();
+        return $sformatf(
+            "WB: valid=%0b instr=0x%08h we=%0b rd=x%0d data=0x%08h alu_valid=%0b alu_op=%04b alu_a=0x%08h alu_b=0x%08h branch_taken=%0b @%0t",
+            valid,
+            instr,
+            we,
+            rd_addr,
+            rd_data,
+            alu_valid,
+            alu_op,
+            alu_a,
+            alu_b,
+            branch_taken,
+            tstamp
+        );
+    endfunction
+endclass : wb_txn
+
+class wb_monitor extends uvm_monitor;
+
+    `uvm_component_utils(wb_monitor)
+
+    virtual riscv_if vif;
+    uvm_analysis_port #(wb_txn) ap;
+
+    function new(string name = "wb_monitor", uvm_component parent = null);
+        super.new(name, parent);
+    endfunction
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+        ap = new("ap", this);
+        if (!uvm_config_db #(virtual riscv_if)::get(this, "", "vif", vif))
+            `uvm_fatal("NOVIF", "Virtual interface not set for wb_monitor")
+    endfunction
+
+task run_phase(uvm_phase phase);
+    wb_txn txn;
+
+    // Wait for reset de-assertion
+    @(posedge vif.rst_n);
+    @(posedge vif.clk);
+
+    forever begin
+        @(posedge vif.clk);
+        #1; // sample after clock edge settles
+
+        // For functional coverage, sample every valid WB/retired instruction.
+        // Do NOT restrict this to wb_we, otherwise stores/branches are invisible.
+        if (vif.wb_valid) begin
+            txn = wb_txn::type_id::create("wb_txn");
+
+            // Existing writeback fields
+            txn.valid   = vif.wb_valid;
+            txn.we      = vif.wb_we;
+            txn.rd_addr = vif.wb_addr;
+            txn.rd_data = vif.wb_data;
+            txn.tstamp  = $time;
+
+            // Instruction coverage field
+            txn.instr = vif.wb_instr;
+
+            // ALU coverage fields
+            txn.alu_valid = vif.alu_valid;
+            txn.alu_a     = vif.alu_a;
+            txn.alu_b     = vif.alu_b;
+            txn.alu_op    = vif.alu_op;
+
+            // Branch coverage field
+            txn.branch_taken = vif.branch_taken;
+
+            `uvm_info("WB_MON", txn.convert2string(), UVM_HIGH)
+
+            ap.write(txn);
+        end
+    end
+endtask
+endclass : wb_monitor

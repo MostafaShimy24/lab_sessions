@@ -1,0 +1,57 @@
+BEGIN 1:if_stage:fast:work
+    pc_reg :  3:riscv_if:fast__2:work
+END 
+BEGIN 3:riscv_if:fast__1:work
+    ex_mem_alu_result :  1:riscv_uvm_pkg:fast:work
+    clk :  1:riscv_uvm_pkg:fast:work
+    conv_result :  1:riscv_uvm_pkg:fast:work
+    wb_we :  1:riscv_uvm_pkg:fast:work
+    rst_n :  1:riscv_uvm_pkg:fast:work
+    conv_done :  1:riscv_uvm_pkg:fast:work
+    wb_data :  1:riscv_uvm_pkg:fast:work
+    ex_mem_mem_write :  1:riscv_uvm_pkg:fast:work
+    wb_addr :  1:riscv_uvm_pkg:fast:work
+    conv_busy :  1:riscv_uvm_pkg:fast:work
+    ex_mem_mem_size :  1:riscv_uvm_pkg:fast:work
+    conv_status :  1:riscv_uvm_pkg:fast:work
+    pc_reg :  1:riscv_uvm_pkg:fast:work
+    ex_mem_rs2_data :  1:riscv_uvm_pkg:fast:work
+    stall :  1:riscv_uvm_pkg:fast:work
+END 
+BEGIN 1:ex_stage:fast:work
+    op_a :  3:riscv_if:fast__2:work
+    branch_taken :  3:riscv_if:fast__2:work
+    op_b :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:tb_top:fast:work
+    rst_n :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:conv_pe:fast:work
+    conv_status :  3:riscv_if:fast__2:work
+    conv_result :  3:riscv_if:fast__2:work
+    conv_done :  3:riscv_if:fast__2:work
+    conv_busy :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:regfile:fast:work
+    regs :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:imem:fast:work
+    mem :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:riscv_top:fast:work
+    wb_addr :  3:riscv_if:fast__2:work
+    wb_we :  3:riscv_if:fast__2:work
+    ex_mem_rs2_data :  3:riscv_if:fast__2:work
+    id_ex_is_branch :  3:riscv_if:fast__2:work
+    id_ex_alu_op :  3:riscv_if:fast__2:work
+    wb_data :  3:riscv_if:fast__2:work
+    if_id_instr :  3:riscv_if:fast__2:work
+    ex_mem_alu_result :  3:riscv_if:fast__2:work
+    stall :  3:riscv_if:fast__2:work
+    ex_mem_mem_size :  3:riscv_if:fast__2:work
+    ex_mem_mem_write :  3:riscv_if:fast__2:work
+    id_ex_branch_funct3 :  3:riscv_if:fast__2:work
+END 
+BEGIN 1:dmem:fast:work
+    mem :  3:riscv_if:fast__2:work
+END 

@@ -1,10 +1,13 @@
 #==============================================================================
-# run.do ? QuestaSim .do Script for UVM Simulation with Merged Coverage
-#==============================================================================
+# run.do — QuestaSim UVM Simulation with Merged Coverage
+#------------------------------------------------------------------------------
 # Usage:
 #   do run.do
 #==============================================================================
 
+#------------------------------------------------------------------------------
+# End any active simulation if one exists
+#------------------------------------------------------------------------------
 quietly catch {quit -sim}
 
 #------------------------------------------------------------------------------
@@ -18,16 +21,28 @@ vlib work
 vmap work work
 
 #------------------------------------------------------------------------------
-# Create results directory and delete old coverage outputs
+# Create results directory
 #------------------------------------------------------------------------------
 file mkdir results
 
-quietly catch {file delete results/cov_arith.ucdb}
-quietly catch {file delete results/cov_mem.ucdb}
-quietly catch {file delete results/cov_branch.ucdb}
-quietly catch {file delete results/cov_merged.ucdb}
-quietly catch {file delete results/full_coverage_report.txt}
-quietly catch {file delete results/functional_coverage_report.txt}
+#------------------------------------------------------------------------------
+# Backup previous coverage results before overwriting
+#------------------------------------------------------------------------------
+file mkdir results/backup
+set timestamp [clock format [clock seconds] -format "%Y%m%d_%H%M%S"]
+
+foreach f {
+    cov_arith.ucdb
+    cov_mem.ucdb
+    cov_branch.ucdb
+    cov_merged.ucdb
+    full_coverage_report.txt
+    functional_coverage_report.txt
+} {
+    if {[file exists results/$f]} {
+        quietly catch {file copy -force results/$f results/backup/${timestamp}_$f}
+    }
+}
 
 #------------------------------------------------------------------------------
 # Compile RTL sources with coverage enabled
@@ -47,8 +62,7 @@ vlog -timescale 1ns/1ps +acc -cover bcesft \
 
 #------------------------------------------------------------------------------
 # Compile SystemVerilog/UVM TB sources with coverage enabled
-# Note: riscv_coverage.sv is included inside riscv_uvm_pkg.sv.
-# Do NOT compile riscv_coverage.sv separately.
+# riscv_coverage.sv is included inside riscv_uvm_pkg.sv.
 #------------------------------------------------------------------------------
 vlog -sv -timescale 1ns/1ps +acc -cover bcesft \
     +incdir+../pkg \
@@ -61,35 +75,17 @@ vlog -sv -timescale 1ns/1ps +acc -cover bcesft \
 #==============================================================================
 # Run test_arith
 #==============================================================================
+puts "============================================================"
+puts "Running test_arith"
+puts "============================================================"
+
 vsim -coverage -voptargs="+acc" \
     +UVM_TESTNAME=test_arith \
     +UVM_VERBOSITY=UVM_MEDIUM \
     -sv_seed 1 \
     work.tb_top
 
-add wave -group "Clock/Reset" /tb_top/clk /tb_top/rst_n
-
-add wave -group "IF Stage"    /tb_top/u_dut/u_if/pc_reg \
-                              /tb_top/u_dut/imem_instr \
-                              /tb_top/u_dut/flush \
-                              /tb_top/u_dut/stall
-
-add wave -group "ID Stage"    /tb_top/u_dut/if_id_instr \
-                              /tb_top/u_dut/if_id_pc
-
-add wave -group "EX Stage"    /tb_top/u_dut/u_ex/alu_result \
-                              /tb_top/u_dut/u_ex/branch_taken \
-                              /tb_top/u_dut/u_ex/conv_busy \
-                              /tb_top/u_dut/u_ex/conv_done \
-                              /tb_top/u_dut/u_ex/conv_result
-
-add wave -group "WB Stage"    /tb_top/u_dut/wb_we \
-                              /tb_top/u_dut/wb_addr \
-                              /tb_top/u_dut/wb_data
-
-add wave -group "Conv-PE"     /tb_top/u_dut/u_ex/u_conv_pe/state_r \
-                              /tb_top/u_dut/u_ex/u_conv_pe/accum_r \
-                              /tb_top/u_dut/u_ex/u_conv_pe/conv_status
+onfinish stop
 
 run -all
 coverage save results/cov_arith.ucdb
@@ -98,11 +94,17 @@ quit -sim
 #==============================================================================
 # Run test_mem
 #==============================================================================
+puts "============================================================"
+puts "Running test_mem"
+puts "============================================================"
+
 vsim -coverage -voptargs="+acc" \
     +UVM_TESTNAME=test_mem \
     +UVM_VERBOSITY=UVM_MEDIUM \
     -sv_seed 2 \
     work.tb_top
+
+onfinish stop
 
 run -all
 coverage save results/cov_mem.ucdb
@@ -111,19 +113,34 @@ quit -sim
 #==============================================================================
 # Run test_branch
 #==============================================================================
+puts "============================================================"
+puts "Running test_branch"
+puts "============================================================"
+
 vsim -coverage -voptargs="+acc" \
     +UVM_TESTNAME=test_branch \
     +UVM_VERBOSITY=UVM_MEDIUM \
     -sv_seed 3 \
     work.tb_top
 
+onfinish stop
+
+# If Questa closes here, replace this with: run 5000ns
 run -all
+
 coverage save results/cov_branch.ucdb
-quit -sim
+
+# IMPORTANT:
+# Do not use quit -sim after the final test.
+# Leaving the final simulation loaded keeps the GUI stable.
 
 #==============================================================================
 # Merge coverage databases
 #==============================================================================
+puts "============================================================"
+puts "Merging coverage databases"
+puts "============================================================"
+
 vcover merge results/cov_merged.ucdb \
     results/cov_arith.ucdb \
     results/cov_mem.ucdb \
@@ -132,6 +149,10 @@ vcover merge results/cov_merged.ucdb \
 #==============================================================================
 # Generate coverage reports
 #==============================================================================
+puts "============================================================"
+puts "Generating coverage reports"
+puts "============================================================"
+
 vcover report results/cov_merged.ucdb \
     -details \
     -all \
@@ -142,14 +163,10 @@ vcover report results/cov_merged.ucdb \
     -details \
     -output results/functional_coverage_report.txt
 
-#==============================================================================
-# Open merged coverage database in Questa
-#==============================================================================
-coverage open results/cov_merged.ucdb
-
 puts "============================================================"
 puts "Coverage merge completed successfully."
 puts "Merged UCDB:              results/cov_merged.ucdb"
 puts "Full coverage report:     results/full_coverage_report.txt"
 puts "Functional coverage:      results/functional_coverage_report.txt"
+puts "Backup folder:            results/backup"
 puts "============================================================"

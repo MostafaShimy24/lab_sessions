@@ -1,0 +1,378 @@
+# Current time Wed May  6 15:16:24 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 75daf66a. Traceback:
+# 0    0x75daf66a: 'TkSetFocusWin + 0x36a'
+# 1    0x75d500bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x75d54c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7ffcbfbef384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7ffcbfbf035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7ffcbfbf71b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7ffcbfbf2baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7ffcbfbef384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7ffcbfbf035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7ffcbfbf71b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7ffcbfbf2baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x75b8a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x75b8bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x75b86872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7ffcbfbef384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7ffcbfbf035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7ffcbfbf71b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7ffcbfbf2baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x75b88bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x75b8a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x75b89a28: 'Tcl_EvalEx + 0x28'
+# 30   0x75d64aba: 'Tk_BindEvent + 0x91a'
+# 31   0x75d9c4d1: 'TkBindEventProc + 0x291'
+# 32   0x75dacd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x75daba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x75c4098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x75c40e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x75dab655: 'Tk_MainLoop + 0x25'
+# 37   0x75ded972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7ffd693be957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7ffd6a9c427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:19:37 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5f3df66a. Traceback:
+# 0    0x5f3df66a: 'TkSetFocusWin + 0x36a'
+# 1    0x5f3800bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5f384c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x5f55bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x5f556872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x5f559a28: 'Tcl_EvalEx + 0x28'
+# 30   0x5f394aba: 'Tk_BindEvent + 0x91a'
+# 31   0x5f3cc4d1: 'TkBindEventProc + 0x291'
+# 32   0x5f3dcd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x5f3dba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x5f61098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x5f610e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x5f3db655: 'Tk_MainLoop + 0x25'
+# 37   0x5f41d972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff1a86e957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff1cac427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:22:07 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5f58f66a. Traceback:
+# 0    0x5f58f66a: 'TkSetFocusWin + 0x36a'
+# 1    0x5f5300bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5f534c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x5f36a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x5f36bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x5f366872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7fff112af384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7fff112b035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7fff112b71b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7fff112b2baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x5f36a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x5f369a28: 'Tcl_EvalEx + 0x28'
+# 30   0x5f544aba: 'Tk_BindEvent + 0x91a'
+# 31   0x5f57c4d1: 'TkBindEventProc + 0x291'
+# 32   0x5f58cd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x5f58ba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x5f42098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x5f420e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x5f58b655: 'Tk_MainLoop + 0x25'
+# 37   0x5f5cd972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff1a86e957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff1cac427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:31:01 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5f58f66a. Traceback:
+# 0    0x5f58f66a: 'TkSetFocusWin + 0x36a'
+# 1    0x5f5300bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5f534c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7ffea76ef384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7ffea76f035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7ffea76f71b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7ffea76f2baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7ffea76ef384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7ffea76f035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7ffea76f71b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7ffea76f2baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x5f36a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x5f36bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x5f366872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7ffea76ef384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7ffea76f035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7ffea76f71b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7ffea76f2baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x5f368bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x5f36a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x5f369a28: 'Tcl_EvalEx + 0x28'
+# 30   0x5f544aba: 'Tk_BindEvent + 0x91a'
+# 31   0x5f57c4d1: 'TkBindEventProc + 0x291'
+# 32   0x5f58cd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x5f58ba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x5f42098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x5f420e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x5f58b655: 'Tk_MainLoop + 0x25'
+# 37   0x5f5cd972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff1a86e957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff1cac427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:35:50 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5f3df66a. Traceback:
+# 0    0x5f3df66a: 'TkSetFocusWin + 0x36a'
+# 1    0x5f3800bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5f384c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7ffeb1bcf384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7ffeb1bd035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7ffeb1bd71b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7ffeb1bd2baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7ffeb1bcf384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7ffeb1bd035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7ffeb1bd71b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7ffeb1bd2baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x5f55bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x5f556872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7ffeb1bcf384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7ffeb1bd035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7ffeb1bd71b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7ffeb1bd2baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x5f559a28: 'Tcl_EvalEx + 0x28'
+# 30   0x5f394aba: 'Tk_BindEvent + 0x91a'
+# 31   0x5f3cc4d1: 'TkBindEventProc + 0x291'
+# 32   0x5f3dcd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x5f3dba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x5f61098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x5f610e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x5f3db655: 'Tk_MainLoop + 0x25'
+# 37   0x5f41d972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff1a86e957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff1cac427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:39:44 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5f3df66a. Traceback:
+# 0    0x5f3df66a: 'TkSetFocusWin + 0x36a'
+# 1    0x5f3800bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5f384c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7ffed3c0f384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7ffed3c1035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7ffed3c171b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7ffed3c12baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7ffed3c0f384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7ffed3c1035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7ffed3c171b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7ffed3c12baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 15   0x5f55bde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x5f556872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7ffed3c0f384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7ffed3c1035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7ffed3c171b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7ffed3c12baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x5f558bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x5f55a501: 'Tcl_EvalEx + 0xb01'
+# 29   0x5f559a28: 'Tcl_EvalEx + 0x28'
+# 30   0x5f394aba: 'Tk_BindEvent + 0x91a'
+# 31   0x5f3cc4d1: 'TkBindEventProc + 0x291'
+# 32   0x5f3dcd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x5f3dba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x5f61098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x5f610e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x5f3db655: 'Tk_MainLoop + 0x25'
+# 37   0x5f41d972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff1a86e957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff1cac427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+
+# Current time Tue May 12 11:55:54 2026
+# Program = vish
+# Id = "2024.1"
+# Version = "2024.02"
+# Date = "Feb  1 2024"
+# Platform = win64
+
+Exception c0000005 has occurred at address 6b52f66a. Traceback:
+# 0    0x6b52f66a: 'TkSetFocusWin + 0x36a'
+# 1    0x6b4d00bc: 'Tk_SetGrid + 0x2a7c'
+# 2    0x6b4d4c6a: 'Tk_SetGrid + 0x762a'
+# 3    0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 4    0x7fff3175f384: 'Itcl_EvalMemberCode + 0x384'
+# 5    0x7fff3176035d: 'Itcl_ExecMethod + 0x20d'
+# 6    0x7fff317671b5: 'Itcl_EvalArgs + 0x1a5'
+# 7    0x7fff31762baa: 'Itcl_HandleInstance + 0x29a'
+# 8    0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 9    0x7fff3175f384: 'Itcl_EvalMemberCode + 0x384'
+# 10   0x7fff3176035d: 'Itcl_ExecMethod + 0x20d'
+# 11   0x7fff317671b5: 'Itcl_EvalArgs + 0x1a5'
+# 12   0x7fff31762baa: 'Itcl_HandleInstance + 0x29a'
+# 13   0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 14   0x6b6aa501: 'Tcl_EvalEx + 0xb01'
+# 15   0x6b6abde2: 'Tcl_GlobalEval + 0x52'
+# 16   0x140149399: '<unknown (@0x140149399)>'
+# 17   0x140149b93: '<unknown (@0x140149b93)>'
+# 18   0x14014a7ed: '<unknown (@0x14014a7ed)>'
+# 19   0x14014544b: '<unknown (@0x14014544b)>'
+# 20   0x6b6a6872: 'TclInvokeStringCommand + 0xc2'
+# 21   0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 22   0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 23   0x7fff3175f384: 'Itcl_EvalMemberCode + 0x384'
+# 24   0x7fff3176035d: 'Itcl_ExecMethod + 0x20d'
+# 25   0x7fff317671b5: 'Itcl_EvalArgs + 0x1a5'
+# 26   0x7fff31762baa: 'Itcl_HandleInstance + 0x29a'
+# 27   0x6b6a8bfc: 'TclNRRunCallbacks + 0x5c'
+# 28   0x6b6aa501: 'Tcl_EvalEx + 0xb01'
+# 29   0x6b6a9a28: 'Tcl_EvalEx + 0x28'
+# 30   0x6b4e4aba: 'Tk_BindEvent + 0x91a'
+# 31   0x6b51c4d1: 'TkBindEventProc + 0x291'
+# 32   0x6b52cd84: 'Tk_HandleEvent + 0x2f4'
+# 33   0x6b52ba4a: 'TkDeleteThreadExitHandler + 0x31a'
+# 34   0x6b76098c: 'Tcl_ServiceEvent + 0xec'
+# 35   0x6b760e04: 'Tcl_DoOneEvent + 0x184'
+# 36   0x6b52b655: 'Tk_MainLoop + 0x25'
+# 37   0x6b56d972: 'Tk_MainEx + 0x932'
+# 38   0x1401cfcf2: 'Mtirpc_Init + 0x24a32'
+# 39   0x1401d2f01: 'Mtirpc_Init + 0x27c41'
+# 40   0x14098e7b0: 'Tclsqlite3_Init + 0x1e210'
+# 41   0x7fff791ae957: 'BaseThreadInitThunk + 0x17'
+# 42   0x7fff7a58427c: 'RtlUserThreadStart + 0x2c'
+StackWalk failed 0
+# End of Stack Trace
+

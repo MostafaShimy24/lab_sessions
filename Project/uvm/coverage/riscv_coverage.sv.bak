@@ -1,0 +1,463 @@
+//==============================================================================
+// riscv_coverage.sv ? Coverage Collector for RV32I + Conv-PE
+//------------------------------------------------------------------------------
+// Coverage collected:
+//   1. RV32I opcode classes
+//   2. ALU operation and boundary operand values
+//   3. Branch type x taken/not-taken
+//   4. Memory access type/size/sign/alignment
+//   5. Conv-PE legal FSM transitions
+//
+// Expected analysis exports:
+//   wb_imp    : receives wb_txn
+//   store_imp : receives dmem_txn
+//   conv_imp  : receives conv_txn
+//
+// IMPORTANT:
+//   Your package must include conv_pe_monitor.sv before this file because
+//   conv_txn is declared inside conv_pe_monitor.sv.
+//==============================================================================
+
+class riscv_coverage extends uvm_component;
+
+    `uvm_component_utils(riscv_coverage)
+
+    // =========================================================================
+    // Analysis imports
+    // =========================================================================
+uvm_analysis_imp_wb    #(wb_txn,   riscv_coverage) analysis_export;
+uvm_analysis_imp_store #(dmem_txn, riscv_coverage) store_export;
+uvm_analysis_imp_conv  #(conv_txn, riscv_coverage) conv_export;
+
+    // =========================================================================
+    // Opcode constants
+    // =========================================================================
+    localparam bit [6:0] OPCODE_RTYPE   = 7'b0110011;
+    localparam bit [6:0] OPCODE_IARITH  = 7'b0010011;
+    localparam bit [6:0] OPCODE_LOAD    = 7'b0000011;
+    localparam bit [6:0] OPCODE_STORE   = 7'b0100011;
+    localparam bit [6:0] OPCODE_BRANCH  = 7'b1100011;
+    localparam bit [6:0] OPCODE_JAL     = 7'b1101111;
+    localparam bit [6:0] OPCODE_JALR    = 7'b1100111;
+    localparam bit [6:0] OPCODE_LUI     = 7'b0110111;
+    localparam bit [6:0] OPCODE_AUIPC   = 7'b0010111;
+    localparam bit [6:0] OPCODE_FENCE   = 7'b0001111;
+    localparam bit [6:0] OPCODE_SYSTEM  = 7'b1110011;
+    localparam bit [6:0] OPCODE_CUSTOM0 = 7'b0001011;
+
+    // =========================================================================
+    // Conv-PE status constants
+    // =========================================================================
+    localparam bit [1:0] CONV_IDLE = 2'b00;
+    localparam bit [1:0] CONV_BUSY = 2'b01;
+    localparam bit [1:0] CONV_DONE = 2'b10;
+
+    // =========================================================================
+    // Sampled instruction fields
+    // =========================================================================
+    bit        sampled_valid;
+    bit [31:0] sampled_instr;
+    bit [6:0]  sampled_opcode;
+    bit [2:0]  sampled_funct3;
+    bit [6:0]  sampled_funct7;
+
+    // =========================================================================
+    // Sampled ALU fields
+    // =========================================================================
+    bit        sampled_alu_valid;
+    bit [31:0] sampled_alu_a;
+    bit [31:0] sampled_alu_b;
+    bit [3:0]  sampled_alu_op;
+
+    // =========================================================================
+    // Sampled branch fields
+    // =========================================================================
+    bit        sampled_branch_valid;
+    bit [2:0]  sampled_branch_funct3;
+    bit        sampled_branch_taken;
+
+    // =========================================================================
+    // Sampled memory fields
+    // =========================================================================
+    bit        sampled_mem_valid;
+    bit        sampled_mem_is_load;
+    bit        sampled_mem_is_store;
+    bit [1:0]  sampled_mem_size;
+    bit        sampled_mem_sign_ext;
+    bit [1:0]  sampled_mem_addr_lsb;
+
+    // =========================================================================
+    // Sampled Conv-PE fields
+    // =========================================================================
+    bit [1:0] conv_prev_status;
+    bit [1:0] conv_curr_status;
+
+    // =========================================================================
+    // Covergroup 1: RV32I Opcode Classes
+    // =========================================================================
+    covergroup cg_opcode;
+        option.per_instance = 1;
+        option.name         = "cg_opcode";
+
+        cp_opcode: coverpoint sampled_opcode iff (sampled_valid) {
+            bins r_type    = {OPCODE_RTYPE};
+            bins i_arith   = {OPCODE_IARITH};
+            bins load      = {OPCODE_LOAD};
+            bins store     = {OPCODE_STORE};
+            bins branch    = {OPCODE_BRANCH};
+            bins jal       = {OPCODE_JAL};
+            bins jalr      = {OPCODE_JALR};
+            bins lui       = {OPCODE_LUI};
+            bins auipc     = {OPCODE_AUIPC};
+            bins fence     = {OPCODE_FENCE};
+            bins system    = {OPCODE_SYSTEM};
+            bins custom0   = {OPCODE_CUSTOM0};
+        }
+    endgroup
+
+    // =========================================================================
+    // Covergroup 2: ALU Operation and Boundary Values
+    // =========================================================================
+    covergroup cg_alu_boundary;
+        option.per_instance = 1;
+        option.name         = "cg_alu_boundary";
+
+        cp_alu_op: coverpoint sampled_alu_op iff (sampled_alu_valid) {
+            bins add  = {4'b0000};
+            bins sub  = {4'b0001};
+            bins sll  = {4'b0010};
+            bins slt  = {4'b0011};
+            bins sltu = {4'b0100};
+            bins xor_ = {4'b0101};
+            bins srl  = {4'b0110};
+            bins sra  = {4'b0111};
+            bins or_  = {4'b1000};
+            bins and_ = {4'b1001};
+        }
+
+        cp_operand_a: coverpoint sampled_alu_a iff (sampled_alu_valid) {
+            bins zero      = {32'h0000_0000};
+            bins pos_one   = {32'h0000_0001};
+            bins neg_one   = {32'hFFFF_FFFF};
+            bins max_pos   = {32'h7FFF_FFFF};
+            bins min_neg   = {32'h8000_0000};
+            bins others    = default;
+        }
+
+        cp_operand_b: coverpoint sampled_alu_b iff (sampled_alu_valid) {
+            bins zero      = {32'h0000_0000};
+            bins pos_one   = {32'h0000_0001};
+            bins neg_one   = {32'hFFFF_FFFF};
+            bins max_pos   = {32'h7FFF_FFFF};
+            bins min_neg   = {32'h8000_0000};
+            bins others    = default;
+        }
+
+        cp_shift_amt: coverpoint sampled_alu_b[4:0] iff (
+            sampled_alu_valid &&
+            (
+                sampled_alu_op == 4'b0010 ||    // SLL
+                sampled_alu_op == 4'b0110 ||    // SRL
+                sampled_alu_op == 4'b0111       // SRA
+            )
+        ) {
+            bins zero_shift = {5'd0};
+            bins one_shift  = {5'd1};
+            bins max_shift  = {5'd31};
+            bins others     = default;
+        }
+    endgroup
+
+    // =========================================================================
+    // Covergroup 3: Branch Type x Taken/Not-Taken
+    // =========================================================================
+    covergroup cg_branch;
+        option.per_instance = 1;
+        option.name         = "cg_branch";
+
+        cp_branch_type: coverpoint sampled_branch_funct3 iff (sampled_branch_valid) {
+            bins beq  = {3'b000};
+            bins bne  = {3'b001};
+            bins blt  = {3'b100};
+            bins bge  = {3'b101};
+            bins bltu = {3'b110};
+            bins bgeu = {3'b111};
+        }
+
+        cp_taken: coverpoint sampled_branch_taken iff (sampled_branch_valid) {
+            bins taken     = {1'b1};
+            bins not_taken = {1'b0};
+        }
+
+        cx_branch_x_taken: cross cp_branch_type, cp_taken;
+    endgroup
+
+    // =========================================================================
+    // Covergroup 4: Memory Access Coverage
+    // =========================================================================
+    covergroup cg_mem_access;
+        option.per_instance = 1;
+        option.name         = "cg_mem_access";
+
+        cp_mem_kind: coverpoint {sampled_mem_is_load, sampled_mem_is_store}
+        iff (sampled_mem_valid) {
+            bins load  = {2'b10};
+            bins store = {2'b01};
+        }
+
+        cp_mem_size: coverpoint sampled_mem_size iff (sampled_mem_valid) {
+            bins byte_access = {2'b00};
+            bins half_access = {2'b01};
+            bins word_access = {2'b10};
+        }
+
+        cp_load_sign_ext: coverpoint sampled_mem_sign_ext iff (
+            sampled_mem_valid && sampled_mem_is_load
+        ) {
+            bins signed_load   = {1'b1};
+            bins unsigned_load = {1'b0};
+        }
+
+        cp_addr_lsb: coverpoint sampled_mem_addr_lsb iff (sampled_mem_valid) {
+            bins aligned_00 = {2'b00};
+            bins byte_01    = {2'b01};
+            bins byte_10    = {2'b10};
+            bins byte_11    = {2'b11};
+        }
+
+        cx_kind_x_size: cross cp_mem_kind, cp_mem_size;
+    endgroup
+
+    // =========================================================================
+    // Covergroup 5: Conv-PE FSM Legal Transitions
+    // =========================================================================
+    covergroup cg_conv_status;
+        option.per_instance = 1;
+        option.name         = "cg_conv_status";
+
+        cp_transition: coverpoint {conv_prev_status, conv_curr_status} {
+            bins idle_to_busy = {{CONV_IDLE, CONV_BUSY}};
+            bins busy_to_done = {{CONV_BUSY, CONV_DONE}};
+            bins done_to_idle = {{CONV_DONE, CONV_IDLE}};
+
+            illegal_bins idle_to_done = {{CONV_IDLE, CONV_DONE}};
+            illegal_bins busy_to_idle = {{CONV_BUSY, CONV_IDLE}};
+            illegal_bins done_to_busy = {{CONV_DONE, CONV_BUSY}};
+
+            ignore_bins idle_stay = {{CONV_IDLE, CONV_IDLE}};
+            ignore_bins busy_stay = {{CONV_BUSY, CONV_BUSY}};
+            ignore_bins done_stay = {{CONV_DONE, CONV_DONE}};
+        }
+    endgroup
+
+    // =========================================================================
+    // Constructor
+    // =========================================================================
+    function new(string name = "riscv_coverage", uvm_component parent = null);
+        super.new(name, parent);
+
+        cg_opcode       = new();
+        cg_alu_boundary = new();
+        cg_branch       = new();
+        cg_mem_access   = new();
+        cg_conv_status  = new();
+
+        sampled_valid          = 1'b0;
+        sampled_instr          = 32'h0000_0013;
+        sampled_opcode         = 7'b0010011;
+        sampled_funct3         = 3'b000;
+        sampled_funct7         = 7'b0000000;
+
+        sampled_alu_valid      = 1'b0;
+        sampled_alu_a          = 32'h0000_0000;
+        sampled_alu_b          = 32'h0000_0000;
+        sampled_alu_op         = 4'b0000;
+
+        sampled_branch_valid   = 1'b0;
+        sampled_branch_funct3  = 3'b000;
+        sampled_branch_taken   = 1'b0;
+
+        sampled_mem_valid      = 1'b0;
+        sampled_mem_is_load    = 1'b0;
+        sampled_mem_is_store   = 1'b0;
+        sampled_mem_size       = 2'b00;
+        sampled_mem_sign_ext   = 1'b0;
+        sampled_mem_addr_lsb   = 2'b00;
+
+        conv_prev_status       = CONV_IDLE;
+        conv_curr_status       = CONV_IDLE;
+    endfunction
+
+    // =========================================================================
+    // Build Phase
+    // =========================================================================
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+
+analysis_export = new("analysis_export", this);
+store_export    = new("store_export",    this);
+conv_export     = new("conv_export",     this);
+    endfunction
+
+    // =========================================================================
+    // WB Analysis Write
+    //
+    // This assumes wb_txn contains:
+    //   valid
+    //   instr
+    //   alu_valid
+    //   alu_a
+    //   alu_b
+    //   alu_op
+    //   branch_taken
+    //
+    // If your wb_txn field names are different, only edit this function.
+    // =========================================================================
+    function void write_wb(wb_txn t);
+
+        sampled_valid  = t.valid;
+        sampled_instr  = t.instr;
+        sampled_opcode = t.instr[6:0];
+        sampled_funct3 = t.instr[14:12];
+        sampled_funct7 = t.instr[31:25];
+
+        if (sampled_valid) begin
+            cg_opcode.sample();
+
+            `uvm_info("COV_OPCODE",
+                $sformatf("instr=0x%08h opcode=%07b funct3=%03b funct7=%07b",
+                          sampled_instr,
+                          sampled_opcode,
+                          sampled_funct3,
+                          sampled_funct7),
+                UVM_HIGH)
+        end
+
+        sampled_alu_valid = t.alu_valid;
+        sampled_alu_a     = t.alu_a;
+        sampled_alu_b     = t.alu_b;
+        sampled_alu_op    = t.alu_op;
+
+        if (sampled_alu_valid) begin
+            cg_alu_boundary.sample();
+
+            `uvm_info("COV_ALU",
+                $sformatf("op=%04b a=0x%08h b=0x%08h",
+                          sampled_alu_op,
+                          sampled_alu_a,
+                          sampled_alu_b),
+                UVM_HIGH)
+        end
+
+        sampled_branch_valid  = sampled_valid && (sampled_opcode == OPCODE_BRANCH);
+        sampled_branch_funct3 = sampled_funct3;
+        sampled_branch_taken  = t.branch_taken;
+
+        if (sampled_branch_valid) begin
+            cg_branch.sample();
+
+            `uvm_info("COV_BRANCH",
+                $sformatf("funct3=%03b taken=%0b instr=0x%08h",
+                          sampled_branch_funct3,
+                          sampled_branch_taken,
+                          sampled_instr),
+                UVM_HIGH)
+        end
+
+    endfunction
+
+    // =========================================================================
+    // Data Memory Analysis Write
+    //
+    // This assumes dmem_txn contains:
+    //   valid
+    //   is_load
+    //   is_store
+    //   size
+    //   sign_ext
+    //   addr
+    //
+    // If your dmem_txn field names are different, only edit this function.
+    // =========================================================================
+    function void write_store(dmem_txn t);
+
+        sampled_mem_valid    = t.valid;
+        sampled_mem_is_load  = t.is_load;
+        sampled_mem_is_store = t.is_store;
+        sampled_mem_size     = t.size;
+        sampled_mem_sign_ext = t.sign_ext;
+        sampled_mem_addr_lsb = t.addr[1:0];
+
+        if (sampled_mem_valid) begin
+            cg_mem_access.sample();
+
+            `uvm_info("COV_MEM",
+                $sformatf("load=%0b store=%0b size=%02b sign_ext=%0b addr=0x%08h",
+                          sampled_mem_is_load,
+                          sampled_mem_is_store,
+                          sampled_mem_size,
+                          sampled_mem_sign_ext,
+                          t.addr),
+                UVM_HIGH)
+        end
+
+    endfunction
+
+    // =========================================================================
+    // Conv-PE Analysis Write
+    //
+    // This matches your conv_txn fields:
+    //   prev_status
+    //   curr_status
+    //   result
+    //   busy
+    //   done
+    //   tstamp
+    // =========================================================================
+    function void write_conv(conv_txn t);
+
+        conv_prev_status = t.prev_status;
+        conv_curr_status = t.curr_status;
+
+        cg_conv_status.sample();
+
+        `uvm_info("COV_CONV",
+            $sformatf("transition=%02b->%02b busy=%0b done=%0b result=0x%08h time=%0t",
+                      t.prev_status,
+                      t.curr_status,
+                      t.busy,
+                      t.done,
+                      t.result,
+                      t.tstamp),
+            UVM_HIGH)
+
+    endfunction
+
+    // =========================================================================
+    // Report Phase
+    // =========================================================================
+    function void report_phase(uvm_phase phase);
+        super.report_phase(phase);
+
+        `uvm_info("COV_REPORT",
+            $sformatf(
+                "\n============================================================\n" +
+                "RISC-V Functional Coverage Summary\n" +
+                "============================================================\n" +
+                "Opcode coverage      : %0.2f%%\n" +
+                "ALU boundary coverage: %0.2f%%\n" +
+                "Branch coverage      : %0.2f%%\n" +
+                "Memory coverage      : %0.2f%%\n" +
+                "Conv FSM coverage    : %0.2f%%\n" +
+                "============================================================",
+                cg_opcode.get_coverage(),
+                cg_alu_boundary.get_coverage(),
+                cg_branch.get_coverage(),
+                cg_mem_access.get_coverage(),
+                cg_conv_status.get_coverage()
+            ),
+            UVM_LOW)
+
+    endfunction
+
+endclass : riscv_coverage

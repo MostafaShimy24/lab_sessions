@@ -1,0 +1,423 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2024.1 2024.02, Feb  1 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/Users/Zeyad/OneDrive/Desktop/GUC/Semester 10/Lab/lab_sessions/Project/uvm/sim
+T_opt
+!s11d 1 riscv_if 1 C:/Users/Zeyad/OneDrive/Desktop/GUC/Semester 10 /Lab/lab_sessions/Project/uvm/sim/work 
+!s11d 10/Lab/lab_sessions/Project/uvm/sim/work riscv_uvm_pkg 1 C:/Users/Zeyad/OneDrive/Desktop/GUC/Semester 10 /Lab/lab_sessions/Project/uvm/sim/work 
+!s11d uvm_pkg C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d 1 riscv_if 1 C:/Users/Zeyad/OneDrive/Desktop/GUC/Semester 
+!s110 1778576597
+Von589;;XIhI7@:>7_6C8P3
+04 6 4 work tb_top fast 0
+=1-346f24106cff-6a02ecd4-275-52d4
+R0
+!s12f OEM100
+!s12b OEM100
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2024.1;79
+valu
+Z3 2../../alu.v|../../regfile.v|../../conv_pe.v|../../imem.v|../../dmem.v|../../if_stage.v|../../id_stage.v|../../ex_stage.v|../../mem_stage.v|../../wb_stage.v|../../riscv_top.v
+Z4 !s110 1778576595
+!i10b 1
+!s100 <OjC^Z8T:0O5mkTOfEe6E3
+ICcOb1d=9FZ_emK=Mo^TPX2
+R1
+Z5 w1778057645
+8../../alu.v
+F../../alu.v
+!i122 0
+L0 40 57
+Z6 VDg1SIo80bB@j0V0VzS_@n1
+Z7 OL;L;2024.1;79
+r1
+!s85 0
+31
+Z8 !s108 1778576595.000000
+Z9 !s107 ../../riscv_top.v|../../wb_stage.v|../../mem_stage.v|../../ex_stage.v|../../id_stage.v|../../if_stage.v|../../dmem.v|../../imem.v|../../conv_pe.v|../../regfile.v|../../alu.v|
+Z10 !s90 -reportprogress|300|-timescale|1ns/1ps|+acc|-cover|bcesft|../../alu.v|../../regfile.v|../../conv_pe.v|../../imem.v|../../dmem.v|../../if_stage.v|../../id_stage.v|../../ex_stage.v|../../mem_stage.v|../../wb_stage.v|../../riscv_top.v|
+!i113 0
+Z11 !s102 -cover bcesft
+Z12 o-timescale 1ns/1ps +acc -cover bcesft -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vconv_pe
+R3
+R4
+!i10b 1
+!s100 zW]52ig79ZUKR53fM4`L90
+IcRzZE3VXTz=UCW<`5Z:DC0
+R1
+R5
+8../../conv_pe.v
+F../../conv_pe.v
+!i122 0
+L0 52 126
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vdmem
+R3
+R4
+!i10b 1
+!s100 lJNi_WCV@<a8W:?;GL5C52
+I612@Bmn5QLd4LE=e1aMQ21
+R1
+R5
+8../../dmem.v
+F../../dmem.v
+!i122 0
+L0 49 125
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vex_stage
+R3
+R4
+!i10b 1
+!s100 Bai`iLQE<c5i99FOj[GK50
+IKoY;S_=WmaSkf;1hH?dZk1
+R1
+w1778065381
+8../../ex_stage.v
+F../../ex_stage.v
+!i122 0
+L0 36 232
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vid_stage
+R3
+R4
+!i10b 1
+!s100 PLm`V]cET33H<i0Q_N[G71
+ImWjSJ7O[>hR2hPb<L=>Yg1
+R1
+R5
+8../../id_stage.v
+F../../id_stage.v
+!i122 0
+L0 41 278
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vif_stage
+R3
+R4
+!i10b 1
+!s100 =6f@o27MXdnlFMi2[Vf<K1
+I;mJ7nc5iaKhh75i4jSHkG1
+R1
+R5
+8../../if_stage.v
+F../../if_stage.v
+!i122 0
+L0 56 72
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vimem
+R3
+R4
+!i10b 1
+!s100 IPaKXPVQZb4h93OXGe<o]1
+ID4N^1KA^[[^Ck62?_9Ncg3
+R1
+R5
+8../../imem.v
+F../../imem.v
+!i122 0
+L0 28 55
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vmem_stage
+R3
+R4
+!i10b 1
+!s100 ZCVWAP3RjMn7Oe:j;a1iS2
+I_[LBT7[LGTLX5;e5Z3E<:1
+R1
+R5
+8../../mem_stage.v
+F../../mem_stage.v
+!i122 0
+L0 49 71
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+vregfile
+R3
+R4
+!i10b 1
+!s100 chM87f_mh:[]jI[@dXjD60
+I4>8@M3l5;TEiBBn8W>>VJ2
+R1
+R5
+8../../regfile.v
+F../../regfile.v
+!i122 0
+L0 30 51
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+Yriscv_if
+Z13 2../tb/riscv_if.sv|../pkg/riscv_uvm_pkg.sv|../tb/tb_top.sv
+Z14 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R4
+!i10b 1
+!s100 f`Q0z:<]okWInPT5>aL5I3
+IbE1jZ=fVUiZJ22nYRjPk61
+S1
+R1
+w1778059420
+8../tb/riscv_if.sv
+F../tb/riscv_if.sv
+!i122 1
+L0 9 0
+R6
+R7
+r1
+!s85 0
+31
+R8
+Z15 !s107 ../tests/test_branch.sv|../tests/test_mem.sv|../tests/test_arith.sv|../tests/riscv_base_test.sv|../sequences/seq_branch.sv|../sequences/seq_mem.sv|../sequences/seq_arith.sv|../env/riscv_env.sv|../coverage/riscv_coverage.sv|../scoreboard/riscv_scoreboard.sv|../agents/dmem_agent/dmem_agent.sv|../agents/dmem_agent/dmem_driver.sv|../agents/dmem_agent/dmem_sequencer.sv|../agents/imem_agent/imem_agent.sv|../agents/imem_agent/imem_driver.sv|../agents/imem_agent/imem_sequencer.sv|../monitors/conv_pe_monitor.sv|../monitors/dmem_store_monitor.sv|../monitors/wb_monitor.sv|../agents/dmem_agent/dmem_txn.sv|../agents/imem_agent/riscv_instr_item.sv|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|../tb/tb_top.sv|../pkg/riscv_uvm_pkg.sv|../tb/riscv_if.sv|
+Z16 !s90 -reportprogress|300|-sv|-timescale|1ns/1ps|+acc|-cover|bcesft|+incdir+../pkg|+incdir+..|+incdir+../coverage|../tb/riscv_if.sv|../pkg/riscv_uvm_pkg.sv|../tb/tb_top.sv|
+!i113 0
+R11
+Z17 o-sv -timescale 1ns/1ps +acc -cover bcesft -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z18 !s92 -sv -timescale 1ns/1ps +acc -cover bcesft +incdir+../pkg +incdir+.. +incdir+../coverage -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vriscv_top
+R3
+R4
+!i10b 1
+!s100 _ndKVdoZf=^f`]gjdSO^F1
+IN6eCgMMgnme8HY39WGO<c3
+R1
+w1778065403
+8../../riscv_top.v
+F../../riscv_top.v
+!i122 0
+L0 38 453
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2
+Xriscv_uvm_pkg
+R13
+!s115 riscv_if
+R14
+Z19 DXx6 mtiUvm 7 uvm_pkg 0 22 MiVhEBb9cnBN5^J=<XBKI2
+R4
+!i10b 1
+!s100 Ck4oXLE1Td;T`HCbbAEUI2
+IUfA<Y<bWaZKa`OaC^J`@o1
+S1
+R1
+w1778069185
+8../pkg/riscv_uvm_pkg.sv
+F../pkg/riscv_uvm_pkg.sv
+Z20 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z21 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+Z22 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+Z23 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+Z24 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+Z25 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+Z26 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+Z27 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+Z28 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+Z29 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+Z30 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+Z31 FC:/_Getintopc.com_Siemens_Questa_Advanced_Simulator_2024.1/Siemens_Questa_Advanced_Simulator_2024.1/Crack/questasim64_2024.1/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+F../agents/imem_agent/riscv_instr_item.sv
+F../agents/dmem_agent/dmem_txn.sv
+F../monitors/wb_monitor.sv
+F../monitors/dmem_store_monitor.sv
+F../monitors/conv_pe_monitor.sv
+F../agents/imem_agent/imem_sequencer.sv
+F../agents/imem_agent/imem_driver.sv
+F../agents/imem_agent/imem_agent.sv
+F../agents/dmem_agent/dmem_sequencer.sv
+F../agents/dmem_agent/dmem_driver.sv
+F../agents/dmem_agent/dmem_agent.sv
+F../scoreboard/riscv_scoreboard.sv
+F../coverage/riscv_coverage.sv
+F../env/riscv_env.sv
+F../sequences/seq_arith.sv
+F../sequences/seq_mem.sv
+F../sequences/seq_branch.sv
+F../tests/riscv_base_test.sv
+F../tests/test_arith.sv
+F../tests/test_mem.sv
+F../tests/test_branch.sv
+!i122 1
+L0 8 0
+VUfA<Y<bWaZKa`OaC^J`@o1
+R7
+r1
+!s85 0
+31
+R8
+R15
+R16
+!i113 0
+R11
+R17
+R18
+R2
+vtb_top
+R13
+R14
+R19
+DXx4 work 13 riscv_uvm_pkg 0 22 UfA<Y<bWaZKa`OaC^J`@o1
+R4
+!i10b 1
+!s100 DkaI]]D4<:Z^6eXU]:LJn2
+IG>^=6=MAW^?z^nSG`Qfb12
+S1
+R1
+R5
+8../tb/tb_top.sv
+F../tb/tb_top.sv
+R20
+R21
+R22
+R23
+R24
+R25
+R26
+R27
+R28
+R29
+R30
+R31
+!i122 1
+L0 10 6538
+R6
+R7
+r1
+!s85 0
+31
+R8
+R15
+R16
+!i113 0
+R11
+R17
+R18
+R2
+vwb_stage
+R3
+R4
+!i10b 1
+!s100 kzXA4NcMX1EN9L<F^6IL^3
+I<]gEMjZZd@2[AlacQ6UiQ2
+R1
+R5
+8../../wb_stage.v
+F../../wb_stage.v
+!i122 0
+L0 23 43
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 0
+R11
+R12
+R2

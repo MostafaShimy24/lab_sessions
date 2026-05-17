@@ -1,0 +1,779 @@
+//==============================================================================
+// riscv_scoreboard.sv ? Reference Model (ISS) + Checker
+//------------------------------------------------------------------------------
+// Contains a software RV32I Instruction Set Simulator (ISS) that independently
+// executes the program loaded into imem. The ISS predicts every register
+// write-back and every store transaction. DUT observations from monitors are
+// compared against the ISS predictions ? mismatches are flagged as UVM_ERROR.
+//
+// Checking flow:
+//   1. After reset, the ISS reads the entire program from imem via backdoor.
+//   2. The ISS executes instructions in-order, modelling the pipeline timing
+//      (4-NOP spacing, branch flushes, Conv-PE stalls).
+//   3. Each predicted WB write is pushed into an expected queue.
+//   4. When the wb_monitor sends an actual WB transaction, it is compared
+//      against the front of the expected queue.
+//   5. Stores are similarly predicted and verified.
+//==============================================================================
+
+// These macros create:
+//   uvm_analysis_imp_wb
+//   uvm_analysis_imp_store
+//   uvm_analysis_imp_conv
+//
+// The suffix also determines the write function name:
+//   uvm_analysis_imp_wb    -> write_wb()
+//   uvm_analysis_imp_store -> write_store()
+//   uvm_analysis_imp_conv  -> write_conv()
+`uvm_analysis_imp_decl(_wb)
+`uvm_analysis_imp_decl(_store)
+`uvm_analysis_imp_decl(_conv)
+
+class riscv_scoreboard extends uvm_scoreboard;
+
+    `uvm_component_utils(riscv_scoreboard)
+
+    // Analysis exports
+    uvm_analysis_imp_wb    #(wb_txn,    riscv_scoreboard) wb_export;
+    uvm_analysis_imp_store #(store_txn, riscv_scoreboard) store_export;
+    uvm_analysis_imp_conv  #(conv_txn,  riscv_scoreboard) conv_export;
+
+    // =========================================================================
+    // ISS Reference Model State
+    // =========================================================================
+    bit [31:0] iss_rf [0:31];          // ISS register file
+    bit [7:0]  iss_dmem [0:4095];      // ISS data memory
+    bit [31:0] iss_pc;                 // ISS program counter
+    bit [31:0] iss_program [0:1023];   // copy of instruction memory
+    int        iss_prog_len;           // actual program length
+    bit [31:0] iss_conv_accum;         // ISS Conv-PE accumulator
+
+    // Expected WB queue: {rd_addr[4:0], rd_data[31:0]}
+    typedef struct {
+        bit [4:0]  rd;
+        bit [31:0] data;
+        bit [31:0] pc;   // PC of the instruction that produced this WB
+    } wb_expect_t;
+
+    wb_expect_t wb_expect_q [$];
+
+    // Expected store queue
+    typedef struct {
+        bit [31:0] addr;
+        bit [31:0] data;
+        bit [1:0]  size;
+    } store_expect_t;
+
+    store_expect_t store_expect_q [$];
+
+    // Counters
+    int wb_match_count;
+    int wb_mismatch_count;
+    int store_match_count;
+    int store_mismatch_count;
+    int conv_done_count;
+
+    // Opcode constants
+    localparam [6:0] OP_R       = 7'b0110011,
+                     OP_I_ARITH = 7'b0010011,
+                     OP_LOAD    = 7'b0000011,
+                     OP_STORE   = 7'b0100011,
+                     OP_BRANCH  = 7'b1100011,
+                     OP_JAL     = 7'b1101111,
+                     OP_JALR    = 7'b1100111,
+                     OP_LUI     = 7'b0110111,
+                     OP_AUIPC   = 7'b0010111,
+                     OP_FENCE   = 7'b0001111,
+                     OP_SYSTEM  = 7'b1110011,
+                     OP_CUSTOM0 = 7'b0001011;
+
+    virtual riscv_if vif;
+
+    function new(string name = "riscv_scoreboard", uvm_component parent = null);
+        super.new(name, parent);
+    endfunction
+
+    function void build_phase(uvm_phase phase);
+        super.build_phase(phase);
+
+        wb_export    = new("wb_export", this);
+        store_export = new("store_export", this);
+        conv_export  = new("conv_export", this);
+    endfunction
+
+    // =========================================================================
+    // ISS: Reset state
+    // =========================================================================
+    function void iss_reset();
+        int i;
+
+        for (i = 0; i < 32; i++)
+            iss_rf[i] = 32'h0;
+
+        for (i = 0; i < 4096; i++)
+            iss_dmem[i] = 8'h0;
+
+        iss_pc = 32'h0;
+        iss_conv_accum = 32'h0;
+
+        wb_expect_q.delete();
+        store_expect_q.delete();
+
+        wb_match_count = 0;
+        wb_mismatch_count = 0;
+        store_match_count = 0;
+        store_mismatch_count = 0;
+        conv_done_count = 0;
+    endfunction
+
+    // =========================================================================
+    // ISS: Load program and dmem from DUT via backdoor
+    // =========================================================================
+    function void iss_load_from_dut();
+        int i;
+
+        for (i = 0; i < 1024; i++)
+            iss_program[i] = tb_top.u_dut.u_imem.mem[i];
+
+        for (i = 0; i < 4096; i++)
+            iss_dmem[i] = tb_top.u_dut.u_mem.u_dmem.mem[i];
+
+        `uvm_info("ISS", "Program and dmem loaded from DUT", UVM_MEDIUM)
+    endfunction
+
+    // =========================================================================
+    // ISS: Read register (x0 always returns 0)
+    // =========================================================================
+    function bit [31:0] iss_read_reg(bit [4:0] addr);
+        return (addr == 5'd0) ? 32'h0 : iss_rf[addr];
+    endfunction
+
+    // =========================================================================
+    // ISS: Write register (x0 writes are ignored)
+    // =========================================================================
+    function void iss_write_reg(bit [4:0] addr, bit [31:0] data);
+        if (addr != 5'd0)
+            iss_rf[addr] = data;
+    endfunction
+
+    // =========================================================================
+    // ISS: Read dmem (byte/half/word with sign/zero extension)
+    // =========================================================================
+    function bit [31:0] iss_read_dmem(bit [31:0] addr, bit [1:0] size, bit sign_ext);
+        bit [11:0] a;
+        bit [31:0] result;
+
+        a = addr[11:0];
+
+        case (size)
+            2'b00: begin // byte
+                result = {24'h0, iss_dmem[a]};
+                if (sign_ext && iss_dmem[a][7])
+                    result[31:8] = 24'hFFFFFF;
+            end
+
+            2'b01: begin // half
+                result = {16'h0, iss_dmem[a+1], iss_dmem[a]};
+                if (sign_ext && iss_dmem[a+1][7])
+                    result[31:16] = 16'hFFFF;
+            end
+
+            2'b10: begin // word
+                result = {iss_dmem[a+3], iss_dmem[a+2], iss_dmem[a+1], iss_dmem[a]};
+            end
+
+            default: begin
+                result = 32'h0;
+            end
+        endcase
+
+        return result;
+    endfunction
+
+    // =========================================================================
+    // ISS: Write dmem
+    // =========================================================================
+    function void iss_write_dmem(bit [31:0] addr, bit [31:0] data, bit [1:0] size);
+        bit [11:0] a;
+
+        a = addr[11:0];
+
+        case (size)
+            2'b00: begin
+                iss_dmem[a] = data[7:0];
+            end
+
+            2'b01: begin
+                iss_dmem[a]   = data[7:0];
+                iss_dmem[a+1] = data[15:8];
+            end
+
+            2'b10: begin
+                iss_dmem[a]   = data[7:0];
+                iss_dmem[a+1] = data[15:8];
+                iss_dmem[a+2] = data[23:16];
+                iss_dmem[a+3] = data[31:24];
+            end
+
+            default: begin
+                // Unsupported size: no write
+            end
+        endcase
+    endfunction
+
+    // =========================================================================
+    // ISS: Sign-extend helper
+    // =========================================================================
+    function bit [31:0] sign_extend(bit [31:0] val, int bits);
+        bit [31:0] mask;
+
+        if (bits >= 32)
+            return val;
+
+        mask = (32'h1 << bits) - 1;
+
+        if (val[bits-1])
+            return val | ~mask;
+        else
+            return val & mask;
+    endfunction
+
+    // =========================================================================
+    // ISS: ALU operation
+    // =========================================================================
+    function bit [31:0] iss_alu(bit [31:0] a, bit [31:0] b, bit [3:0] op);
+        case (op)
+            4'b0000: return a + b;
+            4'b0001: return a - b;
+            4'b0010: return a << b[4:0];
+            4'b0011: return ($signed(a) < $signed(b)) ? 32'd1 : 32'd0;
+            4'b0100: return (a < b) ? 32'd1 : 32'd0;
+            4'b0101: return a ^ b;
+            4'b0110: return a >> b[4:0];
+            4'b0111: return $signed(a) >>> b[4:0];
+            4'b1000: return a | b;
+            4'b1001: return a & b;
+            default: return a + b;
+        endcase
+    endfunction
+
+    // =========================================================================
+    // ISS: Decode ALU op from funct3/funct7
+    // =========================================================================
+    function bit [3:0] decode_alu_op(bit [6:0] opcode, bit [2:0] funct3, bit [6:0] funct7);
+        case (opcode)
+            OP_R: begin
+                case (funct3)
+                    3'b000: return funct7[5] ? 4'b0001 : 4'b0000; // SUB / ADD
+                    3'b001: return 4'b0010; // SLL
+                    3'b010: return 4'b0011; // SLT
+                    3'b011: return 4'b0100; // SLTU
+                    3'b100: return 4'b0101; // XOR
+                    3'b101: return funct7[5] ? 4'b0111 : 4'b0110; // SRA / SRL
+                    3'b110: return 4'b1000; // OR
+                    3'b111: return 4'b1001; // AND
+                    default: return 4'b0000;
+                endcase
+            end
+
+            OP_I_ARITH: begin
+                case (funct3)
+                    3'b000: return 4'b0000; // ADDI
+                    3'b001: return 4'b0010; // SLLI
+                    3'b010: return 4'b0011; // SLTI
+                    3'b011: return 4'b0100; // SLTIU
+                    3'b100: return 4'b0101; // XORI
+                    3'b101: return funct7[5] ? 4'b0111 : 4'b0110; // SRAI / SRLI
+                    3'b110: return 4'b1000; // ORI
+                    3'b111: return 4'b1001; // ANDI
+                    default: return 4'b0000;
+                endcase
+            end
+
+            default: begin
+                return 4'b0000; // ADD for address calculation
+            end
+        endcase
+    endfunction
+
+    // =========================================================================
+    // ISS: Execute one instruction ? returns 1 if program should continue
+    // =========================================================================
+    function bit iss_execute_one();
+        bit [31:0] instr;
+        bit [6:0]  opcode;
+        bit [4:0]  rd;
+        bit [4:0]  rs1_a;
+        bit [4:0]  rs2_a;
+        bit [2:0]  funct3;
+        bit [6:0]  funct7;
+        bit [31:0] rs1_v;
+        bit [31:0] rs2_v;
+        bit [31:0] imm;
+        bit [31:0] result;
+        bit [31:0] addr;
+        bit [3:0]  alu_op;
+        bit [31:0] next_pc;
+
+        wb_expect_t wb_e;
+        store_expect_t st_e;
+
+        // Fetch
+        instr  = iss_program[iss_pc[11:2]];
+        opcode = instr[6:0];
+        rd     = instr[11:7];
+        funct3 = instr[14:12];
+        rs1_a  = instr[19:15];
+        rs2_a  = instr[24:20];
+        funct7 = instr[31:25];
+
+        rs1_v   = iss_read_reg(rs1_a);
+        rs2_v   = iss_read_reg(rs2_a);
+        next_pc = iss_pc + 32'd4;
+
+        // Detect self-loop: JAL x0, offset=0 -> 0x0000006F
+        if (instr == 32'h0000006F) begin
+            `uvm_info("ISS", $sformatf("Self-loop at PC=0x%08h ? halting ISS", iss_pc), UVM_MEDIUM)
+            return 1'b0;
+        end
+
+        // NOP: ADDI x0, x0, 0
+        if (instr == 32'h00000013) begin
+            iss_pc = next_pc;
+            return 1'b1;
+        end
+
+        case (opcode)
+
+            // ----- R-type -----
+            OP_R: begin
+                alu_op = decode_alu_op(opcode, funct3, funct7);
+                result = iss_alu(rs1_v, rs2_v, alu_op);
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- I-type arithmetic -----
+            OP_I_ARITH: begin
+                imm = {{20{instr[31]}}, instr[31:20]};
+                alu_op = decode_alu_op(opcode, funct3, funct7);
+                result = iss_alu(rs1_v, imm, alu_op);
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- LUI -----
+            OP_LUI: begin
+                result = {instr[31:12], 12'b0};
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- AUIPC -----
+            OP_AUIPC: begin
+                result = iss_pc + {instr[31:12], 12'b0};
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- Load -----
+            OP_LOAD: begin
+                imm    = {{20{instr[31]}}, instr[31:20]};
+                addr   = rs1_v + imm;
+                result = iss_read_dmem(addr, funct3[1:0], ~funct3[2]);
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- Store -----
+            OP_STORE: begin
+                imm  = {{20{instr[31]}}, instr[31:25], instr[11:7]};
+                addr = rs1_v + imm;
+
+                iss_write_dmem(addr, rs2_v, funct3[1:0]);
+
+                st_e.addr = addr;
+                st_e.data = rs2_v;
+                st_e.size = funct3[1:0];
+
+                store_expect_q.push_back(st_e);
+            end
+
+            // ----- Branch -----
+            OP_BRANCH: begin
+                bit taken;
+
+                imm = {{19{instr[31]}},
+                       instr[31],
+                       instr[7],
+                       instr[30:25],
+                       instr[11:8],
+                       1'b0};
+
+                taken = 1'b0;
+
+                case (funct3)
+                    3'b000: taken = (rs1_v == rs2_v);                  // BEQ
+                    3'b001: taken = (rs1_v != rs2_v);                  // BNE
+                    3'b100: taken = ($signed(rs1_v) <  $signed(rs2_v)); // BLT
+                    3'b101: taken = ($signed(rs1_v) >= $signed(rs2_v)); // BGE
+                    3'b110: taken = (rs1_v <  rs2_v);                  // BLTU
+                    3'b111: taken = (rs1_v >= rs2_v);                  // BGEU
+                    default: taken = 1'b0;
+                endcase
+
+                if (taken)
+                    next_pc = iss_pc + imm;
+            end
+
+            // ----- JAL -----
+            OP_JAL: begin
+                imm = {{11{instr[31]}},
+                       instr[31],
+                       instr[19:12],
+                       instr[20],
+                       instr[30:21],
+                       1'b0};
+
+                result = iss_pc + 32'd4;
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+
+                next_pc = iss_pc + imm;
+            end
+
+            // ----- JALR -----
+            OP_JALR: begin
+                imm    = {{20{instr[31]}}, instr[31:20]};
+                result = iss_pc + 32'd4;
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+
+                next_pc = (rs1_v + imm) & ~32'h1;
+            end
+
+            // ----- Custom-0 Conv-PE -----
+            OP_CUSTOM0: begin
+                bit [31:0] product;
+
+                product = rs1_v * rs2_v;
+
+                if (funct7[0])
+                    iss_conv_accum = product;                 // init
+                else
+                    iss_conv_accum = iss_conv_accum + product; // accumulate
+
+                result = iss_conv_accum;
+
+                iss_write_reg(rd, result);
+
+                if (rd != 5'd0) begin
+                    wb_e.rd   = rd;
+                    wb_e.data = result;
+                    wb_e.pc   = iss_pc;
+                    wb_expect_q.push_back(wb_e);
+                end
+            end
+
+            // ----- FENCE / SYSTEM: treated as NOP -----
+            OP_FENCE, OP_SYSTEM: begin
+                // no architectural effect
+            end
+
+            default: begin
+                `uvm_warning("ISS", $sformatf(
+                    "Unknown opcode 0x%07b at PC=0x%08h",
+                    opcode,
+                    iss_pc
+                ))
+            end
+        endcase
+
+        iss_pc = next_pc;
+        return 1'b1;
+    endfunction
+
+    // =========================================================================
+    // ISS: Run the entire program
+    // =========================================================================
+    function void iss_run_program();
+        int count;
+        int max_instrs;
+
+        max_instrs = 10000;
+
+        `uvm_info("ISS", "Starting ISS execution", UVM_MEDIUM)
+
+        iss_pc = 32'h0;
+        count = 0;
+
+        while (count < max_instrs) begin
+            if (!iss_execute_one())
+                break;
+
+            count++;
+        end
+
+        `uvm_info("ISS", $sformatf(
+            "ISS completed: %0d instructions, %0d expected WBs, %0d expected stores",
+            count,
+            wb_expect_q.size(),
+            store_expect_q.size()
+        ), UVM_MEDIUM)
+    endfunction
+
+    // =========================================================================
+    // Run phase: load program and execute ISS
+    // =========================================================================
+    task run_phase(uvm_phase phase);
+        if (!uvm_config_db #(virtual riscv_if)::get(this, "", "vif", vif)) begin
+            `uvm_fatal("NOVIF", "Virtual interface not set for scoreboard")
+        end
+
+        iss_reset();
+
+        // Wait for reset release, then load + execute ISS.
+        @(posedge vif.rst_n);
+        #10;
+
+        iss_load_from_dut();
+        iss_run_program();
+    endtask
+
+    // =========================================================================
+    // WB transaction handler ? compare against ISS prediction
+    // =========================================================================
+    virtual function void write_wb(wb_txn txn);
+        wb_expect_t expected;
+
+        if (txn.rd_addr == 5'd0) begin
+            `uvm_error("SB", $sformatf(
+                "DUT wrote to x0! data=0x%08h",
+                txn.rd_data
+            ))
+            return;
+        end
+
+        if (wb_expect_q.size() == 0) begin
+            `uvm_warning("SB", $sformatf(
+                "Unexpected WB: x%0d=0x%08h. No ISS prediction in queue.",
+                txn.rd_addr,
+                txn.rd_data
+            ))
+            return;
+        end
+
+        expected = wb_expect_q.pop_front();
+
+        if ((txn.rd_addr === expected.rd) && (txn.rd_data === expected.data)) begin
+            wb_match_count++;
+
+            `uvm_info("SB", $sformatf(
+                "WB MATCH [%0d]: x%0d = 0x%08h from PC=0x%08h",
+                wb_match_count,
+                txn.rd_addr,
+                txn.rd_data,
+                expected.pc
+            ), UVM_HIGH)
+        end
+        else begin
+            wb_mismatch_count++;
+
+            `uvm_error("SB", $sformatf(
+                "WB MISMATCH [%0d]: DUT x%0d=0x%08h, ISS expected x%0d=0x%08h from PC=0x%08h",
+                wb_mismatch_count,
+                txn.rd_addr,
+                txn.rd_data,
+                expected.rd,
+                expected.data,
+                expected.pc
+            ))
+        end
+    endfunction
+
+    // =========================================================================
+    // Store transaction handler ? compare against ISS prediction
+    // =========================================================================
+    virtual function void write_store(store_txn txn);
+        store_expect_t expected;
+        bit mismatch;
+
+        if (store_expect_q.size() == 0) begin
+            `uvm_warning("SB", $sformatf(
+                "Unexpected store: %s",
+                txn.convert2string()
+            ))
+            return;
+        end
+
+        expected = store_expect_q.pop_front();
+        mismatch = 1'b0;
+
+        if (txn.addr[11:0] !== expected.addr[11:0])
+            mismatch = 1'b1;
+
+        if (txn.size !== expected.size)
+            mismatch = 1'b1;
+
+        // Compare data based on access size
+        case (expected.size)
+            2'b00: begin
+                if (txn.data[7:0] !== expected.data[7:0])
+                    mismatch = 1'b1;
+            end
+
+            2'b01: begin
+                if (txn.data[15:0] !== expected.data[15:0])
+                    mismatch = 1'b1;
+            end
+
+            2'b10: begin
+                if (txn.data !== expected.data)
+                    mismatch = 1'b1;
+            end
+
+            default: begin
+                // Unsupported size
+            end
+        endcase
+
+        if (!mismatch) begin
+            store_match_count++;
+
+            `uvm_info("SB", $sformatf(
+                "STORE MATCH [%0d]: addr=0x%03h data=0x%08h size=%0d",
+                store_match_count,
+                txn.addr[11:0],
+                txn.data,
+                txn.size
+            ), UVM_HIGH)
+        end
+        else begin
+            store_mismatch_count++;
+
+            `uvm_error("SB", $sformatf(
+                "STORE MISMATCH [%0d]: DUT addr=0x%03h data=0x%08h size=%0d | ISS addr=0x%03h data=0x%08h size=%0d",
+                store_mismatch_count,
+                txn.addr[11:0],
+                txn.data,
+                txn.size,
+                expected.addr[11:0],
+                expected.data,
+                expected.size
+            ))
+        end
+    endfunction
+
+    // =========================================================================
+    // Conv-PE transaction handler
+    // =========================================================================
+    virtual function void write_conv(conv_txn txn);
+        if (txn.done) begin
+            conv_done_count++;
+
+            `uvm_info("SB", $sformatf(
+                "Conv-PE DONE: result=0x%08h count=%0d",
+                txn.result,
+                conv_done_count
+            ), UVM_MEDIUM)
+        end
+    endfunction
+
+    // =========================================================================
+    // End-of-test summary
+    // =========================================================================
+    function void report_phase(uvm_phase phase);
+        `uvm_info("SB", "========================================", UVM_NONE)
+        `uvm_info("SB", "  Scoreboard Summary (ISS-based)", UVM_NONE)
+
+        `uvm_info("SB", $sformatf("  WB matches:       %0d", wb_match_count), UVM_NONE)
+        `uvm_info("SB", $sformatf("  WB mismatches:    %0d", wb_mismatch_count), UVM_NONE)
+        `uvm_info("SB", $sformatf("  Store matches:    %0d", store_match_count), UVM_NONE)
+        `uvm_info("SB", $sformatf("  Store mismatches: %0d", store_mismatch_count), UVM_NONE)
+        `uvm_info("SB", $sformatf("  Conv DONE events: %0d", conv_done_count), UVM_NONE)
+
+        if (wb_expect_q.size() > 0) begin
+            `uvm_warning("SB", $sformatf(
+                "%0d unmatched WB predictions remaining",
+                wb_expect_q.size()
+            ))
+        end
+
+        if (store_expect_q.size() > 0) begin
+            `uvm_warning("SB", $sformatf(
+                "%0d unmatched store predictions remaining",
+                store_expect_q.size()
+            ))
+        end
+
+        `uvm_info("SB", "========================================", UVM_NONE)
+
+        if (wb_mismatch_count > 0) begin
+            `uvm_error("SB", $sformatf(
+                "%0d WB mismatches detected!",
+                wb_mismatch_count
+            ))
+        end
+
+        if (store_mismatch_count > 0) begin
+            `uvm_error("SB", $sformatf(
+                "%0d store mismatches detected!",
+                store_mismatch_count
+            ))
+        end
+
+        if ((wb_mismatch_count == 0) && (store_mismatch_count == 0)) begin
+            `uvm_info("SB", "ALL CHECKS PASSED", UVM_NONE)
+        end
+    endfunction
+
+endclass : riscv_scoreboard
