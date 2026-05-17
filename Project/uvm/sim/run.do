@@ -48,17 +48,17 @@ foreach f {
 # Compile RTL sources with coverage enabled
 #------------------------------------------------------------------------------
 vlog -timescale 1ns/1ps +acc -cover bcesft \
-    ../../alu.v \
-    ../../regfile.v \
-    ../../conv_pe.v \
-    ../../imem.v \
-    ../../dmem.v \
-    ../../if_stage.v \
-    ../../id_stage.v \
-    ../../ex_stage.v \
-    ../../mem_stage.v \
-    ../../wb_stage.v \
-    ../../riscv_top.v
+    ../../rtl/src/alu.v \
+    ../../rtl/src/regfile.v \
+    ../../rtl/src/conv_pe.v \
+    ../../rtl/src/imem.v \
+    ../../rtl/src/dmem.v \
+    ../../rtl/src/if_stage.v \
+    ../../rtl/src/id_stage.v \
+    ../../rtl/src/ex_stage.v \
+    ../../rtl/src/mem_stage.v \
+    ../../rtl/src/wb_stage.v \
+    ../../rtl/src/riscv_top.v
 
 #------------------------------------------------------------------------------
 # Compile SystemVerilog/UVM TB sources with coverage enabled

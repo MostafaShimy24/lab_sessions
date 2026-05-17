@@ -1,0 +1,56 @@
+./build_cell_model.sh
+
+
+fault synth \
+-l ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib \
+-t riscv_top_synth \
+-o riscv_top_fault_netlist.v \
+../synth/results/riscv_top_netlist.v
+
+
+
+fault synth \
+-l ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib \
+-t riscv_top_synth \
+-o riscv_top_fault_netlist.v \
+../rtl/src/riscv_top_synth.v \
+../rtl/src/if_stage.v \
+../rtl/src/id_stage.v \
+../rtl/src/ex_stage.v \
+../rtl/src/mem_stage.v \
+../rtl/src/wb_stage.v \
+../rtl/src/regfile.v \
+../rtl/src/alu.v \
+../rtl/src/conv_pe.v \
+../rtl/src/dmem.v
+
+
+fault cut -o riscv_top_cut_netlist.v --clock clk --reset rst_n --activeLow --bypassing vdd=1 --bypassing gnd=0 --dff sky130_fd_sc_hd__dfxtp_1 riscv_top_fault_netlist.v
+
+
+fault atpg \
+-c riscv_custom_cells.v \
+-v 150 \
+-r 25 \
+-m 95 \
+--ceiling 1200 \
+riscv_top_cut_netlist.v \
+--clock clk \
+--reset rst_n \
+--activeLow \
+--bypassing VDD=1 \
+--bypassing GND=0
+
+
+
+fault chain \
+  -l ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib \
+  -c ./riscv_custom_cells.v \
+  --clock clk \
+  --reset rst_n \
+  --activeLow \
+  --bypassing VDD=1 \
+  --bypassing GND=0 \
+  --dff sky130_fd_sc_hd__dfxtp_1 \
+  -o ./riscv_top_scan_netlist.v \
+  ./riscv_top_fault_netlist.v

@@ -3,7 +3,7 @@
 #==============================================================================
 
 # Project paths
-RTL_DIR    = ../..
+RTL_DIR    = ../../rtl/src
 UVM_DIR    = ..
 TB_DIR     = $(UVM_DIR)/tb
 PKG_DIR    = $(UVM_DIR)/pkg

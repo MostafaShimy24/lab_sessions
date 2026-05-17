@@ -1,0 +1,31 @@
+##   0:00:00  Solver: z3
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Checking cover reachability in step 1..
+##   0:01:05  waiting for solver (1 minute)
+##   0:01:24  Appending additional step 2.
+##   0:01:24  Appending additional step 3.
+##   0:01:24  Appending additional step 4.
+##   0:01:24  Appending additional step 5.
+##   0:01:24  Appending additional step 6.
+##   0:01:24  Re-solving with appended steps..
+##   0:02:25  waiting for solver (1 minute)
+##   0:04:00  Reached cover statement in step 1 at id_ex_wrapper: id_ex_wrapper.v:424.13-428.14 (_witness_.check_cover_id_ex_wrapper_v_424_40)
+##   0:04:00  Writing trace to VCD file: engine_0/trace0.vcd
+##   0:04:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+##   0:04:00  Writing trace to constraints file: engine_0/trace0.smtc
+##   0:04:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+##   0:04:00  Checking cover reachability in step 1..
+##   0:05:00  waiting for solver (1 minute)
+##   0:05:36  Appending additional step 2.
+##   0:05:36  Appending additional step 3.
+##   0:05:36  Appending additional step 4.
+##   0:05:36  Appending additional step 5.
+##   0:05:36  Appending additional step 6.
+##   0:05:36  Re-solving with appended steps..
+##   0:06:41  waiting for solver (1 minute)
+##   0:10:41  Reached cover statement in step 1 at id_ex_wrapper: id_ex_wrapper.v:412.13-417.14 (_witness_.check_cover_id_ex_wrapper_v_412_33)
+##   0:10:41  Writing trace to VCD file: engine_0/trace1.vcd
+##   0:10:41  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+##   0:10:41  Writing trace to constraints file: engine_0/trace1.smtc
+##   0:10:41  Writing trace to Yosys witness file: engine_0/trace1.yw
+##   0:10:41  Status: passed

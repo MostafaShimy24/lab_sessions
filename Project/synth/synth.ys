@@ -1,0 +1,50 @@
+# synthesis.ys — Yosys Synthesis Script for ELCT1005 PROJ02
+# Target: SkyWater SKY130 sky130_fd_sc_hd
+# Technology: 100 MHz (10 ns), 1.8 V, TT corner, 25°C
+
+# ── Step 1: Read all RTL source files ────────────────────────────────────────
+read_verilog -sv ../rtl/src/riscv_top_synth.v
+read_verilog -sv ../rtl/src/if_stage.v
+read_verilog -sv ../rtl/src/id_stage.v
+read_verilog -sv ../rtl/src/ex_stage.v
+read_verilog -sv ../rtl/src/mem_stage.v
+read_verilog -sv ../rtl/src/wb_stage.v
+read_verilog -sv ../rtl/src/regfile.v
+read_verilog -sv ../rtl/src/alu.v
+read_verilog -sv ../rtl/src/conv_pe.v
+read_verilog -sv ../rtl/src/dmem.v
+
+# ── Step 2: Elaborate and set top module ─────────────────────────────────────
+hierarchy -check -top riscv_top_synth
+
+# ── Step 3: Show netlist BEFORE optimisation (hierarchical view) ──────────────
+show -stretch -format dot -prefix ./results/show_before riscv_top_synth
+
+# ── Step 4: Flatten — merge all submodules into one netlist ──────────────────
+# Required so opt/abc can see and optimise all logic together
+# Also prevents "0 gates extracted" on submodules
+#flatten
+
+# ── Step 5: Generic synthesis passes ─────────────────────────────────────────
+proc
+opt
+fsm
+opt
+memory 
+opt
+
+# ── Step 6: Technology mapping to SKY130 ─────────────────────────────────────
+techmap
+opt
+dfflibmap -liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib 
+abc -liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib -D 10
+clean
+
+# ── Step 7: Show netlist AFTER optimisation (gate-level view) ─────────────────
+show -stretch -format dot -prefix ./results/show_after riscv_top_synth
+
+# ── Step 8: Write gate-level netlist ─────────────────────────────────────────
+write_verilog -noattr -noexpr -nohex -nodec ./results/riscv_top_netlist.v
+
+# ── Step 9: Print statistics ──────────────────────────────────────────────────
+stat -liberty ../pdk/sky130_fd_sc_hd__tt_025C_1v80.lib

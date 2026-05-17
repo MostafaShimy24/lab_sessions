@@ -1,0 +1,7 @@
+========================================
+         MAGIC DRC ANALYSIS REPORT      
+========================================
+
+Total DRC Errors: 0
+
+Congratulations! The design is DRC clean.
